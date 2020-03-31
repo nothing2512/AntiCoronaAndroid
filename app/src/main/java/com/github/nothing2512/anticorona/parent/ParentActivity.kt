@@ -37,15 +37,15 @@ abstract class ParentActivity<VDB : ViewDataBinding>(private val layout: Int) :
             window?.statusBarColor = when (preference.theme) {
                 Theme.DEFAULT.toString() -> {
                     setTheme(R.style.AppTheme)
-                    ContextCompat.getColor(applicationContext, R.color.colorPrimary)
+                    ContextCompat.getColor(applicationContext, R.color.colorPrimaryDark)
                 }
                 Theme.OCEAN.toString() -> {
                     setTheme(R.style.Ocean)
-                    ContextCompat.getColor(applicationContext, R.color.colorPrimaryOcean)
+                    ContextCompat.getColor(applicationContext, R.color.colorPrimaryOceanDark)
                 }
                 else -> {
                     setTheme(R.style.AppTheme)
-                    ContextCompat.getColor(applicationContext, R.color.colorPrimary)
+                    ContextCompat.getColor(applicationContext, R.color.colorPrimaryDark)
                 }
             }
 

@@ -2,4 +2,6 @@
 <resources>
     <dimen name="spacing">11dp</dimen>
     <dimen name="double_spacing">22dp</dimen>
+    <dimen name="toolbar_height">48dp</dimen>
+    <dimen name="nav_button_size">60dp</dimen>
 </resources>

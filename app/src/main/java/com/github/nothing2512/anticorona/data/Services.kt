@@ -3,7 +3,9 @@ package com.github.nothing2512.anticorona.data
 import androidx.lifecycle.LiveData
 import com.github.nothing2512.anticorona.data.response.CaseResponse
 import com.github.nothing2512.anticorona.data.response.FaqsResponse
+import com.github.nothing2512.anticorona.data.response.NewsResponse
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface Services {
 
@@ -20,5 +22,8 @@ interface Services {
     fun getGlobalCases(): LiveData<ApiResponse<CaseResponse>>
 
     @GET("faqs")
-    fun getFaqs(): LiveData<ApiResponse<List<FaqsResponse>>>
+    fun getFaqs(@Query("lang") lang: String): LiveData<ApiResponse<List<FaqsResponse>>>
+
+    @GET("news")
+    fun getNews(@Query("lang") lang: String): LiveData<ApiResponse<List<NewsResponse>>>
 }
