@@ -9,4 +9,10 @@ class HomeFragment : ParentFragment<FragmentHomeBinding>(R.layout.fragment_home)
     override fun subscribeUI(bundle: Bundle?) {
 
     }
+
+    companion object {
+
+        @JvmStatic
+        fun newInstance() = HomeFragment()
+    }
 }

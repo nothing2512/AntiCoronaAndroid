@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">AntiCorona</string>
+    <string name="change_language">Change Language</string>
+    <string name="change_theme">Change Theme</string>
+    <string name="faq">FAQ</string>
+    <string name="home">Home</string>
+    <string name="news">News</string>
 </resources>

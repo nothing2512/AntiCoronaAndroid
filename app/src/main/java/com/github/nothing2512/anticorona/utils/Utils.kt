@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.github.nothing2512.anticorona.utils
 
 import android.app.Activity
@@ -104,5 +106,3 @@ fun EditText.required(field: String) {
 }
 
 fun postDelay(r: () -> Unit) = Handler().postDelayed(r, Constants.SERVICE_LATENCY_IN_MILLIS)
-
-fun postDelay(r: () -> Unit, delay: Long) = Handler().postDelayed(r, delay)

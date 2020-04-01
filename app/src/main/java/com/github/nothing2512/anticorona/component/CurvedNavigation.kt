@@ -3,12 +3,17 @@ package com.github.nothing2512.anticorona.component
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
+import android.view.View
+import com.github.nothing2512.anticorona.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class CurvedNavigation : BottomNavigationView {
 
     private var path = Path()
     private var paint = Paint()
+    private var size = 0
+    private var deviceWidth = 0
+    private var parent: View? = null
 
     private val radius = 56
 
@@ -24,13 +29,21 @@ class CurvedNavigation : BottomNavigationView {
 
     constructor(context: Context) : super(context)
 
-    constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
+    constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
+        val ta = context.obtainStyledAttributes(attrs, R.styleable.CurvedNavigation)
+        size = ta.getInt(R.styleable.CurvedNavigation_size, 3)
+        ta.recycle()
+    }
 
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(
         context,
         attrs,
         defStyleAttr
-    )
+    ) {
+        val ta = context.obtainStyledAttributes(attrs, R.styleable.CurvedNavigation)
+        size = ta.getInt(R.styleable.CurvedNavigation_size, 3)
+        ta.recycle()
+    }
 
     init {
         paint.style = Paint.Style.FILL_AND_STROKE
@@ -85,7 +98,7 @@ class CurvedNavigation : BottomNavigationView {
         secondControl2.set(secondEnd.x - (radius + (radius / 4)), secondEnd.y)
     }
 
-    fun draw(i: Int, j: Int = 1) {
+    private fun draw(i: Int, j: Int = 1) {
         firstStart.set((width * i / j) - (radius * 3), 0)
         firstEnd.set(width * i / j, radius + (radius / 4))
 
@@ -97,5 +110,25 @@ class CurvedNavigation : BottomNavigationView {
 
         secondControl1.set(secondStart.x + radius, secondStart.y)
         secondControl2.set(secondEnd.x - (radius + (radius / 4)), secondEnd.y)
+    }
+
+    fun setup(deviceWidth: Int, parent: View) {
+        this.deviceWidth = deviceWidth
+        this.parent = parent
+    }
+
+    fun update(view: View, position: Int) {
+
+        if (position > size) throw IndexOutOfBoundsException("CurvedNavigation: Position must less than size")
+
+        val len = size * 2
+        val index = ((position - 1) * 2) + 1
+
+        draw(index, len)
+
+        val viewX = view.width / 2
+        val deviceX = ((deviceWidth * index / len) - (parent?.width ?: 0 / 2)).toFloat()
+
+        parent?.let { if (it.x > 0f) it.x = deviceX + viewX }
     }
 }

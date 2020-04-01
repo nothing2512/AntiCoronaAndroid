@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/btNavFaq"
+        android:title="@string/faq"
+        android:icon="@drawable/faq"
+        app:showAsAction="ifRoom" />
+
+    <item android:id="@+id/btNavHome"
+        android:title="@string/home"
+        android:icon="@drawable/home"
+        app:showAsAction="ifRoom" />
+
+    <item android:id="@+id/btNavNews"
+        android:title="@string/news"
+        android:icon="@drawable/news"
+        app:showAsAction="ifRoom" />
+</menu>

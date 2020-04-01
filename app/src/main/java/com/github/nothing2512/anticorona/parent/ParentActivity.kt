@@ -1,7 +1,12 @@
 package com.github.nothing2512.anticorona.parent
 
+import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings
 import android.util.DisplayMetrics
+import android.view.Menu
+import android.view.MenuItem
+import androidx.annotation.MainThread
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.databinding.ViewDataBinding
@@ -54,7 +59,31 @@ abstract class ParentActivity<VDB : ViewDataBinding>(private val layout: Int) :
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_option, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item?.itemId) {
+            R.id.btChangeLanguage -> startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))
+            R.id.btChangeTheme -> {
+                TODO("Show Dialog")
+            }
+            android.R.id.home -> finish()
+        }
+        return true
+    }
+
+    @MainThread
     abstract fun subscribeUI()
+
+    protected fun initializeBackButton() {
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowHomeEnabled(true)
+        }
+    }
 
     override fun onDestroy() {
         super.onDestroy()

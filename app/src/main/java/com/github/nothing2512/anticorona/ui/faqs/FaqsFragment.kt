@@ -9,4 +9,10 @@ class FaqsFragment : ParentFragment<FragmentFaqsBinding>(R.layout.fragment_faqs)
     override fun subscribeUI(bundle: Bundle?) {
 
     }
+
+    companion object {
+
+        @JvmStatic
+        fun newInstance() = FaqsFragment()
+    }
 }

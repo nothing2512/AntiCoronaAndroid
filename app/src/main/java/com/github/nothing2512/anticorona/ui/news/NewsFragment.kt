@@ -9,4 +9,10 @@ class NewsFragment : ParentFragment<FragmentNewsBinding>(R.layout.fragment_news)
     override fun subscribeUI(bundle: Bundle?) {
 
     }
+
+    companion object {
+
+        @JvmStatic
+        fun newInstance() = NewsFragment()
+    }
 }

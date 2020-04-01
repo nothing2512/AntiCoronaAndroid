@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.MainThread
 import androidx.appcompat.view.ContextThemeWrapper
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
@@ -44,5 +45,6 @@ abstract class ParentFragment<VDB : ViewDataBinding>(private val layout: Int) : 
         clearFindViewByIdCache()
     }
 
+    @MainThread
     abstract fun subscribeUI(bundle: Bundle?)
 }
