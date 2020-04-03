@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="item"
+            type="com.github.nothing2512.anticorona.data.response.CaseResponse" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/spacing"
+        android:layout_marginTop="@dimen/spacing"
+        android:layout_marginBottom="@dimen/spacing">
+
+        <TextView
+            android:id="@+id/itemProvinceName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='@{item.location ?? ""}'
+            style="@style/TextNormal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/itemProvinceCase"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/total_cases"
+            bindText='@{Integer.toString(item.cases) ?? "0"}'
+            style="@style/TextNormal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <SeekBar
+            android:id="@+id/itemProvinceSeekbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="@{item.cases}"
+            style="@style/SeekbarComparison"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/itemProvinceName" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,8 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-    <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-        android:layout_height="match_parent">
+<layout xmlns:tools="http://schemas.android.com/tools">
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="@drawable/bg_dialog">
+
+        <TextView
+            android:id="@+id/tvThemePick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/choose_theme"
+            android:layout_marginTop="@dimen/spacing"
+            style="@style/TextSubTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageView
+            android:id="@+id/themeDivider"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/divider_height"
+            android:src="@drawable/divider"
+            android:layout_marginTop="@dimen/spacing"
+            android:layout_marginStart="@dimen/spacing"
+            android:layout_marginEnd="@dimen/spacing"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvThemePick"
+            tools:ignore="ContentDescription" />
+
+        <RadioButton
+            android:id="@+id/rbThemeDefault"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/theme_default"
+            android:paddingTop="@dimen/double_spacing"
+            android:paddingBottom="@dimen/double_spacing"
+            android:paddingStart="@dimen/spacing"
+            android:paddingEnd="@dimen/spacing"
+            android:layout_marginTop="@dimen/double_spacing"
+            android:textSize="@dimen/normal_text"
+            style="@style/TextNormalSecondary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/themeDivider"/>
+
+        <RadioButton
+            android:id="@+id/rbThemeOcean"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/theme_ocean"
+            android:paddingTop="@dimen/double_spacing"
+            android:paddingBottom="@dimen/double_spacing"
+            android:paddingStart="@dimen/spacing"
+            android:paddingEnd="@dimen/spacing"
+            android:layout_marginBottom="@dimen/spacing"
+            android:textSize="@dimen/normal_text"
+            style="@style/TextNormalSecondary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rbThemeDefault"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

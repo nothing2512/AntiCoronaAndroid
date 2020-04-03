@@ -8,6 +8,8 @@ import androidx.annotation.MainThread
 import androidx.appcompat.view.ContextThemeWrapper
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import com.github.nothing2512.anticorona.R
 import com.github.nothing2512.anticorona.utils.Preference
 import com.github.nothing2512.anticorona.utils.getBinding
@@ -17,6 +19,7 @@ import kotlinx.android.synthetic.*
 import org.koin.android.ext.android.inject
 
 abstract class ParentFragment<VDB : ViewDataBinding>(private val layout: Int) : Fragment() {
+
 
     protected lateinit var binding: VDB
     protected val preference: Preference by inject()
@@ -40,11 +43,19 @@ abstract class ParentFragment<VDB : ViewDataBinding>(private val layout: Int) : 
         launchMain { subscribeUI(savedInstanceState) }
     }
 
+    protected fun <T> LiveData<T>.observe(block: (T) -> Unit) {
+        observe(this@ParentFragment, Observer { block.invoke(it) })
+    }
+
+    protected open fun onRefresh() {}
+
+    fun refresh() { onRefresh() }
+
+    @MainThread
+    abstract fun subscribeUI(bundle: Bundle?)
+
     override fun onDestroy() {
         super.onDestroy()
         clearFindViewByIdCache()
     }
-
-    @MainThread
-    abstract fun subscribeUI(bundle: Bundle?)
 }

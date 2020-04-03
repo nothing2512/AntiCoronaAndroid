@@ -58,7 +58,7 @@ abstract class BoundService<TYPE>
     protected open fun onFetchFailed() {}
 
     suspend fun asLiveData(): LiveData<Resource<TYPE>> = withContext(Dispatchers.IO) {
-        fetch()
+        appExecutors.mainThread.execute { fetch() }
         result
     }
 

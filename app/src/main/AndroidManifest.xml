@@ -16,11 +16,14 @@
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
         <activity android:name=".ui.country.CountryActivity"
-            android:screenOrientation="fullSensor" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity android:name=".ui.province.ProvinceActivity"
-            android:screenOrientation="fullSensor" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity android:name=".ui.home.HomeActivity"
-            android:screenOrientation="fullSensor">
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

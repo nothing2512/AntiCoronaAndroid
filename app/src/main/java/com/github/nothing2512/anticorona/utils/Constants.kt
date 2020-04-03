@@ -12,4 +12,14 @@ object Constants {
     const val FAQS = 1
     const val HOME = 2
     const val NEWS = 3
+
+    const val NETWORK_ERROR = "Network Error"
+
+    const val DEFAULT_FONT = "font/mitr_light.ttf"
+
+    const val FRAGMENT_FAQ = 0
+    const val FRAGMENT_HOME = 1
+    const val FRAGMENT_NEWS = 2
+
+    const val EXTRA_PROVINCE = "ExtraProvince"
 }

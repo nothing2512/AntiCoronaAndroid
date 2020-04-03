@@ -35,6 +35,7 @@ versions.coroutine = "1.3.2"
 versions.dexmaker = "2.2.0"
 versions.detail = "2.1.0"
 versions.espresso = "3.2.0"
+versions.font = "2.3.0"
 versions.fragment = "1.2.0-alpha02"
 versions.hamcrest = "1.3"
 versions.junit = "4.12"
@@ -151,6 +152,7 @@ deps.rx_android = "io.reactivex.rxjava2:rxandroid:$versions.rx_android"
 deps.android_gradle_plugin = "com.android.tools.build:gradle:$versions.android_gradle_plugin"
 deps.coil = "io.coil-kt:coil:$versions.coil"
 deps.vector = "com.sdsmdg.harjot:vectormaster:$versions.vector"
+deps.font = "uk.co.chrisjenx:calligraphy:$versions.font"
 
 build_versions.min_sdk = 21
 build_versions.target_sdk = 28

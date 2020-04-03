@@ -1,61 +1,51 @@
 package com.github.nothing2512.anticorona.parent
 
-import android.app.Activity
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
-import android.view.Gravity
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import android.view.Window
-import android.view.WindowManager
-import androidx.appcompat.app.AlertDialog
+import androidx.annotation.MainThread
 import androidx.appcompat.view.ContextThemeWrapper
 import androidx.databinding.ViewDataBinding
 import com.github.nothing2512.anticorona.R
+import com.github.nothing2512.anticorona.utils.Preference
 import com.github.nothing2512.anticorona.utils.getBinding
+import com.github.nothing2512.anticorona.utils.launchMain
+import com.github.nothing2512.anticorona.vo.Theme
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import kotlinx.android.synthetic.*
+import org.koin.android.ext.android.inject
 
-@Suppress("LeakingThis")
-abstract class ParentDialog<VDB : ViewDataBinding>(
-    activity: Activity?,
-    parent: ViewGroup,
-    layout: Int
-) : AlertDialog.Builder(ContextThemeWrapper(activity, R.style.Dialog)) {
+abstract class ParentDialog<VDB : ViewDataBinding>(private val layout: Int) :
+    BottomSheetDialogFragment() {
 
-    protected val binding: VDB = getBinding(layout, parent)
-    protected var alertDialog: AlertDialog
-    protected var isCancelable = false
+    protected lateinit var binding: VDB
+    protected val preference: Preference by inject()
 
-    init {
-
-        setView(binding.root)
-
-        alertDialog = this.create()
-
-        subscribeUI()
-
-        alertDialog.apply {
-
-            requestWindowFeature(Window.FEATURE_NO_TITLE)
-
-            window?.apply {
-
-                setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-
-                attributes?.apply {
-
-                    windowAnimations = R.style.Dialog
-                    gravity = Gravity.BOTTOM
-                    flags = WindowManager.LayoutParams.FLAG_DIM_BEHIND
-                }
-            }
-
-            setCancelable(isCancelable)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val wrapper = when (preference.theme) {
+            Theme.DEFAULT.toString() -> ContextThemeWrapper(activity, R.style.AppTheme)
+            Theme.OCEAN.toString() -> ContextThemeWrapper(activity, R.style.Ocean)
+            else -> ContextThemeWrapper(activity, R.style.AppTheme)
         }
+        binding = getBinding(inflater.cloneInContext(wrapper), layout, container)
+        return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        launchMain { subscribeUI() }
+    }
+
+    @MainThread
     abstract fun subscribeUI()
 
-    override fun show(): AlertDialog {
-        alertDialog.show()
-        return alertDialog
+    override fun onDestroy() {
+        super.onDestroy()
+        clearFindViewByIdCache()
     }
 }

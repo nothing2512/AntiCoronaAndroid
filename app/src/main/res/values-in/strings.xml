@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Anti Corona</string>
+    <string name="change_language">Ganti Bahasa</string>
+    <string name="change_theme">Ganti Tema</string>
+    <string name="faq">FAQ</string>
+    <string name="home">Home</string>
+    <string name="news">Berita</string>
+    <string name="choose_theme">Pilih Tema</string>
+    <string name="theme_default">Default</string>
+    <string name="theme_ocean">Ocean</string>
+    <string name="indonesian_case">Kasus di indonesia</string>
+    <string name="cases">Kasus</string>
+    <string name="recovered">Sembuh</string>
+    <string name="death">Meninggal</string>
+    <string name="global_case">Kasus Global</string>
+    <string name="total_cases">Total Kasus:</string>
+    <string name="toolbar_cases">Kasus Corona</string>
+    <string name="toolbar_faq">FAQ</string>
+    <string name="toolbar_news">Berita Corona</string>
+    <string name="province">Kasus Per Provinsi</string>
+    <string name="show_more">Tampilkan Semua</string>
+</resources>

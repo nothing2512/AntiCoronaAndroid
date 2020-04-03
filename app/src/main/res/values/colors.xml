@@ -19,5 +19,14 @@
 
     <!--  Other Grey Color  -->
     <color name="grey">#DBDBDB</color>
+    <color name="grey_secondary">#737373</color>
     <color name="divider">#9F9F9F</color>
+
+    <!--  Seekbar Color  -->
+    <color name="cases">#FFA500</color>
+    <color name="recovered">#00FF00</color>
+    <color name="death">#FF0000</color>
+
+    <!--  Text Color  -->
+    <color name="highlight">#2196F3</color>
 </resources>

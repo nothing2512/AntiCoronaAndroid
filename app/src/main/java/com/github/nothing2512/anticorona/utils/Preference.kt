@@ -1,6 +1,7 @@
 package com.github.nothing2512.anticorona.utils
 
 import android.content.Context
+import com.github.nothing2512.anticorona.vo.Theme
 
 @Suppress("unused")
 class Preference(context: Context) {
@@ -34,7 +35,7 @@ class Preference(context: Context) {
 
     fun getString(key: String) = access.getString(key, "")
 
-    fun setTheme(theme: String) {
-        set(Constants.THEME_KEY, theme)
+    fun setTheme(theme: Theme) {
+        set(Constants.THEME_KEY, theme.toString())
     }
 }

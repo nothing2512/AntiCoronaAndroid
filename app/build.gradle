@@ -84,6 +84,9 @@ dependencies {
     // Image Loader
     implementation deps.coil
 
+    // Font
+    implementation deps.font
+
     // Depedency Injection
     implementation deps.koin.core
     implementation deps.koin.ext

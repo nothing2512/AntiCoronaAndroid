@@ -1,8 +1,22 @@
 <resources>
-    <string name="app_name">AntiCorona</string>
+    <string name="app_name">Anti Corona</string>
     <string name="change_language">Change Language</string>
     <string name="change_theme">Change Theme</string>
     <string name="faq">FAQ</string>
     <string name="home">Home</string>
     <string name="news">News</string>
+    <string name="choose_theme">Choose Theme</string>
+    <string name="theme_default">Default</string>
+    <string name="theme_ocean">Ocean</string>
+    <string name="indonesian_case">Indonesian Case</string>
+    <string name="cases">Case</string>
+    <string name="recovered">Recovered</string>
+    <string name="death">Death</string>
+    <string name="global_case">Global Case</string>
+    <string name="total_cases">Total Cases:</string>
+    <string name="toolbar_cases">Corona Cases</string>
+    <string name="toolbar_faq">FAQ</string>
+    <string name="toolbar_news">Corona News</string>
+    <string name="province">Province Case</string>
+    <string name="show_more">Show More</string>
 </resources>

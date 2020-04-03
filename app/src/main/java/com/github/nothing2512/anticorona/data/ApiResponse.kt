@@ -1,12 +1,13 @@
 package com.github.nothing2512.anticorona.data
 
+import com.github.nothing2512.anticorona.utils.Constants
 import retrofit2.Response
 
 @Suppress("unused")
 sealed class ApiResponse<T> {
     companion object {
         fun <T> create(error: Throwable): ApiErrorResponse<T> =
-            ApiErrorResponse(error.message ?: "unknown error")
+            ApiErrorResponse(error.message ?: Constants.NETWORK_ERROR)
 
         fun <T> create(response: Response<T>): ApiResponse<T> =
             if (response.isSuccessful) {

@@ -2,6 +2,7 @@
 
 package com.github.nothing2512.anticorona.utils
 
+import android.animation.ValueAnimator
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
@@ -10,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.SeekBar
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
@@ -106,3 +108,22 @@ fun EditText.required(field: String) {
 }
 
 fun postDelay(r: () -> Unit) = Handler().postDelayed(r, Constants.SERVICE_LATENCY_IN_MILLIS)
+
+@Suppress("UNCHECKED_CAST")
+fun animateValue(from: Int, to: Int, block: (Int) -> Unit) {
+    ValueAnimator.ofInt(from, to).apply {
+        duration = 1000
+        addUpdateListener { block.invoke(it.animatedValue as Int) }
+        start()
+    }
+}
+
+fun SeekBar.animate(value: Int) {
+    animateValue(progress, value) { progress = it }
+}
+
+fun <T> List<T>.toArrayList(): ArrayList<T> {
+    val data = ArrayList<T>()
+    forEach { data.add(it) }
+    return data
+}

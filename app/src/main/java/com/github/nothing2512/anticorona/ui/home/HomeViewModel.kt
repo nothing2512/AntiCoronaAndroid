@@ -5,10 +5,17 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.github.nothing2512.anticorona.repositories.CaseRepository
+import com.github.nothing2512.anticorona.ui.faqs.FaqsFragment
+import com.github.nothing2512.anticorona.ui.news.NewsFragment
 import com.github.nothing2512.anticorona.utils.launchMain
 
 class HomeViewModel (private val caseRepository: CaseRepository): ViewModel() {
 
+    private val _fragmentList = listOf(
+        FaqsFragment.newInstance(),
+        HomeFragment.newInstance(),
+        NewsFragment.newInstance()
+    )
     private val _fragment = MutableLiveData<Fragment>()
 
     val fragment: LiveData<Fragment>
@@ -35,7 +42,7 @@ class HomeViewModel (private val caseRepository: CaseRepository): ViewModel() {
         launchMain { caseRepository.getCountriesCase() }
     }
 
-    fun setFragment(f: Fragment) {
-        if (_fragment.value != f) _fragment.postValue(f)
+    fun setFragment(i: Int) {
+        if (_fragment.value != _fragmentList[i]) _fragment.postValue(_fragmentList[i])
     }
 }
