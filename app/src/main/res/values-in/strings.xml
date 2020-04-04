@@ -20,4 +20,5 @@
     <string name="toolbar_news">Berita Corona</string>
     <string name="province">Kasus Per Provinsi</string>
     <string name="show_more">Tampilkan Semua</string>
+    <string name="server_down">Maaf, Server sibuk</string>
 </resources>

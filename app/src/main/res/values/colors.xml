@@ -23,7 +23,6 @@
     <color name="divider">#9F9F9F</color>
 
     <!--  Seekbar Color  -->
-    <color name="cases">#FFA500</color>
     <color name="recovered">#00FF00</color>
     <color name="death">#FF0000</color>
 

@@ -1,4 +1,4 @@
-package com.github.nothing2512.anticorona.data.response
+package com.github.nothing2512.anticorona.data.remote.response
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
@@ -10,4 +10,4 @@ data class CaseResponse(
     val recovered: Int,
     val death: Int,
     val flag: String?
-): Parcelable
+) : Parcelable

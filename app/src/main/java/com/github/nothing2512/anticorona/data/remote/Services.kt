@@ -1,9 +1,9 @@
-package com.github.nothing2512.anticorona.data
+package com.github.nothing2512.anticorona.data.remote
 
 import androidx.lifecycle.LiveData
-import com.github.nothing2512.anticorona.data.response.CaseResponse
-import com.github.nothing2512.anticorona.data.response.FaqsResponse
-import com.github.nothing2512.anticorona.data.response.NewsResponse
+import com.github.nothing2512.anticorona.data.remote.response.CaseResponse
+import com.github.nothing2512.anticorona.data.remote.response.FaqsResponse
+import com.github.nothing2512.anticorona.data.remote.response.NewsResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 

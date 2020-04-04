@@ -19,6 +19,7 @@ import com.github.nothing2512.anticorona.ui.dialog.ThemeDialog
 import com.github.nothing2512.anticorona.utils.Preference
 import com.github.nothing2512.anticorona.utils.getBinding
 import com.github.nothing2512.anticorona.utils.launchMain
+import com.github.nothing2512.anticorona.utils.toast
 import com.github.nothing2512.anticorona.vo.Theme
 import kotlinx.android.synthetic.*
 import org.koin.android.ext.android.inject
@@ -92,6 +93,8 @@ abstract class ParentActivity<VDB : ViewDataBinding>(private val layout: Int) :
         }
         return true
     }
+
+    protected fun serverDown() = toast(getString(R.string.server_down))
 
     override fun attachBaseContext(newBase: Context?) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase))

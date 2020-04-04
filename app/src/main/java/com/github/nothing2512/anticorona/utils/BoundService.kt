@@ -4,10 +4,10 @@ import androidx.annotation.MainThread
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
-import com.github.nothing2512.anticorona.data.ApiEmptyResponse
-import com.github.nothing2512.anticorona.data.ApiErrorResponse
-import com.github.nothing2512.anticorona.data.ApiResponse
-import com.github.nothing2512.anticorona.data.ApiSuccessResponse
+import com.github.nothing2512.anticorona.data.remote.ApiEmptyResponse
+import com.github.nothing2512.anticorona.data.remote.ApiErrorResponse
+import com.github.nothing2512.anticorona.data.remote.ApiResponse
+import com.github.nothing2512.anticorona.data.remote.ApiSuccessResponse
 import com.github.nothing2512.anticorona.vo.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -21,7 +21,6 @@ abstract class BoundService<TYPE>
 
         val apiResponse = createCall()
 
-        setValue(Resource.loading(null))
         result.addSource(apiResponse) { response ->
 
             result.removeSource(apiResponse)
@@ -30,6 +29,7 @@ abstract class BoundService<TYPE>
 
                 is ApiSuccessResponse -> {
                     appExecutors.diskIO.execute {
+                        saveCallResult(response.body)
                         val process = processResponse(response)
                         appExecutors.mainThread.execute {
                             setValue(Resource.success(process))
@@ -58,7 +58,22 @@ abstract class BoundService<TYPE>
     protected open fun onFetchFailed() {}
 
     suspend fun asLiveData(): LiveData<Resource<TYPE>> = withContext(Dispatchers.IO) {
-        appExecutors.mainThread.execute { fetch() }
+        appExecutors.mainThread.execute {
+
+            val dbSource = loadFromDb()
+            result.addSource(dbSource) { data ->
+                result.removeSource(dbSource)
+                if (data is List<*>) {
+                    if (data.size == 0) setValue(Resource.loading(null))
+                    else setValue(Resource.success(data))
+                    fetch()
+                } else {
+                    if (data == null) setValue(Resource.loading(null))
+                    else setValue(Resource.success(data))
+                    fetch()
+                }
+            }
+        }
         result
     }
 
@@ -67,5 +82,8 @@ abstract class BoundService<TYPE>
 
     @MainThread
     protected abstract fun createCall(): LiveData<ApiResponse<TYPE>>
+    
+    protected abstract fun loadFromDb(): LiveData<TYPE>
 
+    protected abstract fun saveCallResult(item: TYPE)
 }

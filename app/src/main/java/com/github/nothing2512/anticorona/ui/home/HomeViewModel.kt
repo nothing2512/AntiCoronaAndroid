@@ -9,7 +9,7 @@ import com.github.nothing2512.anticorona.ui.faqs.FaqsFragment
 import com.github.nothing2512.anticorona.ui.news.NewsFragment
 import com.github.nothing2512.anticorona.utils.launchMain
 
-class HomeViewModel (private val caseRepository: CaseRepository): ViewModel() {
+class HomeViewModel(private val caseRepository: CaseRepository) : ViewModel() {
 
     private val _fragmentList = listOf(
         FaqsFragment.newInstance(),

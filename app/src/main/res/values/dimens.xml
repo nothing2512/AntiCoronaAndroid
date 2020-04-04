@@ -17,7 +17,20 @@
     <!--  Divider  -->
     <dimen name="divider_stroke_width">1dp</dimen>
     <dimen name="divider_height">2dp</dimen>
+
+    <!--  Text  -->
     <dimen name="sub_title_text">22sp</dimen>
     <dimen name="normal_text">18sp</dimen>
+
+    <!--  Icon  -->
     <dimen name="emoticon_size">40dp</dimen>
+    <dimen name="flag_size">50dp</dimen>
+
+    <!--  Loading  -->
+    <dimen name="loading_sub_title_height">24dp</dimen>
+    <dimen name="loading_sub_title_width">170dp</dimen>
+    <dimen name="big_flag_size">100dp</dimen>
+    <dimen name="loading_text_width">60dp</dimen>
+    <dimen name="loading_text_height">20dp</dimen>
+    <dimen name="seekbar_height">10dp</dimen>
 </resources>

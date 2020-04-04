@@ -40,12 +40,34 @@
         <item name="android:textColor">@android:color/black</item>
         <item name="android:textSize">@dimen/sub_title_text</item>
         <item name="fontPath">fonts/mitr_medium.ttf</item>
+        <item name="android:textAlignment">center</item>
     </style>
 
     <style name="TextNormal">
         <item name="android:textColor">@android:color/black</item>
         <item name="android:textSize">@dimen/normal_text</item>
         <item name="fontPath">fonts/mitr_light.ttf</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="TextNormalBold">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/normal_text</item>
+        <item name="fontPath">fonts/mitr_medium.ttf</item>
+        <item name="android:textAlignment">center</item>
+
+    </style>
+
+    <style name="TextSubTitle.Loading">
+        <item name="android:background">@color/loading1</item>
+        <item name="android:layout_height">@dimen/loading_sub_title_height</item>
+        <item name="android:layout_width">@dimen/loading_sub_title_width</item>
+    </style>
+
+    <style name="TextNormal.Loading">
+        <item name="android:background">@color/loading1</item>
+        <item name="android:layout_width">@dimen/loading_text_width</item>
+        <item name="android:layout_height">@dimen/loading_text_height</item>
     </style>
 
     <style name="TextHighlight">
@@ -76,6 +98,13 @@
         <item name="android:enabled">false</item>
         <item name="android:thumb">@android:color/transparent</item>
         <item name="android:progressDrawable">@drawable/seekbar_progress_comparison</item>
+    </style>
+
+    <style name="SeekbarLoading">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/seekbar_height</item>
+        <item name="android:background">@color/grey</item>
+        <item name="android:layout_marginTop">@dimen/spacing</item>
     </style>
 
 </resources>

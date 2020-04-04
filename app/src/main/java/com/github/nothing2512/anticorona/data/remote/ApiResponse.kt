@@ -1,4 +1,4 @@
-package com.github.nothing2512.anticorona.data
+package com.github.nothing2512.anticorona.data.remote
 
 import com.github.nothing2512.anticorona.utils.Constants
 import retrofit2.Response
@@ -7,7 +7,7 @@ import retrofit2.Response
 sealed class ApiResponse<T> {
     companion object {
         fun <T> create(error: Throwable): ApiErrorResponse<T> =
-            ApiErrorResponse(error.message ?: Constants.NETWORK_ERROR)
+            ApiErrorResponse(error.message ?: "")
 
         fun <T> create(response: Response<T>): ApiResponse<T> =
             if (response.isSuccessful) {
@@ -15,7 +15,9 @@ sealed class ApiResponse<T> {
                 val body = response.body()
 
                 if (body == null || response.code() == 204) ApiEmptyResponse()
-                else ApiSuccessResponse(body)
+                else ApiSuccessResponse(
+                    body
+                )
 
             } else {
 
@@ -23,7 +25,9 @@ sealed class ApiResponse<T> {
                     if (response.errorBody()?.string().isNullOrEmpty()) response.message()
                     else response.errorBody()?.string()
 
-                ApiErrorResponse(errorMsg ?: "unknown error")
+                ApiErrorResponse(
+                    errorMsg ?: "unknown error"
+                )
             }
     }
 }

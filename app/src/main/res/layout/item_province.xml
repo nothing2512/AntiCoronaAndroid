@@ -3,7 +3,7 @@
     <data>
         <variable
             name="item"
-            type="com.github.nothing2512.anticorona.data.response.CaseResponse" />
+            type="com.github.nothing2512.anticorona.data.remote.response.CaseResponse" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"

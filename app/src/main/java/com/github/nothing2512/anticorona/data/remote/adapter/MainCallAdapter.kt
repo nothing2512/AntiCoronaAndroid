@@ -1,7 +1,7 @@
-package com.github.nothing2512.anticorona.data.adapter
+package com.github.nothing2512.anticorona.data.remote.adapter
 
 import androidx.lifecycle.LiveData
-import com.github.nothing2512.anticorona.data.ApiResponse
+import com.github.nothing2512.anticorona.data.remote.ApiResponse
 import retrofit2.Call
 import retrofit2.CallAdapter
 import retrofit2.Callback

@@ -7,11 +7,11 @@
 
         <variable
             name="indonesian"
-            type="com.github.nothing2512.anticorona.data.response.CaseResponse" />
+            type="com.github.nothing2512.anticorona.data.remote.response.CaseResponse" />
 
         <variable
             name="global"
-            type="com.github.nothing2512.anticorona.data.response.CaseResponse" />
+            type="com.github.nothing2512.anticorona.data.remote.response.CaseResponse" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -41,8 +41,19 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="@dimen/spacing">
+                        android:layout_height="wrap_content">
+
+                        <com.facebook.shimmer.ShimmerFrameLayout
+                            android:id="@+id/sfHomeIndonesian"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <include layout="@layout/loading_home_indonesian" />
+
+                        </com.facebook.shimmer.ShimmerFrameLayout>
 
                         <TextView
                             android:id="@+id/tvHomeIndonesianCase"
@@ -50,17 +61,19 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/indonesian_case"
+                            android:layout_margin="@dimen/spacing"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <ImageView
                             android:id="@+id/homeFlag"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
+                            android:layout_width="@dimen/big_flag_size"
+                            android:layout_height="@dimen/big_flag_size"
                             android:layout_marginTop="@dimen/spacing"
                             android:scaleType="centerCrop"
                             android:src="@drawable/flag"
+                            android:background="@drawable/bg_outline"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/tvHomeIndonesianCase"
@@ -133,74 +146,105 @@
                             app:layout_constraintTop_toBottomOf="@id/homeFlag" />
 
                         <TextView
+                            android:id="@+id/tvHomeICaseValue"
                             style="@style/TextNormal"
                             animateValue='@{Integer.toString(indonesian.cases) ?? "0"}'
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/spacing"
                             app:layout_constraintEnd_toEndOf="@id/imHomeICase"
                             app:layout_constraintStart_toStartOf="@id/imHomeICase"
-                            app:layout_constraintTop_toBottomOf="@id/imHomeICase" />
+                            app:layout_constraintTop_toBottomOf="@id/imHomeICase"
+                            app:layout_constraintBottom_toBottomOf="parent"/>
 
                         <TextView
+                            android:id="@+id/tvHomeIRecoveredValue"
                             style="@style/TextNormal"
                             animateValue='@{Integer.toString(indonesian.recovered) ?? "0"}'
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/spacing"
                             app:layout_constraintEnd_toEndOf="@id/imHomeIRecovered"
                             app:layout_constraintStart_toStartOf="@id/imHomeIRecovered"
-                            app:layout_constraintTop_toBottomOf="@id/imHomeIRecovered" />
+                            app:layout_constraintTop_toBottomOf="@id/imHomeIRecovered"
+                            app:layout_constraintBottom_toBottomOf="parent"/>
 
                         <TextView
+                            android:id="@+id/tvHomeIDeathValue"
                             style="@style/TextNormal"
                             animateValue='@{Integer.toString(indonesian.death) ?? "0"}'
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/spacing"
                             app:layout_constraintEnd_toEndOf="@id/imHomeIDeath"
                             app:layout_constraintStart_toStartOf="@id/imHomeIDeath"
-                            app:layout_constraintTop_toBottomOf="@id/imHomeIDeath" />
+                            app:layout_constraintTop_toBottomOf="@id/imHomeIDeath"
+                            app:layout_constraintBottom_toBottomOf="parent"/>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </androidx.cardview.widget.CardView>
 
-                <TextView
-                    android:id="@+id/tvHomeProvinceTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/province"
-                    android:layout_marginTop="@dimen/double_spacing"
-                    style="@style/TextSubTitle"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/homeCardIndonesian" />
-
-                <ImageView
-                    android:id="@+id/imHomeProvinceDivider"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/divider_height"
-                    android:src="@drawable/divider"
-                    android:layout_margin="@dimen/spacing"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvHomeProvinceTitle"
-                    tools:ignore="ContentDescription" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvHomeProvince"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/homeProvinceContainer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    tools:listitem="@layout/item_province"
-                    app:layout_constraintTop_toBottomOf="@id/imHomeProvinceDivider"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-                <TextView
-                    android:id="@+id/tvHomeProvinceHighlight"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/show_more"
-                    style="@style/TextHighlight"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/rvHomeProvince" />
+                    app:layout_constraintTop_toBottomOf="@id/homeCardIndonesian">
+
+                    <TextView
+                        android:id="@+id/tvHomeProvinceTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/province"
+                        android:layout_marginTop="@dimen/double_spacing"
+                        style="@style/TextSubTitle"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <ImageView
+                        android:id="@+id/imHomeProvinceDivider"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/divider_height"
+                        android:src="@drawable/divider"
+                        android:layout_margin="@dimen/spacing"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvHomeProvinceTitle"
+                        tools:ignore="ContentDescription" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvHomeProvince"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:itemCount="3"
+                        tools:listitem="@layout/item_province"
+                        app:layout_constraintTop_toBottomOf="@id/imHomeProvinceDivider"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvHomeProvinceHighlight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/show_more"
+                        style="@style/TextHighlight"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/rvHomeProvince" />
+
+                    <com.facebook.shimmer.ShimmerFrameLayout
+                        android:id="@+id/sfHomeProvince"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/imHomeProvinceDivider">
+
+                        <include layout="@layout/loading_home_province" />
+
+                    </com.facebook.shimmer.ShimmerFrameLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/homeCardGlobal"
@@ -213,107 +257,160 @@
                     app:cardCornerRadius="@dimen/main_radius"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvHomeProvinceHighlight">
+                    app:layout_constraintTop_toBottomOf="@id/homeProvinceContainer">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="@dimen/spacing">
 
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/globalContainer"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <com.facebook.shimmer.ShimmerFrameLayout
+                                android:id="@+id/sfHomeGlobal"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
+
+                                <include layout="@layout/loading_home_global" />
+
+                            </com.facebook.shimmer.ShimmerFrameLayout>
+
+                            <TextView
+                                android:id="@+id/tvHomeGlobalCase"
+                                style="@style/TextSubTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/global_case"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:id="@+id/imHomeGlobal"
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:layout_marginTop="@dimen/spacing"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/globe"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/tvHomeGlobalCase"
+                                tools:ignore="ContentDescription" />
+
+                            <TextView
+                                android:id="@+id/tvHomeGCase"
+                                style="@style/TextNormal"
+                                bindText='@{Integer.toString(global.cases) ?? ""}'
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/spacing"
+                                android:layout_marginTop="@dimen/spacing"
+                                android:text="@string/total_cases"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/imHomeGlobal" />
+
+                            <ImageView
+                                android:id="@+id/imHomeGRecovered"
+                                android:layout_width="@dimen/emoticon_size"
+                                android:layout_height="@dimen/emoticon_size"
+                                android:layout_marginStart="@dimen/spacing"
+                                android:layout_marginTop="@dimen/spacing"
+                                android:src="@drawable/emoticon_smile"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/tvHomeGCase"
+                                tools:ignore="ContentDescription" />
+
+                            <TextView
+                                android:id="@+id/tvHomeGRecovered"
+                                style="@style/TextNormal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/spacing"
+                                android:text="@string/recovered"
+                                app:layout_constraintStart_toEndOf="@id/imHomeGRecovered"
+                                app:layout_constraintTop_toTopOf="@id/imHomeGRecovered" />
+
+                            <SeekBar
+                                android:id="@+id/sbHomeRecovered"
+                                style="@style/SeekbarRecovered"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@id/imHomeGRecovered"
+                                app:layout_constraintTop_toBottomOf="@id/tvHomeGRecovered" />
+
+                            <ImageView
+                                android:id="@+id/imHomeGDeath"
+                                android:layout_width="@dimen/emoticon_size"
+                                android:layout_height="@dimen/emoticon_size"
+                                android:layout_marginStart="@dimen/spacing"
+                                android:layout_marginTop="@dimen/spacing"
+                                android:src="@drawable/emoticon_sad"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/imHomeGRecovered"
+                                tools:ignore="ContentDescription" />
+
+                            <TextView
+                                android:id="@+id/tvHomeGDeath"
+                                style="@style/TextNormal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/spacing"
+                                android:text="@string/death"
+                                app:layout_constraintStart_toEndOf="@id/imHomeGDeath"
+                                app:layout_constraintTop_toTopOf="@id/imHomeGDeath" />
+
+                            <SeekBar
+                                android:id="@+id/sbHomeDeath"
+                                style="@style/SeekbarDeath"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@id/imHomeGDeath"
+                                app:layout_constraintTop_toBottomOf="@id/tvHomeGDeath" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <com.facebook.shimmer.ShimmerFrameLayout
+                            android:id="@+id/sfHomeCountry"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/globalContainer">
+
+                            <include layout="@layout/loading_home_country" />
+
+                        </com.facebook.shimmer.ShimmerFrameLayout>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvHomeGlobal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing"
+                            tools:itemCount="2"
+                            tools:listitem="@layout/item_country"
+                            app:layout_constraintTop_toBottomOf="@id/globalContainer"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"/>
+
                         <TextView
-                            android:id="@+id/tvHomeGlobalCase"
-                            style="@style/TextSubTitle"
+                            android:id="@+id/tvHomeGlobalHighlight"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/global_case"
-                            app:layout_constraintEnd_toEndOf="parent"
+                            android:text="@string/show_more"
+                            style="@style/TextHighlight"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <ImageView
-                            android:id="@+id/imHomeGlobal"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:layout_marginTop="@dimen/spacing"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/globe"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/tvHomeGlobalCase"
-                            tools:ignore="ContentDescription" />
-
-                        <TextView
-                            android:id="@+id/tvHomeGCase"
-                            style="@style/TextNormal"
-                            bindText='@{Integer.toString(global.cases) ?? ""}'
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/spacing"
-                            android:layout_marginTop="@dimen/spacing"
-                            android:text="@string/total_cases"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/imHomeGlobal" />
-
-                        <ImageView
-                            android:id="@+id/imHomeGRecovered"
-                            android:layout_width="@dimen/emoticon_size"
-                            android:layout_height="@dimen/emoticon_size"
-                            android:layout_marginStart="@dimen/spacing"
-                            android:layout_marginTop="@dimen/spacing"
-                            android:src="@drawable/emoticon_smile"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/tvHomeGCase"
-                            tools:ignore="ContentDescription" />
-
-                        <TextView
-                            android:id="@+id/tvHomeGRecovered"
-                            style="@style/TextNormal"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/spacing"
-                            android:text="@string/recovered"
-                            app:layout_constraintStart_toEndOf="@id/imHomeGRecovered"
-                            app:layout_constraintTop_toTopOf="@id/imHomeGRecovered" />
-
-                        <SeekBar
-                            android:id="@+id/sbHomeRecovered"
-                            style="@style/SeekbarRecovered"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@id/imHomeGRecovered"
-                            app:layout_constraintTop_toBottomOf="@id/tvHomeGRecovered" />
-
-                        <ImageView
-                            android:id="@+id/imHomeGDeath"
-                            android:layout_width="@dimen/emoticon_size"
-                            android:layout_height="@dimen/emoticon_size"
-                            android:layout_marginStart="@dimen/spacing"
-                            android:layout_marginTop="@dimen/spacing"
-                            android:src="@drawable/emoticon_sad"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/imHomeGRecovered"
-                            tools:ignore="ContentDescription" />
-
-                        <TextView
-                            android:id="@+id/tvHomeGDeath"
-                            style="@style/TextNormal"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/spacing"
-                            android:text="@string/death"
-                            app:layout_constraintStart_toEndOf="@id/imHomeGDeath"
-                            app:layout_constraintTop_toTopOf="@id/imHomeGDeath" />
-
-                        <SeekBar
-                            android:id="@+id/sbHomeDeath"
-                            style="@style/SeekbarDeath"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@id/imHomeGDeath"
-                            app:layout_constraintTop_toBottomOf="@id/tvHomeGDeath" />
+                            app:layout_constraintTop_toBottomOf="@id/rvHomeGlobal" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 

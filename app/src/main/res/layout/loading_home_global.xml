@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <View
+        android:id="@+id/LtvHomeGlobalCase"
+        style="@style/TextSubTitle.Loading"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/LimHomeGlobal"
+        android:layout_width="@dimen/big_flag_size"
+        android:layout_height="@dimen/big_flag_size"
+        android:layout_marginTop="@dimen/spacing"
+        android:background="@color/loading2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/LtvHomeGlobalCase" />
+
+    <View
+        android:id="@+id/LtvHomeGCase"
+        style="@style/TextNormal.Loading"
+        android:layout_marginTop="@dimen/spacing"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/LimHomeGlobal" />
+
+    <View
+        android:id="@+id/LimHomeGRecovered"
+        android:layout_width="@dimen/emoticon_size"
+        android:layout_height="@dimen/emoticon_size"
+        android:layout_marginStart="@dimen/spacing"
+        android:layout_marginTop="@dimen/spacing"
+        android:background="@color/loading2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/LtvHomeGCase" />
+
+    <View
+        android:id="@+id/LtvHomeGRecovered"
+        style="@style/TextNormal.Loading"
+        android:layout_marginStart="@dimen/spacing"
+        app:layout_constraintStart_toEndOf="@id/LimHomeGRecovered"
+        app:layout_constraintTop_toTopOf="@id/LimHomeGRecovered" />
+
+    <View
+        style="@style/SeekbarLoading"
+        android:layout_margin="@dimen/spacing"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/LimHomeGRecovered"
+        app:layout_constraintTop_toBottomOf="@id/LtvHomeGRecovered" />
+
+    <View
+        android:id="@+id/LimHomeGDeath"
+        android:layout_width="@dimen/emoticon_size"
+        android:layout_height="@dimen/emoticon_size"
+        android:layout_marginStart="@dimen/spacing"
+        android:layout_marginTop="@dimen/spacing"
+        android:background="@color/loading2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/LimHomeGRecovered" />
+
+    <View
+        android:id="@+id/LtvHomeGDeath"
+        style="@style/TextNormal.Loading"
+        android:layout_marginStart="@dimen/spacing"
+        app:layout_constraintStart_toEndOf="@id/LimHomeGDeath"
+        app:layout_constraintTop_toTopOf="@id/LimHomeGDeath" />
+
+    <View
+        style="@style/SeekbarLoading"
+        android:layout_margin="@dimen/spacing"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/LimHomeGDeath"
+        app:layout_constraintTop_toBottomOf="@id/LtvHomeGDeath" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,8 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="item"
+            type="com.github.nothing2512.anticorona.data.remote.response.CaseResponse" />
+    </data>
     <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_dialog">
+
+        <TextView
+            android:id="@+id/tvDialogCountryName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='@{item.location ?? ""}'
+            android:layout_marginTop="@dimen/spacing"
+            style="@style/TextSubTitle"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <ImageView
+            android:id="@+id/imDialogCountryFlag"
+            android:layout_width="@dimen/big_flag_size"
+            android:layout_height="@dimen/big_flag_size"
+            android:layout_marginTop="@dimen/spacing"
+            android:scaleType="centerCrop"
+            source='@{item.flag ?? ""}'
+            android:background="@drawable/bg_outline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvDialogCountryName"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/imDialogCountryDivider"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/divider_height"
+            android:src="@drawable/divider"
+            android:layout_marginTop="@dimen/spacing"
+            android:layout_marginStart="@dimen/spacing"
+            android:layout_marginEnd="@dimen/spacing"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imDialogCountryFlag"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/imDialogCountryCase"
+            android:layout_width="@dimen/emoticon_size"
+            android:layout_height="@dimen/emoticon_size"
+            android:layout_marginTop="@dimen/spacing"
+            android:src="@drawable/emoticon_mask"
+            app:layout_constraintEnd_toStartOf="@id/imDialogCountryRecovered"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvDialogCountryCase"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/imDialogCountryRecovered"
+            android:layout_width="@dimen/emoticon_size"
+            android:layout_height="@dimen/emoticon_size"
+            android:layout_marginTop="@dimen/spacing"
+            android:src="@drawable/emoticon_smile"
+            app:layout_constraintEnd_toStartOf="@id/imDialogCountryDeath"
+            app:layout_constraintStart_toEndOf="@id/imDialogCountryCase"
+            app:layout_constraintTop_toBottomOf="@id/tvDialogCountryRecovered"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/imDialogCountryDeath"
+            android:layout_width="@dimen/emoticon_size"
+            android:layout_height="@dimen/emoticon_size"
+            android:layout_marginTop="@dimen/spacing"
+            android:src="@drawable/emoticon_sad"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imDialogCountryRecovered"
+            app:layout_constraintTop_toBottomOf="@id/tvDialogCountryDeath"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tvDialogCountryCase"
+            style="@style/TextNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing"
+            android:text="@string/cases"
+            app:layout_constraintEnd_toEndOf="@id/imDialogCountryCase"
+            app:layout_constraintStart_toStartOf="@id/imDialogCountryCase"
+            app:layout_constraintTop_toBottomOf="@id/imDialogCountryDivider" />
+
+        <TextView
+            android:id="@+id/tvDialogCountryRecovered"
+            style="@style/TextNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing"
+            android:text="@string/recovered"
+            app:layout_constraintEnd_toEndOf="@id/imDialogCountryRecovered"
+            app:layout_constraintStart_toStartOf="@id/imDialogCountryRecovered"
+            app:layout_constraintTop_toBottomOf="@id/imDialogCountryDivider" />
+
+        <TextView
+            android:id="@+id/tvDialogCountryDeath"
+            style="@style/TextNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing"
+            android:text="@string/death"
+            app:layout_constraintEnd_toEndOf="@id/imDialogCountryDeath"
+            app:layout_constraintStart_toStartOf="@id/imDialogCountryDeath"
+            app:layout_constraintTop_toBottomOf="@id/imDialogCountryDivider" />
+
+        <TextView
+            android:id="@+id/tvDialogCountryCaseValue"
+            style="@style/TextNormal"
+            animateValue='@{Integer.toString(item.cases) ?? "0"}'
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing"
+            app:layout_constraintEnd_toEndOf="@id/imDialogCountryCase"
+            app:layout_constraintStart_toStartOf="@id/imDialogCountryCase"
+            app:layout_constraintTop_toBottomOf="@id/imDialogCountryCase"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvDialogCountryRecoveredValue"
+            style="@style/TextNormal"
+            animateValue='@{Integer.toString(item.recovered) ?? "0"}'
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing"
+            app:layout_constraintEnd_toEndOf="@id/imDialogCountryRecovered"
+            app:layout_constraintStart_toStartOf="@id/imDialogCountryRecovered"
+            app:layout_constraintTop_toBottomOf="@id/imDialogCountryRecovered"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvDialogCountryDeathValue"
+            style="@style/TextNormal"
+            animateValue='@{Integer.toString(item.death) ?? "0"}'
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing"
+            app:layout_constraintEnd_toEndOf="@id/imDialogCountryDeath"
+            app:layout_constraintStart_toStartOf="@id/imDialogCountryDeath"
+            app:layout_constraintTop_toBottomOf="@id/imDialogCountryDeath"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

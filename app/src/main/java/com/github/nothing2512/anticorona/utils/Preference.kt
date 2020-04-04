@@ -14,7 +14,7 @@ class Preference(context: Context) {
 
     fun set(key: String, value: Any) {
         editor.apply {
-            when(value) {
+            when (value) {
                 is Boolean -> putBoolean(key, value)
                 is Int -> putInt(key, value)
                 is Float -> putFloat(key, value)

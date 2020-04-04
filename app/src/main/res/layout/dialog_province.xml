@@ -1,8 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="item"
+            type="com.github.nothing2512.anticorona.data.remote.response.CaseResponse" />
+    </data>
     <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_dialog">
+
+        <TextView
+            android:id="@+id/tvDialogProvinceName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='@{item.location ?? ""}'
+            android:layout_marginTop="@dimen/spacing"
+            style="@style/TextSubTitle"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <ImageView
+            android:id="@+id/imDialogProvinceDivider"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/divider_height"
+            android:src="@drawable/divider"
+            android:layout_marginStart="@dimen/spacing"
+            android:layout_marginEnd="@dimen/spacing"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvDialogProvinceName"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/imDialogProvinceCase"
+            android:layout_width="@dimen/emoticon_size"
+            android:layout_height="@dimen/emoticon_size"
+            android:layout_marginTop="@dimen/spacing"
+            android:src="@drawable/emoticon_mask"
+            app:layout_constraintEnd_toStartOf="@id/imDialogProvinceRecovered"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvDialogProvinceCase"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/imDialogProvinceRecovered"
+            android:layout_width="@dimen/emoticon_size"
+            android:layout_height="@dimen/emoticon_size"
+            android:layout_marginTop="@dimen/spacing"
+            android:src="@drawable/emoticon_smile"
+            app:layout_constraintEnd_toStartOf="@id/imDialogProvinceDeath"
+            app:layout_constraintStart_toEndOf="@id/imDialogProvinceCase"
+            app:layout_constraintTop_toBottomOf="@id/tvDialogProvinceRecovered"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/imDialogProvinceDeath"
+            android:layout_width="@dimen/emoticon_size"
+            android:layout_height="@dimen/emoticon_size"
+            android:layout_marginTop="@dimen/spacing"
+            android:src="@drawable/emoticon_sad"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imDialogProvinceRecovered"
+            app:layout_constraintTop_toBottomOf="@id/tvDialogProvinceDeath"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tvDialogProvinceCase"
+            style="@style/TextNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing"
+            android:text="@string/cases"
+            app:layout_constraintEnd_toEndOf="@id/imDialogProvinceCase"
+            app:layout_constraintStart_toStartOf="@id/imDialogProvinceCase"
+            app:layout_constraintTop_toBottomOf="@id/imDialogProvinceDivider" />
+
+        <TextView
+            android:id="@+id/tvDialogProvinceRecovered"
+            style="@style/TextNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing"
+            android:text="@string/recovered"
+            app:layout_constraintEnd_toEndOf="@id/imDialogProvinceRecovered"
+            app:layout_constraintStart_toStartOf="@id/imDialogProvinceRecovered"
+            app:layout_constraintTop_toBottomOf="@id/imDialogProvinceDivider" />
+
+        <TextView
+            android:id="@+id/tvDialogProvinceDeath"
+            style="@style/TextNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing"
+            android:text="@string/death"
+            app:layout_constraintEnd_toEndOf="@id/imDialogProvinceDeath"
+            app:layout_constraintStart_toStartOf="@id/imDialogProvinceDeath"
+            app:layout_constraintTop_toBottomOf="@id/imDialogProvinceDivider" />
+
+        <TextView
+            android:id="@+id/tvDialogProvinceCaseValue"
+            style="@style/TextNormal"
+            animateValue='@{Integer.toString(item.cases) ?? "0"}'
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing"
+            app:layout_constraintEnd_toEndOf="@id/imDialogProvinceCase"
+            app:layout_constraintStart_toStartOf="@id/imDialogProvinceCase"
+            app:layout_constraintTop_toBottomOf="@id/imDialogProvinceCase"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvDialogProvinceRecoveredValue"
+            style="@style/TextNormal"
+            animateValue='@{Integer.toString(item.recovered) ?? "0"}'
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing"
+            app:layout_constraintEnd_toEndOf="@id/imDialogProvinceRecovered"
+            app:layout_constraintStart_toStartOf="@id/imDialogProvinceRecovered"
+            app:layout_constraintTop_toBottomOf="@id/imDialogProvinceRecovered"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvDialogProvinceDeathValue"
+            style="@style/TextNormal"
+            animateValue='@{Integer.toString(item.death) ?? "0"}'
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing"
+            app:layout_constraintEnd_toEndOf="@id/imDialogProvinceDeath"
+            app:layout_constraintStart_toStartOf="@id/imDialogProvinceDeath"
+            app:layout_constraintTop_toBottomOf="@id/imDialogProvinceDeath"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

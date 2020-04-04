@@ -4,53 +4,62 @@
     <data>
         <variable
             name="item"
-            type="com.github.nothing2512.anticorona.data.response.CaseResponse" />
+            type="com.github.nothing2512.anticorona.data.remote.response.CaseResponse" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/spacing"
-        android:layout_marginTop="@dimen/spacing"
-        android:layout_marginBottom="@dimen/spacing">
+        android:padding="@dimen/spacing">
 
-        <ImageView
-            android:id="@+id/imItemCountryFlag"
-            android:layout_width="@dimen/emoticon_size"
-            android:layout_height="@dimen/emoticon_size"
-            source='@{item.flag ?? ""}'
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="ContentDescription" />
-
-        <TextView
-            android:id="@+id/itemCountryName"
-            android:layout_width="wrap_content"
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text='@{item.location ?? ""}'
-            style="@style/TextNormal"
-            app:layout_constraintStart_toEndOf="@id/imItemCountryFlag"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:cardCornerRadius="@dimen/main_radius"
+            app:cardElevation="@dimen/elevation">
 
-        <TextView
-            android:id="@+id/itemCountryCase"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/total_cases"
-            bindText='@{Integer.toString(item.cases) ?? "0"}'
-            style="@style/TextNormal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/spacing">
 
-        <SeekBar
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:max="@{(item.cases / item.recovered)}"
-            style="@style/SeekbarComparison"
-            app:layout_constraintStart_toEndOf="@id/imItemCountryFlag"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/itemCountryName" />
+                <TextView
+                    android:id="@+id/tvItemCountryLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text='@{item.location ?? ""}'
+                    style="@style/TextNormalBold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <ImageView
+                    android:id="@+id/imItemCountryFlag"
+                    android:layout_width="@dimen/flag_size"
+                    android:layout_height="@dimen/flag_size"
+                    android:layout_marginTop="@dimen/spacing"
+                    roundSource='@{item.flag ?? ""}'
+                    android:scaleType="centerCrop"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvItemCountryLocation"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/tvItemCountryCases"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/total_cases"
+                    bindText='@{Integer.toString(item.cases) ?? ""}'
+                    style="@style/TextNormal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/imItemCountryFlag"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </FrameLayout>
 </layout>

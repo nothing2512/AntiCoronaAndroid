@@ -84,6 +84,10 @@ dependencies {
     // Image Loader
     implementation deps.coil
 
+    // Room Database
+    implementation deps.room.runtime
+    kapt deps.room.compiler
+
     // Font
     implementation deps.font
 

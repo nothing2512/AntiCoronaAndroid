@@ -19,4 +19,5 @@
     <string name="toolbar_news">Corona News</string>
     <string name="province">Province Case</string>
     <string name="show_more">Show More</string>
+    <string name="server_down">Sorry, Server is down</string>
 </resources>

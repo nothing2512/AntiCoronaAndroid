@@ -6,11 +6,15 @@ import android.animation.ValueAnimator
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.SeekBar
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
@@ -20,7 +24,10 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import coil.api.load
+import coil.request.LoadRequestBuilder
 import com.facebook.shimmer.ShimmerFrameLayout
+import com.github.nothing2512.anticorona.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -68,6 +75,20 @@ fun <T> ViewModel.launchMain(block: suspend CoroutineScope.() -> T) {
 fun <T> launchMain(block: suspend CoroutineScope.() -> T) {
     CoroutineScope(Dispatchers.Main).launch {
         block.invoke(this)
+    }
+}
+
+fun ImageView.bind(source: Any, builder: LoadRequestBuilder.() -> Unit) {
+    when (source) {
+        is String -> {
+            if (source != "") load(source, builder = builder)
+            else load(R.mipmap.ic_launcher, builder = builder)
+        }
+        is Int -> load(source, builder = builder)
+        is Uri -> load(source, builder = builder)
+        is Drawable -> load(source, builder = builder)
+        is Bitmap -> load(source, builder = builder)
+        else -> load(R.mipmap.ic_launcher, builder = builder)
     }
 }
 
@@ -126,4 +147,10 @@ fun <T> List<T>.toArrayList(): ArrayList<T> {
     val data = ArrayList<T>()
     forEach { data.add(it) }
     return data
+}
+
+fun Context.openBrowser(url: String) {
+    val intent = Intent(Intent.ACTION_VIEW)
+    intent.data = Uri.parse(url)
+    startActivity(intent)
 }

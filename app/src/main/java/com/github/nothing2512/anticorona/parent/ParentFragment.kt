@@ -14,6 +14,7 @@ import com.github.nothing2512.anticorona.R
 import com.github.nothing2512.anticorona.utils.Preference
 import com.github.nothing2512.anticorona.utils.getBinding
 import com.github.nothing2512.anticorona.utils.launchMain
+import com.github.nothing2512.anticorona.utils.toast
 import com.github.nothing2512.anticorona.vo.Theme
 import kotlinx.android.synthetic.*
 import org.koin.android.ext.android.inject
@@ -22,7 +23,8 @@ abstract class ParentFragment<VDB : ViewDataBinding>(private val layout: Int) : 
 
 
     protected lateinit var binding: VDB
-    protected val preference: Preference by inject()
+
+    private val preference: Preference by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,13 +45,22 @@ abstract class ParentFragment<VDB : ViewDataBinding>(private val layout: Int) : 
         launchMain { subscribeUI(savedInstanceState) }
     }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        retainInstance = true
+    }
+
     protected fun <T> LiveData<T>.observe(block: (T) -> Unit) {
         observe(this@ParentFragment, Observer { block.invoke(it) })
     }
 
+    protected fun serverDown() = toast(getString(R.string.server_down))
+
     protected open fun onRefresh() {}
 
-    fun refresh() { onRefresh() }
+    fun refresh() {
+        onRefresh()
+    }
 
     @MainThread
     abstract fun subscribeUI(bundle: Bundle?)
