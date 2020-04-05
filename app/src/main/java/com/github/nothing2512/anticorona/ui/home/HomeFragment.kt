@@ -1,8 +1,25 @@
+/*
+ * Copyright 2020 Nothing
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.github.nothing2512.anticorona.ui.home
 
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.github.nothing2512.anticorona.R
 import com.github.nothing2512.anticorona.databinding.FragmentHomeBinding
 import com.github.nothing2512.anticorona.parent.ParentFragment
@@ -12,41 +29,76 @@ import com.github.nothing2512.anticorona.ui.country.CountryActivity
 import com.github.nothing2512.anticorona.ui.dialog.CountryDialog
 import com.github.nothing2512.anticorona.ui.dialog.ProvinceDialog
 import com.github.nothing2512.anticorona.ui.province.ProvinceActivity
-import com.github.nothing2512.anticorona.utils.Constants
-import com.github.nothing2512.anticorona.utils.animate
-import com.github.nothing2512.anticorona.utils.goto
-import com.github.nothing2512.anticorona.utils.toArrayList
+import com.github.nothing2512.anticorona.utils.*
 import com.github.nothing2512.anticorona.vo.Status
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
+/**
+ * [HomeFragment] class
+ * @author Robet Atiq Maulana Rifqi
+ * @see ParentFragment
+ */
 class HomeFragment : ParentFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
+    /**
+     * Declaring private variable
+     * @see HomeViewModel
+     * @see sharedViewModel
+     * @see HomeLoading
+     */
     private val homeViewModel: HomeViewModel by sharedViewModel()
     private lateinit var loading: HomeLoading
+    private var isFinishFetch = false
 
+    /**
+     * subscribing ui
+     * @see ParentFragment.subscribeUI
+     * @param bundle
+     */
     override fun subscribeUI(bundle: Bundle?) {
 
+        /**
+         * Initialize [HomeLoading]
+         */
         loading = HomeLoading(binding)
 
+        /**
+         * observing data
+         *
+         * @see observeHome
+         * @see observeProvince
+         * @see observeGlobal
+         * @see observeCountry
+         */
         observeHome()
         observeProvince()
         observeGlobal()
         observeCountry()
 
+        /**
+         * Disabling Seekbar
+         */
         binding.sbHomeDeath.isEnabled = false
         binding.sbHomeRecovered.isEnabled = false
 
+        /**
+         * Get indonesian corona cases data
+         * @see HomeViewModel.getIndonesianCase
+         */
         homeViewModel.getIndonesianCase()
     }
 
+    /**
+     * observing indonesian data
+     */
     private fun observeHome() {
         homeViewModel.indonesianCase.observe {
-            /**
-             * Used: cases, covered, death
-             */
             when (it.status) {
                 Status.LOADING -> loading.startAll()
-                Status.ERROR -> serverDown()
+                Status.ERROR -> if (!isFinishFetch) {
+                    serverDown()
+                    isFinishFetch = true
+                }
                 Status.SUCCESS -> {
                     loading.indonesianStop()
                     binding.indonesian = it.data
@@ -56,6 +108,9 @@ class HomeFragment : ParentFragment<FragmentHomeBinding>(R.layout.fragment_home)
         }
     }
 
+    /**
+     * observing province data
+     */
     private fun observeProvince() {
         homeViewModel.provinceCase.observe {
             when (it.status) {
@@ -63,6 +118,12 @@ class HomeFragment : ParentFragment<FragmentHomeBinding>(R.layout.fragment_home)
                 Status.ERROR -> serverDown()
                 Status.SUCCESS -> {
 
+                    /**
+                     * Setting up province recycler view
+                     * @see RecyclerView.setNestedScrollingEnabled
+                     * @see RecyclerView.setAdapter
+                     * @see RecyclerView.setLayoutManager
+                     */
                     binding.rvHomeProvince.apply {
                         isNestedScrollingEnabled = true
                         layoutManager = LinearLayoutManager(activity?.applicationContext)
@@ -75,6 +136,10 @@ class HomeFragment : ParentFragment<FragmentHomeBinding>(R.layout.fragment_home)
                         clearFocus()
                     }
 
+                    /**
+                     * set show more province text on click listener
+                     * @see goto
+                     */
                     binding.tvHomeProvinceHighlight.setOnClickListener { _ ->
                         goto(ProvinceActivity::class.java) {
                             putParcelableArrayListExtra(
@@ -91,6 +156,9 @@ class HomeFragment : ParentFragment<FragmentHomeBinding>(R.layout.fragment_home)
         }
     }
 
+    /**
+     * observing global data
+     */
     private fun observeGlobal() {
         homeViewModel.globalCase.observe {
             when (it.status) {
@@ -101,6 +169,10 @@ class HomeFragment : ParentFragment<FragmentHomeBinding>(R.layout.fragment_home)
                     val recovered = it.data?.cases?.div(it.data.recovered)
                     val death = it.data?.cases?.div(it.data.death)
 
+                    /**
+                     * setting and animating global data
+                     * @see animate
+                     */
                     binding.global = it.data
                     binding.sbHomeRecovered.animate(recovered ?: 0)
                     binding.sbHomeDeath.animate(death ?: 0)
@@ -112,12 +184,22 @@ class HomeFragment : ParentFragment<FragmentHomeBinding>(R.layout.fragment_home)
         }
     }
 
+    /**
+     * observing country data
+     */
     private fun observeCountry() {
         homeViewModel.countryCase.observe {
             when (it.status) {
                 Status.LOADING -> loading.countryStart()
                 Status.ERROR -> serverDown()
                 Status.SUCCESS -> {
+
+                    /**
+                     * Setting up province recycler view
+                     * @see RecyclerView.setNestedScrollingEnabled
+                     * @see RecyclerView.setAdapter
+                     * @see RecyclerView.setLayoutManager
+                     */
                     binding.rvHomeGlobal.apply {
                         isNestedScrollingEnabled = true
                         layoutManager = GridLayoutManager(activity?.applicationContext, 2)
@@ -130,6 +212,10 @@ class HomeFragment : ParentFragment<FragmentHomeBinding>(R.layout.fragment_home)
                         clearFocus()
                     }
 
+                    /**
+                     * set show more province text on click listener
+                     * @see goto
+                     */
                     binding.tvHomeGlobalHighlight.setOnClickListener { _ ->
                         goto(CountryActivity::class.java) {
                             putParcelableArrayListExtra(
@@ -145,12 +231,22 @@ class HomeFragment : ParentFragment<FragmentHomeBinding>(R.layout.fragment_home)
         }
     }
 
+    /**
+     * triggered function when activity is refreshed
+     * @see ParentFragment.onRefresh
+     * @see HomeViewModel.getIndonesianCase
+     */
     override fun onRefresh() {
+        isFinishFetch = false
         homeViewModel.getIndonesianCase()
     }
 
     companion object {
 
+        /**
+         * Creating new instance of [HomeFragment]
+         * @return
+         */
         @JvmStatic
         fun newInstance() = HomeFragment()
     }

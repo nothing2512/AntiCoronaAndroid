@@ -1,8 +1,23 @@
+<!--
+  ~ Copyright 2020 Nothing
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
 <resources>
 
-    <!-- Base application theme. -->
+    <!-- Default application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -12,6 +27,7 @@
         <item name="bottomSheetDialogTheme">@style/DialogStyle</item>
     </style>
 
+    <!--  Ocean Theme  -->
     <style name="Ocean" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimaryOcean</item>
         <item name="colorPrimaryDark">@color/colorPrimaryOceanDark</item>
@@ -22,20 +38,24 @@
         <item name="bottomSheetDialogTheme">@style/DialogStyle</item>
     </style>
 
+    <!-- Dialog Background Theme   -->
     <style name="DialogBGStyle" parent="Widget.Design.BottomSheet.Modal">
         <item name="android:background">@drawable/bg_dialog</item>
     </style>
 
+    <!--  Dialog Style  -->
     <style name="DialogStyle"
         parent="Theme.Design.Light.BottomSheetDialog">
         <item name="bottomSheetStyle">@style/DialogBGStyle</item>
     </style>
 
+    <!--  ActionBar style  -->
     <style name="ActionBar" parent="android:Widget.Holo.Light.ActionButton.Overflow">
         <item name="android:src">@drawable/menu</item>
         <item name="background">?attr/colorPrimary</item>
     </style>
 
+    <!--  Sub title text style  -->
     <style name="TextSubTitle">
         <item name="android:textColor">@android:color/black</item>
         <item name="android:textSize">@dimen/sub_title_text</item>
@@ -43,6 +63,7 @@
         <item name="android:textAlignment">center</item>
     </style>
 
+    <!--  Normal text style  -->
     <style name="TextNormal">
         <item name="android:textColor">@android:color/black</item>
         <item name="android:textSize">@dimen/normal_text</item>
@@ -50,56 +71,64 @@
         <item name="android:textAlignment">center</item>
     </style>
 
+    <!--  Normal bold text style  -->
     <style name="TextNormalBold">
         <item name="android:textColor">@android:color/black</item>
         <item name="android:textSize">@dimen/normal_text</item>
         <item name="fontPath">fonts/mitr_medium.ttf</item>
         <item name="android:textAlignment">center</item>
-
     </style>
 
+    <!--  Sub title text loading style  -->
     <style name="TextSubTitle.Loading">
         <item name="android:background">@color/loading1</item>
         <item name="android:layout_height">@dimen/loading_sub_title_height</item>
         <item name="android:layout_width">@dimen/loading_sub_title_width</item>
     </style>
 
+    <!--  Normal text loading style  -->
     <style name="TextNormal.Loading">
         <item name="android:background">@color/loading1</item>
         <item name="android:layout_width">@dimen/loading_text_width</item>
         <item name="android:layout_height">@dimen/loading_text_height</item>
     </style>
 
+    <!--  Highlight text style  -->
     <style name="TextHighlight">
         <item name="android:textColor">@color/highlight</item>
         <item name="android:textSize">@dimen/normal_text</item>
         <item name="fontPath">fonts/mitr_light.ttf</item>
     </style>
 
+    <!--  Secondary normal text  style-->
     <style name="TextNormalSecondary">
         <item name="android:textColor">@color/grey_secondary</item>
         <item name="android:textSize">@dimen/normal_text</item>
         <item name="fontPath">fonts/mitr_light.ttf</item>
     </style>
 
+    <!--  Recovered seekbar style  -->
     <style name="SeekbarRecovered">
         <item name="android:enabled">false</item>
         <item name="android:thumb">@android:color/transparent</item>
         <item name="android:progressDrawable">@drawable/seekbar_progress_recovered</item>
     </style>
 
+    <!--  Death seekbar style  -->
     <style name="SeekbarDeath">
         <item name="android:enabled">false</item>
         <item name="android:thumb">@android:color/transparent</item>
         <item name="android:progressDrawable">@drawable/seekbar_progress_death</item>
     </style>
 
+    <!--  Comparison seekbar style  -->
     <style name="SeekbarComparison">
         <item name="android:enabled">false</item>
         <item name="android:thumb">@android:color/transparent</item>
         <item name="android:progressDrawable">@drawable/seekbar_progress_comparison</item>
     </style>
 
+    <!--  loading seekbar style  -->
     <style name="SeekbarLoading">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/seekbar_height</item>
