@@ -10,21 +10,10 @@ AntiCorona is android app to monitoring COVID-19 data in the world especially in
 * Covid-19 FAQ
 
 ## Screenshot
-<img src="screenshot/1.jpg" width="250px"/>
-<img src="screenshot/2.jpg" width="250px"/>
-<img src="screenshot/3.jpg" width="250px"/>
-<img src="screenshot/4.jpg" width="250px"/>
-<img src="screenshot/5.jpg" width="250px"/>
-<img src="screenshot/6.jpg" width="250px"/>
-<img src="screenshot/7.jpg" width="250px"/>
-<img src="screenshot/8.jpg" width="250px"/>
-<img src="screenshot/9.jpg" width="250px"/>
-<img src="screenshot/10.jpg" width="250px"/>
-<img src="screenshot/11.jpg" width="250px"/>
+<img src="screenshot/1.jpg" width="250px"/><img src="screenshot/2.jpg" width="250px"/><img src="screenshot/3.jpg" width="250px"/><img src="screenshot/4.jpg" width="250px"/><img src="screenshot/5.jpg" width="250px"/><img src="screenshot/6.jpg" width="250px"/><img src="screenshot/7.jpg" width="250px"/><img src="screenshot/8.jpg" width="250px"/><img src="screenshot/9.jpg" width="250px"/><img src="screenshot/10.jpg" width="250px"/><img src="screenshot/11.jpg" width="250px"/>
 
 ## Demo Application
-Sorry, Demo application doesn't published yet
-<!--[![](https://img.youtube.com)](https://youtube.com)-->
+[![](https://img.youtube.com/vi/b0XksyqRod8/0.jpg)](https://www.youtube.com/watch?v=b0XksyqRod8)
 
 ## Assets and data sources
 * [flaticon](https://flaticon.com)
