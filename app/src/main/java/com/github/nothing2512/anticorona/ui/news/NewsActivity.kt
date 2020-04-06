@@ -49,9 +49,9 @@ class NewsActivity : ParentActivity<ActivityNewsBinding>(R.layout.activity_news)
 
         /**
          * Load url into web view
-         * @see ConfiguratedWebView.loadUrl
+         * @see ConfiguratedWebView.load
          */
         val url = intent.getStringExtra(Constants.EXTRA_URL)
-        binding.wvNews.loadUrl(url)
+        binding.wvNews.load(url, binding.imNewsLoading)
     }
 }

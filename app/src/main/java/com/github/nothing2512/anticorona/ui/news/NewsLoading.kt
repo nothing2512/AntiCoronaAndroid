@@ -19,15 +19,29 @@ package com.github.nothing2512.anticorona.ui.news
 import com.github.nothing2512.anticorona.databinding.FragmentNewsBinding
 import com.github.nothing2512.anticorona.parent.ParentLoading
 
+/**
+ * [NewsLoading] class
+ * @author Robet Atiq Maulana Rifqi
+ * @constructor [binding]
+ * @see ParentLoading
+ */
 class NewsLoading (
     private val binding: FragmentNewsBinding
 ): ParentLoading() {
 
+    /**
+     * stop news loading
+     * @see ParentLoading.stop
+     */
     fun start() {
-
+        binding.apply { start(sfNews, rvNews) }
     }
 
+    /**
+     * stop news loading
+     * @see ParentLoading.stop
+     */
     fun stop() {
-
+        binding.apply { stop(sfNews, rvNews) }
     }
 }

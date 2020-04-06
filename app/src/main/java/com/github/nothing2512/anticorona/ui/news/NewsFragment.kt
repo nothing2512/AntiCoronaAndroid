@@ -68,6 +68,7 @@ class NewsFragment : ParentFragment<FragmentNewsBinding>(R.layout.fragment_news)
                     binding.sfNews.stopShimmer()
                 }
                 Status.SUCCESS -> {
+
                     /**
                      * Setup RecyclerView
                      *

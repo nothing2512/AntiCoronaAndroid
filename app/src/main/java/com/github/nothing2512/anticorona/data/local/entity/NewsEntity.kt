@@ -59,7 +59,7 @@ data class NewsEntity(
         @JvmStatic
         fun parse(data: NewsResponse) = NewsEntity(
             null,
-            data.author,
+            data.author ?: "Nothing",
             data.title,
             data.image,
             data.url

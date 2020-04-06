@@ -24,6 +24,7 @@ import com.github.nothing2512.anticorona.data.remote.Services
 import com.github.nothing2512.anticorona.data.remote.response.FaqsResponse
 import com.github.nothing2512.anticorona.utils.AppExecutors
 import com.github.nothing2512.anticorona.utils.BoundService
+import com.github.nothing2512.anticorona.utils.Constants
 import com.github.nothing2512.anticorona.utils.idle
 import com.github.nothing2512.anticorona.vo.Resource
 import com.github.nothing2512.anticorona.vo.Status
@@ -69,14 +70,7 @@ class FaqsRepository(
          * Getting locale language
          * @see Locale.getDefault
          */
-        val lang = when (Locale.getDefault().country) {
-            "en_US" -> "eng"
-            "en_UK" -> "eng"
-            "UK" -> "eng"
-            "en" -> "eng"
-            "US" -> "eng"
-            else -> "in"
-        }
+        val lang = if (Locale.getDefault().country == Constants.LANG_ID) "in" else "eng"
 
         /**
          * Bouncing services
@@ -118,10 +112,10 @@ class FaqsRepository(
                 }
             }
         }.asLiveData().observeForever {
-            if(it.status == Status.SUCCESS) {
-                if (faqs.value == null ) _faqs.postValue(it)
+            if (it.status == Status.SUCCESS) {
+                if (faqs.value == null) _faqs.postValue(it)
                 if (faqs.value != it) _faqs.postValue(it)
-            } else if(it.status == Status.ERROR && faqs.value == null) _faqs.postValue(it)
+            } else if (it.status == Status.ERROR && faqs.value == null) _faqs.postValue(it)
             else _faqs.postValue(it)
         }
     }

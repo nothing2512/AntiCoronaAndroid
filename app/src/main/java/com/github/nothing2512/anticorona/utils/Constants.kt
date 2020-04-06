@@ -75,10 +75,15 @@ object Constants {
     /**
      * Broadcast Latency
      */
-    const val BROADCAST_LATENCY = 21600000L
+    const val BROADCAST_LATENCY = 32400000L
 
     /**
      * TextView REG
      */
     const val TV_REG = "{{REG}}"
+
+    /**
+     * ID Lang code
+     */
+    const val LANG_ID = "ID"
 }

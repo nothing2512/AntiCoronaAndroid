@@ -2,6 +2,39 @@
 
 AntiCorona is android app to monitoring COVID-19 data in the world especially in Indonesia, this app can also provide the latest information and advice about covid-19.
 
+## Features
+* Covid-19 data cases in world especially in Indonesia
+* Covid-19 news
+* Change Theme (Default and Ocean)
+* Change Language (Indonesian and English)
+* Covid-19 FAQ
+
+## Screenshot
+<img src="screenshot/1.jpg" width="250px"/>
+<img src="screenshot/2.jpg" width="250px"/>
+<img src="screenshot/3.jpg" width="250px"/>
+<img src="screenshot/4.jpg" width="250px"/>
+<img src="screenshot/5.jpg" width="250px"/>
+<img src="screenshot/6.jpg" width="250px"/>
+<img src="screenshot/7.jpg" width="250px"/>
+<img src="screenshot/8.jpg" width="250px"/>
+<img src="screenshot/9.jpg" width="250px"/>
+<img src="screenshot/10.jpg" width="250px"/>
+<img src="screenshot/11.jpg" width="250px"/>
+
+## Demo Application
+Sorry, Demo application doesn't published yet
+<!--[![](https://img.youtube.com)](https://youtube.com)-->
+
+## Assets and data sources
+* [flaticon](https://flaticon.com)
+* [svg2vector](https://svg2vector.com)
+* [inloop](https://inloop.github.io)
+* [cleanpng](https://cleanpng.com)
+* [Google Fonts](https://fonts.google.com)
+* [hub png](https://hubpng.com)
+* [AntiCorona API](https://github.com/nothing2512/AntiCoronaAPI)
+
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 

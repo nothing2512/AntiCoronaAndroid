@@ -30,7 +30,7 @@ import kotlinx.android.parcel.Parcelize
  */
 @Parcelize
 data class NewsResponse(
-    val author: String,
+    val author: String?,
     val title: String,
     val image: String,
     val url: String

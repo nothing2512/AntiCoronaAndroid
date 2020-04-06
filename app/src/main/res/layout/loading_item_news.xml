@@ -21,16 +21,34 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <TextView
+        android:id="@+id/LtvNewsAuthor"
+        android:padding="@dimen/padding_author"
+        android:layout_marginTop="@dimen/double_spacing"
+        android:layout_marginStart="@dimen/spacing"
+        style="@style/TextSubTitle.Loading"
+        app:layout_constraintStart_toEndOf="@id/LnewsDot"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/LnewsDot"
+        android:layout_width="@dimen/loading_sub_title_height"
+        android:layout_height="@dimen/loading_sub_title_height"
+        android:layout_marginStart="@dimen/spacing"
+        app:layout_constrainedWidth="true"
+        android:src="@drawable/dot_author"
+        app:layout_constraintTop_toTopOf="@id/LtvNewsAuthor"
+        app:layout_constraintBottom_toBottomOf="@id/LtvNewsAuthor"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="ContentDescription" />
+
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/double_spacing"
-        android:layout_marginStart="@dimen/spacing"
-        android:layout_marginEnd="@dimen/spacing"
-        android:layout_marginBottom="@dimen/spacing"
+        android:layout_margin="@dimen/spacing"
         app:cardCornerRadius="@dimen/main_radius"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/LtvNewsAuthor"
         app:layout_constraintEnd_toEndOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -46,24 +64,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="ContentDescription" />
-
-            <View
-                android:id="@+id/tvNewsAuthor"
-                android:background="?attr/colorPrimary"
-                android:layout_marginTop="@dimen/spacing"
-                style="@style/TextNormal.Loading"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:src="@drawable/bg_author"
-                android:scaleType="fitStart"
-                app:layout_constraintStart_toEndOf="@id/tvNewsAuthor"
-                app:layout_constraintTop_toTopOf="@id/tvNewsAuthor"
-                app:layout_constraintBottom_toBottomOf="@id/tvNewsAuthor"
                 tools:ignore="ContentDescription" />
 
             <View

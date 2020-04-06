@@ -51,5 +51,8 @@
     <dimen name="loading_text_width">60dp</dimen>
     <dimen name="loading_text_height">20dp</dimen>
     <dimen name="seekbar_height">10dp</dimen>
+
+    <!--  Other  -->
     <dimen name="news_image_height">250dp</dimen>
+    <dimen name="dot_radius">300dp</dimen>
 </resources>

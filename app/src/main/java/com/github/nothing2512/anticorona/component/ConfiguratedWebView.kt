@@ -18,12 +18,18 @@
 
 package com.github.nothing2512.anticorona.component
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Bitmap
 import android.util.AttributeSet
 import android.view.View
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.widget.ImageView
+import com.github.nothing2512.anticorona.utils.hide
+import com.github.nothing2512.anticorona.utils.show
 
 /**
  * [ConfiguratedWebView] class
@@ -75,10 +81,102 @@ class ConfiguratedWebView : WebView {
          * Set ScrollBar style
          */
         scrollBarStyle = View.SCROLLBARS_INSIDE_OVERLAY
+    }
+
+    /**
+     * load url function
+     */
+    fun load(url: String, loadingIcon: ImageView) {
 
         /**
-         * Set Client
+         * Set Web View Client
+         * @see WebClient
          */
-        webViewClient = WebViewClient()
+        webViewClient = WebClient(loadingIcon)
+
+        /**
+         * Load Web Url
+         * @see WebView.loadUrl
+         */
+        loadUrl(url)
+    }
+
+    /**
+     * [WebClient] class
+     * @see WebViewClient
+     */
+    private class WebClient(
+        private val imageView: ImageView
+    ) : WebViewClient() {
+
+        /**
+         * Declare boolean variable
+         */
+        private var isLoading = true
+
+        /**
+         * triggered function when starting load page
+         *
+         * @param view
+         * @param url
+         * @param favicon
+         */
+        override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
+
+            /**
+             * Start animating image
+             */
+            oneToZero()
+
+            /**
+             *
+             */
+            view?.hide()
+        }
+
+        /**
+         * triggered function when finishing load page
+         *
+         * @param view
+         * @param url
+         */
+        override fun onPageFinished(view: WebView?, url: String?) {
+
+            /**
+             * Set isLoading to false
+             */
+            isLoading = false
+
+            /**
+             * Showing web page
+             */
+            view?.show()
+            imageView.hide()
+            super.onPageFinished(view, url)
+        }
+
+        private fun oneToZero() {
+            imageView.animate().apply {
+                alpha(0f)
+                duration = 1000L
+                setListener(object : AnimatorListenerAdapter() {
+                    override fun onAnimationEnd(animation: Animator?) {
+                        if (isLoading) zeroToOne()
+                    }
+                })
+            }.start()
+        }
+
+        private fun zeroToOne() {
+            imageView.animate().apply {
+                alpha(1f)
+                duration = 1000L
+                setListener(object : AnimatorListenerAdapter() {
+                    override fun onAnimationEnd(animation: Animator?) {
+                        if (isLoading) oneToZero()
+                    }
+                })
+            }.start()
+        }
     }
 }
