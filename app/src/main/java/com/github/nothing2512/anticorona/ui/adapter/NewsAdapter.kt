@@ -21,8 +21,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.nothing2512.anticorona.R
 import com.github.nothing2512.anticorona.data.remote.response.NewsResponse
 import com.github.nothing2512.anticorona.databinding.ItemNewsBinding
+import com.github.nothing2512.anticorona.ui.news.NewsActivity
+import com.github.nothing2512.anticorona.utils.Constants
 import com.github.nothing2512.anticorona.utils.getBinding
-import com.github.nothing2512.anticorona.utils.openBrowser
+import com.github.nothing2512.anticorona.utils.goto
 
 /**
  * [NewsAdapter] class
@@ -32,6 +34,14 @@ import com.github.nothing2512.anticorona.utils.openBrowser
  */
 class NewsAdapter(private val data: List<NewsResponse>) :
     RecyclerView.Adapter<NewsAdapter.MainHolder>() {
+
+    /**
+     * set recycler view item has stable id
+     * @see RecyclerView.Adapter.setHasStableIds
+     */
+    override fun setHasStableIds(hasStableIds: Boolean) {
+        super.setHasStableIds(true)
+    }
 
     /**
      * Creating recycler view holder
@@ -81,10 +91,9 @@ class NewsAdapter(private val data: List<NewsResponse>) :
          */
         fun bind(item: NewsResponse) {
             binding.item = item
-
-            binding.root.apply {
-                setOnClickListener {
-                    context.openBrowser(item.url)
+            binding.root.setOnClickListener {
+                goto(binding.root.context.applicationContext, NewsActivity::class.java) {
+                    putExtra(Constants.EXTRA_URL, item.url)
                 }
             }
         }

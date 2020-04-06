@@ -35,6 +35,14 @@ class FaqsAdapter(
 ): RecyclerView.Adapter<FaqsAdapter.MainHolder>() {
 
     /**
+     * set recycler view item has stable id
+     * @see RecyclerView.Adapter.setHasStableIds
+     */
+    override fun setHasStableIds(hasStableIds: Boolean) {
+        super.setHasStableIds(true)
+    }
+
+    /**
      * Creating recycler view holder
      *
      * @param parent

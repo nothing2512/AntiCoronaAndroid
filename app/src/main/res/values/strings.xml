@@ -29,11 +29,16 @@
     <string name="recovered">Recovered</string>
     <string name="death">Death</string>
     <string name="global_case">Global Case</string>
-    <string name="total_cases">Total Cases:</string>
+    <string name="total_cases">Cases: {{REG}}</string>
     <string name="toolbar_cases">Corona Cases</string>
     <string name="toolbar_faq">FAQ</string>
     <string name="toolbar_news">Corona News</string>
     <string name="province">Province Case</string>
     <string name="show_more">Show More</string>
-    <string name="server_down">Sorry, Server is down</string>
+    <string name="server_down">Sorry, Server Is Unreachable</string>
+    <string name="answer">Answer</string>
+    <string name="reg">{{REG}}</string>
+    <string name="toolbar_countries">Countries Case</string>
+    <string name="toolbar_province">Provinces Case</string>
+    <string name="toolbar_web">Web News</string>
 </resources>

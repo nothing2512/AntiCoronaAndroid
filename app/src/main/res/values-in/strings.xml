@@ -30,11 +30,16 @@
     <string name="recovered">Sembuh</string>
     <string name="death">Meninggal</string>
     <string name="global_case">Kasus Global</string>
-    <string name="total_cases">Total Kasus:</string>
+    <string name="total_cases">Kasus: {{REG}}</string>
     <string name="toolbar_cases">Kasus Corona</string>
     <string name="toolbar_faq">FAQ</string>
     <string name="toolbar_news">Berita Corona</string>
     <string name="province">Kasus Per Provinsi</string>
     <string name="show_more">Tampilkan Semua</string>
-    <string name="server_down">Maaf, Server sibuk</string>
+    <string name="server_down">Maaf, Server Tidak Dapat Di Jangkau</string>
+    <string name="answer">Jawaban</string>
+    <string name="reg">{{REG}}</string>
+    <string name="toolbar_countries">Kasus per negara</string>
+    <string name="toolbar_province">Kasus per provinsi</string>
+    <string name="toolbar_web">Berita Web</string>
 </resources>

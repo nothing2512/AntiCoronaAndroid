@@ -23,7 +23,7 @@ import kotlinx.android.parcel.Parcelize
  * [NewsResponse] class
  * @author Robet Atiq Maulana Rifqi
  *
- * @constructor [author], [title], [desc], [image], [url], [content]
+ * @constructor [author], [title], [image], [url]
  *
  * @see Parcelize
  * @see Parcelable
@@ -32,8 +32,6 @@ import kotlinx.android.parcel.Parcelize
 data class NewsResponse(
     val author: String,
     val title: String,
-    val desc: String,
     val image: String,
-    val url: String,
-    val content: String
+    val url: String
 ) : Parcelable

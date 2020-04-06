@@ -168,7 +168,7 @@ class CurvedNavigation : BottomNavigationView {
          * Drawing Curved Point
          * @see draw
          */
-        draw(2, 1)
+        draw(1, 2)
     }
 
     /**

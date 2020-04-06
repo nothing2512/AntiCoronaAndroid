@@ -25,17 +25,15 @@ import com.github.nothing2512.anticorona.data.remote.response.NewsResponse
  * @author Robet Atiq Maulana Rifqi
  * @see Entity
  *
- * @constructor [id], [author], [title], [desc], [image], [url], [content]
+ * @constructor [id], [author], [title], [image], [url]
  */
 @Entity
 data class NewsEntity(
     @PrimaryKey(autoGenerate = true) val id: Int? = null,
     val author: String,
     val title: String,
-    val desc: String,
     val image: String,
-    val url: String,
-    val content: String
+    val url: String
 ) {
 
     /**
@@ -46,7 +44,7 @@ data class NewsEntity(
      *
      * @return CaseResponse
      */
-    fun toResponse() = NewsResponse(author, title, desc, image, url, content)
+    fun toResponse() = NewsResponse(author, title, image, url)
 
     companion object {
 
@@ -63,10 +61,8 @@ data class NewsEntity(
             null,
             data.author,
             data.title,
-            data.desc,
             data.image,
-            data.url,
-            data.content
+            data.url
         )
     }
 }

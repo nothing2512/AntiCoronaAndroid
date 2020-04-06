@@ -38,12 +38,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
-        <TextView
+        <com.github.nothing2512.anticorona.component.AnimatedTextView
             android:id="@+id/itemProvinceCase"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/total_cases"
-            bindText='@{Integer.toString(item.cases) ?? "0"}'
+            animateValue='@{Integer.toString(item.cases) ?? "0"}'
             style="@style/TextNormal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
@@ -52,7 +52,6 @@
             android:id="@+id/itemProvinceSeekbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:max="@{item.cases}"
             style="@style/SeekbarComparison"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

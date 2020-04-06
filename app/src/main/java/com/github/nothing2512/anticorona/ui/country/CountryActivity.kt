@@ -18,6 +18,7 @@ package com.github.nothing2512.anticorona.ui.country
 
 import android.content.Intent
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.github.nothing2512.anticorona.R
 import com.github.nothing2512.anticorona.data.remote.response.CaseResponse
@@ -37,18 +38,26 @@ import org.koin.android.ext.android.inject
 class CountryActivity : ParentActivity<ActivityCountryBinding>(R.layout.activity_country) {
 
     /**
-     * Declaring read only variable
+     * Declaring variable
      *
      * @see CountryViewModel
      * @see inject
+     * @see CountryLoading
      */
     private val countryViewModel: CountryViewModel by inject()
+    private lateinit var loading: CountryLoading
 
     /**
      * subscribing UI
      * @see ParentActivity.subscribeUI
      */
     override fun subscribeUI() {
+
+        /**
+         * Initialize Loading
+         * @see CountryLoading
+         */
+        loading = CountryLoading(binding)
 
         /**
          * Getting data from intent
@@ -63,16 +72,27 @@ class CountryActivity : ParentActivity<ActivityCountryBinding>(R.layout.activity
         initializeBackButton()
 
         /**
+         * Set Toolbar Title
+         * @see setToolbarTitle
+         */
+        setToolbarTitle(R.string.toolbar_countries)
+
+        /**
          * Observing remote repository cases
          * @see CountryViewModel.repoCases
          * @see observe
          */
         countryViewModel.repoCases.observe {
             when (it.status) {
-                Status.LOADING -> {
+                Status.LOADING -> loading.start()
+                Status.ERROR -> {
+                    serverDown()
+                    binding.sfCountry.stopShimmer()
                 }
-                Status.ERROR -> serverDown()
-                Status.SUCCESS -> countryViewModel.setCases(it.data ?: listOf())
+                Status.SUCCESS -> {
+                    countryViewModel.setCases(it.data ?: listOf())
+                    loading.stop()
+                }
             }
         }
 
@@ -82,7 +102,18 @@ class CountryActivity : ParentActivity<ActivityCountryBinding>(R.layout.activity
          * @see observe
          */
         countryViewModel.cases.observe {
+
+            /**
+             * Set data to recycler view
+             *
+             * @see RecyclerView.RecycledViewPool
+             * @see GridLayoutManager
+             * @see CountryAdapter
+             * @see CountryDialog
+             */
             binding.rvCountry.apply {
+                setHasFixedSize(true)
+                setRecycledViewPool(RecyclerView.RecycledViewPool())
                 layoutManager = GridLayoutManager(this@CountryActivity, 2)
                 adapter = CountryAdapter(it) { item ->
                     CountryDialog.newInstance(item).show(supportFragmentManager, CountryDialog.TAG)

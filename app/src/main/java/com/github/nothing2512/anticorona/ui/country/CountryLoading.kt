@@ -14,29 +14,25 @@
  * limitations under the License.
  */
 
-package com.github.nothing2512.anticorona.ui.faqs
+package com.github.nothing2512.anticorona.ui.country
 
-import com.github.nothing2512.anticorona.databinding.FragmentFaqsBinding
+import com.github.nothing2512.anticorona.databinding.ActivityCountryBinding
 import com.github.nothing2512.anticorona.parent.ParentLoading
 
 /**
- * [FaqsLoading] class
+ * [CountryLoading] class
  * @author Robet Atiq Maulana Rifqi
  * @constructor [binding]
  * @see ParentLoading
  */
-class FaqsLoading (
-    private val binding: FragmentFaqsBinding
-): ParentLoading() {
+class CountryLoading(private val binding: ActivityCountryBinding) : ParentLoading() {
 
     /**
      * start loading
      * @see ParentLoading.start
      */
     fun start() {
-        binding.apply {
-            start(sfFaqs, rvFaqs)
-        }
+        binding.apply { start(sfCountry, rvCountry) }
     }
 
     /**
@@ -44,8 +40,6 @@ class FaqsLoading (
      * @see ParentLoading.stop
      */
     fun stop() {
-        binding.apply {
-            stop(sfFaqs, rvFaqs)
-        }
+        binding.apply { stop(sfCountry, rvCountry) }
     }
 }

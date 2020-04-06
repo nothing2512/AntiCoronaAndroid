@@ -26,11 +26,11 @@ import com.github.nothing2512.anticorona.data.local.dao.FaqsDao
 import com.github.nothing2512.anticorona.data.local.dao.NewsDao
 
 /**
- * [DatabaseServices] class
+ * [DatabaseReceiver] class
  * @author Robet Atiq Maulana Rifqi
  * @see BroadcastReceiver
  */
-class DatabaseServices : BroadcastReceiver() {
+class DatabaseReceiver : BroadcastReceiver() {
 
     /**
      * triggered function when receiving data
@@ -41,51 +41,12 @@ class DatabaseServices : BroadcastReceiver() {
         context?.let { ctx ->
 
             /**
-             * Providing Database
-             * @see CoronaDatabase
+             * Deleting Database
+             * @see DatabaseService
              */
-            val db = provideDatabase(ctx.applicationContext)
-            val casesDao = db.casesDao()
-            val newsDao = db.newsDao()
-            val faqsDao = db.faqsDao()
-
-            /**
-             * Deleting data in database
-             * @see CasesDao
-             * @see NewsDao
-             * @see FaqsDao
-             */
-            casesDao.deleteIndonesian()
-            casesDao.deleteGlobal()
-            casesDao.deleteProvinces()
-            casesDao.deleteCountries()
-
-            newsDao.delete()
-            faqsDao.delete()
+            val service = DatabaseService()
+            service.delete(ctx)
         }
     }
-
-    /**
-     * function provideDatabase
-     * providing in app database
-     *
-     * @param context
-     *
-     * @see Context
-     * @see Room.databaseBuilder
-     *
-     * @see CoronaDatabase
-     *
-     * @return CoronaDatabase
-     */
-    private fun provideDatabase(context: Context) =
-        Room
-            .databaseBuilder(
-                context,
-                CoronaDatabase::class.java,
-                "AntiCorona.db"
-            )
-            .fallbackToDestructiveMigration()
-            .allowMainThreadQueries().build()
 
 }

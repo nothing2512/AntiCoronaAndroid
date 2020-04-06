@@ -34,7 +34,7 @@ class FaqsDialog(private val faqs: FaqsResponse): ParentDialog<DialogFaqsBinding
      * @see ParentDialog.subscribeUI
      */
     override fun subscribeUI() {
-
+        binding.item = faqs
     }
 
     companion object {

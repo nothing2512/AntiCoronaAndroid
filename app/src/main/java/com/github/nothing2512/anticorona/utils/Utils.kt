@@ -40,10 +40,12 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.room.Room
 import coil.api.load
 import coil.request.LoadRequestBuilder
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.github.nothing2512.anticorona.R
+import com.github.nothing2512.anticorona.data.local.CoronaDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -330,15 +332,24 @@ fun <T> List<T>.toArrayList(): ArrayList<T> {
 }
 
 /**
- * open url in browser
+ * function provideDatabase
+ * providing in app database
  *
- * @param url
+ * @param context
  *
- * @see Intent
- * @see Uri.parse
+ * @see Context
+ * @see Room.databaseBuilder
+ *
+ * @see CoronaDatabase
+ *
+ * @return CoronaDatabase
  */
-fun Context.openBrowser(url: String) {
-    val intent = Intent(Intent.ACTION_VIEW)
-    intent.data = Uri.parse(url)
-    startActivity(intent)
-}
+fun provideDatabase(context: Context) =
+    Room
+        .databaseBuilder(
+            context,
+            CoronaDatabase::class.java,
+            "AntiCorona.db"
+        )
+        .fallbackToDestructiveMigration()
+        .allowMainThreadQueries().build()

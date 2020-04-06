@@ -70,9 +70,15 @@ object Constants {
      */
     const val EXTRA_PROVINCE = "ExtraProvince"
     const val EXTRA_COUNTRY = "ExtraCountry"
+    const val EXTRA_URL = "ExtraUrl"
 
     /**
      * Broadcast Latency
      */
-    const val BROADCAST_LATENCY = 60000L
+    const val BROADCAST_LATENCY = 21600000L
+
+    /**
+     * TextView REG
+     */
+    const val TV_REG = "{{REG}}"
 }

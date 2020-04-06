@@ -21,8 +21,10 @@ import android.app.Application
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import com.github.nothing2512.anticorona.di.AppModule
-import com.github.nothing2512.anticorona.services.DatabaseServices
+import com.github.nothing2512.anticorona.services.DatabaseReceiver
+import com.github.nothing2512.anticorona.services.LanguageReceiver
 import com.github.nothing2512.anticorona.utils.Constants
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -61,14 +63,14 @@ class MainApplication : Application() {
         }
 
         /**
-         * Starting services
+         * Registering Database Service
          *
          * @see PendingIntent
          * @see Intent
          * @see Calendar
          * @see AlarmManager
          */
-        val intent = Intent(this, DatabaseServices::class.java)
+        val intent = Intent(this, DatabaseReceiver::class.java)
         val pendingIntent = PendingIntent.getBroadcast(
             applicationContext,
             2512,
@@ -83,6 +85,15 @@ class MainApplication : Application() {
             Constants.BROADCAST_LATENCY,
             pendingIntent
         )
+
+        /**
+         * Registering Language Service
+         *
+         * @see IntentFilter
+         * @see LanguageReceiver
+         */
+        val intentFilter = IntentFilter(Intent.ACTION_LOCALE_CHANGED)
+        registerReceiver(LanguageReceiver(), intentFilter)
 
         /**
          * Using Timber for debugging

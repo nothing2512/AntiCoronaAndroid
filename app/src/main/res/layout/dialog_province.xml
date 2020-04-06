@@ -117,37 +117,40 @@
             app:layout_constraintStart_toStartOf="@id/imDialogProvinceDeath"
             app:layout_constraintTop_toBottomOf="@id/imDialogProvinceDivider" />
 
-        <TextView
+        <com.github.nothing2512.anticorona.component.AnimatedTextView
             android:id="@+id/tvDialogProvinceCaseValue"
             style="@style/TextNormal"
-            animateValue='@{Integer.toString(item.cases) ?? "0"}'
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/spacing"
+            android:text="@string/reg"
+            animateValue='@{Integer.toString(item.cases) ?? "0"}'
             app:layout_constraintEnd_toEndOf="@id/imDialogProvinceCase"
             app:layout_constraintStart_toStartOf="@id/imDialogProvinceCase"
             app:layout_constraintTop_toBottomOf="@id/imDialogProvinceCase"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
-        <TextView
+        <com.github.nothing2512.anticorona.component.AnimatedTextView
             android:id="@+id/tvDialogProvinceRecoveredValue"
             style="@style/TextNormal"
-            animateValue='@{Integer.toString(item.recovered) ?? "0"}'
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/spacing"
+            android:text="@string/reg"
+            animateValue='@{Integer.toString(item.recovered) ?? "0"}'
             app:layout_constraintEnd_toEndOf="@id/imDialogProvinceRecovered"
             app:layout_constraintStart_toStartOf="@id/imDialogProvinceRecovered"
             app:layout_constraintTop_toBottomOf="@id/imDialogProvinceRecovered"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
-        <TextView
+        <com.github.nothing2512.anticorona.component.AnimatedTextView
             android:id="@+id/tvDialogProvinceDeathValue"
             style="@style/TextNormal"
-            animateValue='@{Integer.toString(item.death) ?? "0"}'
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/spacing"
+            android:text="@string/reg"
+            animateValue='@{Integer.toString(item.death) ?? "0"}'
             app:layout_constraintEnd_toEndOf="@id/imDialogProvinceDeath"
             app:layout_constraintStart_toStartOf="@id/imDialogProvinceDeath"
             app:layout_constraintTop_toBottomOf="@id/imDialogProvinceDeath"

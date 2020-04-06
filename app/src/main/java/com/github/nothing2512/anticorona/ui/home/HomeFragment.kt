@@ -98,6 +98,10 @@ class HomeFragment : ParentFragment<FragmentHomeBinding>(R.layout.fragment_home)
                 Status.ERROR -> if (!isFinishFetch) {
                     serverDown()
                     isFinishFetch = true
+                    binding.sfHomeIndonesian.stopShimmer()
+                    binding.sfHomeGlobal.stopShimmer()
+                    binding.sfHomeProvince.stopShimmer()
+                    binding.sfHomeCountry.stopShimmer()
                 }
                 Status.SUCCESS -> {
                     loading.indonesianStop()
@@ -115,7 +119,12 @@ class HomeFragment : ParentFragment<FragmentHomeBinding>(R.layout.fragment_home)
         homeViewModel.provinceCase.observe {
             when (it.status) {
                 Status.LOADING -> loading.provinceStart()
-                Status.ERROR -> serverDown()
+                Status.ERROR -> {
+                    serverDown()
+                    binding.sfHomeProvince.stopShimmer()
+                    binding.sfHomeGlobal.stopShimmer()
+                    binding.sfHomeCountry.stopShimmer()
+                }
                 Status.SUCCESS -> {
 
                     /**
@@ -123,8 +132,14 @@ class HomeFragment : ParentFragment<FragmentHomeBinding>(R.layout.fragment_home)
                      * @see RecyclerView.setNestedScrollingEnabled
                      * @see RecyclerView.setAdapter
                      * @see RecyclerView.setLayoutManager
+                     * @see RecyclerView.RecycledViewPool
+                     * @see LinearLayoutManager
+                     * @see ProvinceAdapter
+                     * @see ProvinceDialog
                      */
                     binding.rvHomeProvince.apply {
+                        setHasFixedSize(true)
+                        setRecycledViewPool(RecyclerView.RecycledViewPool())
                         isNestedScrollingEnabled = true
                         layoutManager = LinearLayoutManager(activity?.applicationContext)
                         adapter = ProvinceAdapter(it.data?.slice(0..2) ?: listOf()) { item ->
@@ -163,7 +178,11 @@ class HomeFragment : ParentFragment<FragmentHomeBinding>(R.layout.fragment_home)
         homeViewModel.globalCase.observe {
             when (it.status) {
                 Status.LOADING -> loading.globalStart()
-                Status.ERROR -> serverDown()
+                Status.ERROR -> {
+                    serverDown()
+                    binding.sfHomeGlobal.stopShimmer()
+                    binding.sfHomeCountry.stopShimmer()
+                }
                 Status.SUCCESS -> {
 
                     val recovered = it.data?.cases?.div(it.data.recovered)
@@ -191,16 +210,26 @@ class HomeFragment : ParentFragment<FragmentHomeBinding>(R.layout.fragment_home)
         homeViewModel.countryCase.observe {
             when (it.status) {
                 Status.LOADING -> loading.countryStart()
-                Status.ERROR -> serverDown()
+                Status.ERROR -> {
+                    serverDown()
+                    binding.sfHomeCountry.stopShimmer()
+                }
                 Status.SUCCESS -> {
 
                     /**
-                     * Setting up province recycler view
+                     * Setting up countries recycler view
+                     *
                      * @see RecyclerView.setNestedScrollingEnabled
                      * @see RecyclerView.setAdapter
                      * @see RecyclerView.setLayoutManager
+                     * @see RecyclerView.RecycledViewPool
+                     * @see GridLayoutManager
+                     * @see CountryAdapter
+                     * @see CountryDialog
                      */
                     binding.rvHomeGlobal.apply {
+                        setHasFixedSize(true)
+                        setRecycledViewPool(RecyclerView.RecycledViewPool())
                         isNestedScrollingEnabled = true
                         layoutManager = GridLayoutManager(activity?.applicationContext, 2)
                         adapter = CountryAdapter(it.data?.slice(0..5) ?: listOf()) { item ->

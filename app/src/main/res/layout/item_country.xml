@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright 2020 Nothing
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,16 +14,17 @@
   ~ limitations under the License.
   -->
 
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
     <data>
+
         <variable
             name="item"
             type="com.github.nothing2512.anticorona.data.remote.response.CaseResponse" />
     </data>
 
-    <FrameLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/spacing">
@@ -32,8 +32,7 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="@dimen/main_radius"
-            app:cardElevation="@dimen/elevation">
+            app:cardCornerRadius="@dimen/main_radius">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -42,36 +41,36 @@
 
                 <TextView
                     android:id="@+id/tvItemCountryLocation"
+                    style="@style/TextNormalBold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text='@{item.location ?? ""}'
-                    style="@style/TextNormalBold"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
                     android:id="@+id/imItemCountryFlag"
+                    roundSource='@{item.flag ?? ""}'
                     android:layout_width="@dimen/flag_size"
                     android:layout_height="@dimen/flag_size"
                     android:layout_marginTop="@dimen/spacing"
-                    roundSource='@{item.flag ?? ""}'
                     android:scaleType="centerCrop"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tvItemCountryLocation"
                     tools:ignore="ContentDescription" />
 
-                <TextView
+                <com.github.nothing2512.anticorona.component.AnimatedTextView
                     android:id="@+id/tvItemCountryCases"
+                    style="@style/TextNormal"
+                    animateValue='@{Integer.toString(item.cases) ?? ""}'
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/total_cases"
-                    bindText='@{Integer.toString(item.cases) ?? ""}'
-                    style="@style/TextNormal"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/imItemCountryFlag"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/imItemCountryFlag" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

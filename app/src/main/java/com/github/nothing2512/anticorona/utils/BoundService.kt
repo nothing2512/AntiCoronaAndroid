@@ -27,7 +27,6 @@ import com.github.nothing2512.anticorona.data.remote.ApiSuccessResponse
 import com.github.nothing2512.anticorona.vo.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import timber.log.Timber
 
 /**
  * [BoundService] class
@@ -105,11 +104,9 @@ abstract class BoundService<TYPE>
             result.addSource(dbSource) { data ->
                 result.removeSource(dbSource)
                 if (data is List<*>) {
-                    Timber.d("Robet: " + data.size.toString())
                     if (data.size == 0) fetch()
                     else setValue(Resource.success(data))
                 } else {
-                    Timber.d( "Robet: " + (data == null).toString())
                     if (data == null) fetch()
                     else setValue(Resource.success(data))
                 }

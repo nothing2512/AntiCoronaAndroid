@@ -71,6 +71,14 @@
         <item name="android:textAlignment">center</item>
     </style>
 
+    <!--  Normal text Align Left style  -->
+    <style name="TextNormal.Left">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/normal_text</item>
+        <item name="fontPath">fonts/mitr_light.ttf</item>
+        <item name="android:textAlignment">textStart</item>
+    </style>
+
     <!--  Normal bold text style  -->
     <style name="TextNormalBold">
         <item name="android:textColor">@android:color/black</item>

@@ -17,6 +17,8 @@
 package com.github.nothing2512.anticorona.ui.news
 
 import android.os.Bundle
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.github.nothing2512.anticorona.R
 import com.github.nothing2512.anticorona.databinding.FragmentNewsBinding
 import com.github.nothing2512.anticorona.parent.ParentFragment
@@ -59,11 +61,26 @@ class NewsFragment : ParentFragment<FragmentNewsBinding>(R.layout.fragment_news)
          * @see NewsViewModel.news
          */
         newsViewModel.news.observe {
-            when(it.status) {
+            when (it.status) {
                 Status.LOADING -> newsLoading.start()
-                Status.ERROR -> serverDown()
+                Status.ERROR -> {
+                    serverDown()
+                    binding.sfNews.stopShimmer()
+                }
                 Status.SUCCESS -> {
-                    val adapter = NewsAdapter(it.data ?: listOf())
+                    /**
+                     * Setup RecyclerView
+                     *
+                     * @see RecyclerView.RecycledViewPool
+                     * @see LinearLayoutManager
+                     * @see NewsAdapter
+                     */
+                    binding.rvNews.apply {
+                        setHasFixedSize(true)
+                        setRecycledViewPool(RecyclerView.RecycledViewPool())
+                        layoutManager = LinearLayoutManager(activity?.applicationContext)
+                        adapter = NewsAdapter(it.data ?: listOf())
+                    }
                     newsLoading.stop()
                 }
             }

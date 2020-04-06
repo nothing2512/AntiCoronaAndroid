@@ -16,12 +16,14 @@
 
 package com.github.nothing2512.anticorona.parent
 
+import android.content.res.Resources
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.MainThread
 import androidx.appcompat.view.ContextThemeWrapper
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.databinding.ViewDataBinding
 import com.github.nothing2512.anticorona.R
 import com.github.nothing2512.anticorona.utils.Preference
@@ -122,6 +124,33 @@ abstract class ParentDialog<VDB : ViewDataBinding>(private val layout: Int) :
              */
             subscribeUI() 
         }
+    }
+
+    /**
+     * triggered function when activity is created
+     *
+     * @param savedInstanceState
+     *
+     * @see BottomSheetDialogFragment.onActivityCreated
+     */
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        /**
+         * Set horizontal margin to dialog
+         *
+         * @see CoordinatorLayout.LayoutParams
+         * @see Resources.getDimensionPixelSize
+         */
+        val parent = view?.parent as View
+        val lp = parent.layoutParams as CoordinatorLayout.LayoutParams
+        lp.setMargins(
+            resources.getDimensionPixelSize(R.dimen.spacing),
+            0,
+            resources.getDimensionPixelSize(R.dimen.spacing),
+            0
+        )
+        parent.layoutParams = lp
     }
 
     /**

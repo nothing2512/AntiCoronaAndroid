@@ -142,7 +142,6 @@ class HomeLoading(
                 tvHomeProvinceTitle,
                 imHomeProvinceDivider,
                 rvHomeProvince,
-                tvHomeProvinceHighlight,
                 tvHomeProvinceHighlight
             )
         }
@@ -159,7 +158,6 @@ class HomeLoading(
                 tvHomeProvinceTitle,
                 imHomeProvinceDivider,
                 rvHomeProvince,
-                tvHomeProvinceHighlight,
                 tvHomeProvinceHighlight
             )
         }

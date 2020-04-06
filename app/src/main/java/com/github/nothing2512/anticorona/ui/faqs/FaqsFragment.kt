@@ -17,6 +17,8 @@
 package com.github.nothing2512.anticorona.ui.faqs
 
 import android.os.Bundle
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.github.nothing2512.anticorona.R
 import com.github.nothing2512.anticorona.databinding.FragmentFaqsBinding
 import com.github.nothing2512.anticorona.parent.ParentFragment
@@ -61,14 +63,31 @@ class FaqsFragment : ParentFragment<FragmentFaqsBinding>(R.layout.fragment_faqs)
          */
         faqsViewModel.faqs.observe {
             when(it.status) {
-                Status.ERROR -> serverDown()
+                Status.ERROR -> {
+                    serverDown()
+                    binding.sfFaqs.stopShimmer()
+                }
                 Status.LOADING -> faqsLoading.start()
                 Status.SUCCESS -> {
                     faqsLoading.stop()
-                    val adapter = FaqsAdapter(it.data ?: listOf()) { response ->
-                        activity?.supportFragmentManager?.let { fm ->
-                            FaqsDialog.newInstance(response)
-                                .show(fm, FaqsDialog.TAG)
+
+                    /**
+                     * Setup RecyclerView
+                     *
+                     * @see RecyclerView.RecycledViewPool
+                     * @see LinearLayoutManager
+                     * @see FaqsAdapter
+                     * @see FaqsDialog
+                     */
+                    binding.rvFaqs.apply {
+                        setHasFixedSize(true)
+                        setRecycledViewPool(RecyclerView.RecycledViewPool())
+                        layoutManager = LinearLayoutManager(activity?.applicationContext)
+                        adapter = FaqsAdapter(it.data ?: listOf()) { response ->
+                            activity?.supportFragmentManager?.let { fm ->
+                                FaqsDialog.newInstance(response)
+                                    .show(fm, FaqsDialog.TAG)
+                            }
                         }
                     }
                 }

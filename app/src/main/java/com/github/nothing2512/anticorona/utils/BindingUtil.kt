@@ -16,16 +16,15 @@
 
 package com.github.nothing2512.anticorona.utils
 
-import android.annotation.SuppressLint
 import android.widget.FrameLayout
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import coil.request.LoadRequestBuilder
 import coil.transform.RoundedCornersTransformation
 import com.github.nothing2512.anticorona.R
-import coil.request.LoadRequestBuilder
+import com.github.nothing2512.anticorona.component.AnimatedTextView
 
 /**
  * binding image to image view from any source
@@ -80,6 +79,35 @@ fun ImageView.bindRoundSource(roundSource: Any) {
 }
 
 /**
+ * binding image to rounded image view from any source
+ * @param newsImage
+ * @see BindingAdapter
+ */
+@BindingAdapter("newsImage")
+fun ImageView.bindNewsImage(newsImage: String) {
+    /**
+     * binding source to image view
+     * @see bind
+     */
+    bind(newsImage) {
+
+        /**
+         * transform image to rounded
+         *
+         * @see LoadRequestBuilder.transformations
+         * @see RoundedCornersTransformation
+         */
+        transformations(RoundedCornersTransformation(100f, 100f, 0f, 0f))
+
+        /**
+         * adding placeholder to image view
+         * @see LoadRequestBuilder.placeholder
+         */
+        placeholder(R.drawable.covid)
+    }
+}
+
+/**
  * binding fragment into activity
  * @param activity
  * @param fragment
@@ -96,30 +124,22 @@ fun FrameLayout.setFragment(activity: FragmentActivity?, fragment: Fragment?) {
  * animating text view value
  * @param animateValue
  * @see BindingAdapter
+ * @see AnimatedTextView
  */
+@Suppress("LocalVariableName")
 @BindingAdapter("animateValue")
-fun TextView.animateValue(animateValue: String) {
+fun AnimatedTextView.animateValue(animateValue: String) {
+    try {
+        if (value != animateValue.toInt()) {
+            animateValue(value, animateValue.toInt()) {
+                text = originalText.replace(Constants.TV_REG, it.toString())
+            }
+            this.value = animateValue.toInt()
+        }
 
-    val oldValue = try {
-        text.toString().toInt()
-    } catch (e: NumberFormatException) {
-        0
+        if (animateValue.toInt() == 0) text = originalText.replace(Constants.TV_REG, "0")
+    } catch (e: Exception) {
+        text = originalText.replace(Constants.TV_REG, "0")
     }
 
-    /**
-     * animating value
-     * @see animateValue
-     */
-    animateValue(oldValue, animateValue.toInt()) { text = it.toString() }
-}
-
-/**
- * binding text view
- * @param value
- * @see BindingAdapter
- */
-@SuppressLint("SetTextI18n")
-@BindingAdapter("bindText")
-fun TextView.bindText(value: String) {
-    text = "$text${if (value == "0") "" else value}"
 }

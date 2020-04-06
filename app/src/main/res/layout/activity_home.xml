@@ -60,7 +60,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/background"
-                android:translationZ="2dp"
                 app:size="3"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:menu="@menu/menu_navigation" />

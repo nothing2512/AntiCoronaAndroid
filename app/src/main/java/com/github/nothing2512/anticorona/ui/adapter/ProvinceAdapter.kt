@@ -36,6 +36,14 @@ class ProvinceAdapter(
 ) : RecyclerView.Adapter<ProvinceAdapter.MainHolder>() {
 
     /**
+     * set recycler view item has stable id
+     * @see RecyclerView.Adapter.setHasStableIds
+     */
+    override fun setHasStableIds(hasStableIds: Boolean) {
+        super.setHasStableIds(true)
+    }
+
+    /**
      * Creating recycler view holder
      *
      * @param parent
@@ -86,14 +94,19 @@ class ProvinceAdapter(
          */
         fun bind(item: CaseResponse) {
 
-            val value = try {
-                item.cases / item.recovered
+            var value: Int
+            var size: Int
+            try {
+                size = item.recovered + item.death
+                value = (item.recovered * size) / size
             } catch (_: Exception) {
-                0
+                value = 0
+                size = 0
             }
 
             binding.item = item
             binding.itemProvinceSeekbar.apply {
+                max = size
                 isEnabled = false
                 animate(value)
             }
