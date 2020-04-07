@@ -13,6 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-rootProject.name='AntiCorona'
-include ':app'
+rootProject.name = "AntiCorona"
+rootProject.buildFileName = "build.gradle.kts"
+include(":app")

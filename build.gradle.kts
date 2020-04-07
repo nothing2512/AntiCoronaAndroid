@@ -14,28 +14,20 @@
  * limitations under the License.
  */
 
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
-
 buildscript {
-
-    apply from: 'versions.gradle'
-    addRepos(repositories)
+    repositories(Deps.repositories)
     dependencies {
-        classpath deps.android_gradle_plugin
-        classpath deps.kotlin.plugin
-
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
-    }
-    repositories {
-        google()
+        classpath(Deps.androidGradlePlugin)
+        classpath(Deps.Kotlin.plugin)
     }
 }
 
 allprojects {
-    addRepos(repositories)
+    repositories(Deps.repositories)
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+tasks {
+    @Suppress("UNUSED_VARIABLE") val clean by registering(Delete::class) {
+        delete(buildDir)
+    }
 }
