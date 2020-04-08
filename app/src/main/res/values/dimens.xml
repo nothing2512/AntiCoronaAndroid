@@ -29,7 +29,7 @@
     <dimen name="nav_button_padding">11dp</dimen>
     <dimen name="stroke_width">2dp</dimen>
     <dimen name="nav_button_margin">24dp</dimen>
-    <dimen name="elevation">2dp</dimen>
+    <dimen name="elevation">5dp</dimen>
 
     <!--  Divider  -->
     <dimen name="divider_stroke_width">1dp</dimen>
@@ -38,6 +38,7 @@
     <!--  Text  -->
     <dimen name="sub_title_text">22sp</dimen>
     <dimen name="normal_text">18sp</dimen>
+    <dimen name="mini_text">14sp</dimen>
 
     <!--  Icon  -->
     <dimen name="emoticon_size">40dp</dimen>
@@ -53,6 +54,6 @@
     <dimen name="seekbar_height">10dp</dimen>
 
     <!--  Other  -->
-    <dimen name="news_image_height">250dp</dimen>
-    <dimen name="dot_radius">300dp</dimen>
+    <dimen name="news_image_size">100dp</dimen>
+    <dimen name="image_loading_size">200dp</dimen>
 </resources>

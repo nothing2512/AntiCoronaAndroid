@@ -39,6 +39,6 @@
     <string name="answer">Answer</string>
     <string name="reg">{{REG}}</string>
     <string name="toolbar_countries">Countries Case</string>
-    <string name="toolbar_province">Provinces Case</string>
     <string name="toolbar_web">Web News</string>
+    <string name="detail">Detail</string>
 </resources>

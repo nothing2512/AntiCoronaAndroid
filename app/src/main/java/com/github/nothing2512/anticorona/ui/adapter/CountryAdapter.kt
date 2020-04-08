@@ -21,6 +21,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.nothing2512.anticorona.R
 import com.github.nothing2512.anticorona.data.remote.response.CaseResponse
 import com.github.nothing2512.anticorona.databinding.ItemCountryBinding
+import com.github.nothing2512.anticorona.utils.Constants
+import com.github.nothing2512.anticorona.utils.animateValue
 import com.github.nothing2512.anticorona.utils.getBinding
 
 /**
@@ -33,6 +35,8 @@ class CountryAdapter(
     private val data: List<CaseResponse>,
     private val openDialog: (CaseResponse) -> Unit
 ) : RecyclerView.Adapter<CountryAdapter.MainHolder>() {
+
+    private var reloadData = ArrayList<Boolean>()
 
     /**
      * set recycler view item has stable id
@@ -71,7 +75,12 @@ class CountryAdapter(
      * @see RecyclerView.Adapter.onBindViewHolder
      */
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
-        holder.bind(data[position])
+        try {
+            if (reloadData[position]) holder.reload(data[position])
+        } catch (e: Exception) {
+            holder.bind(data[position])
+            reloadData.add(position, true)
+        }
     }
 
     /**
@@ -93,6 +102,19 @@ class CountryAdapter(
          */
         fun bind(item: CaseResponse) {
             binding.item = item
+            binding.tvItemCountryCases.animateValue(item.cases.toString())
+            binding.root.setOnClickListener { openDialog(item) }
+        }
+
+        /**
+         * Binding data when reload view
+         * @param item
+         */
+        fun reload(item: CaseResponse) {
+            val caseText = binding.tvItemCountryCases.text.toString()
+            binding.item = item
+            binding.tvItemCountryCases.text =
+                caseText.replace(Constants.TV_REG, item.cases.toString())
             binding.root.setOnClickListener { openDialog(item) }
         }
     }

@@ -61,6 +61,6 @@ class ProvinceViewModel(private val caseRepository: CaseRepository) : ViewModel(
      * @see LiveData.postValue
      */
     fun setCases(data: List<CaseResponse>) {
-        if(data != _cases.value) _cases.postValue(data)
+        if (data != _cases.value) _cases.postValue(data)
     }
 }

@@ -18,7 +18,6 @@ package com.github.nothing2512.anticorona
 
 import android.app.AlarmManager
 import android.app.Application
-import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
@@ -31,7 +30,6 @@ import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import timber.log.Timber
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig
-import java.util.*
 
 /**
  * [MainApplication] Class
@@ -65,26 +63,20 @@ class MainApplication : Application() {
         /**
          * Registering Database Service
          *
-         * @see PendingIntent
-         * @see Intent
-         * @see Calendar
+         * @see DatabaseReceiver.isActive
+         * @see DatabaseReceiver.getInstance
          * @see AlarmManager
          */
-        val intent = Intent(this, DatabaseReceiver::class.java)
-        val pendingIntent = PendingIntent.getBroadcast(
-            applicationContext,
-            2512,
-            intent,
-            0
-        )
-        val calendar = Calendar.getInstance()
-        val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        alarmManager.setRepeating(
-            AlarmManager.RTC_WAKEUP,
-            calendar.timeInMillis,
-            Constants.BROADCAST_LATENCY,
-            pendingIntent
-        )
+        if (!DatabaseReceiver.isActive(applicationContext)) {
+            val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+            alarmManager.setRepeating(
+                AlarmManager.RTC_WAKEUP,
+                System.currentTimeMillis(),
+                Constants.BROADCAST_LATENCY,
+                DatabaseReceiver.getInstance(applicationContext)
+            )
+        }
+
 
         /**
          * Registering Language Service

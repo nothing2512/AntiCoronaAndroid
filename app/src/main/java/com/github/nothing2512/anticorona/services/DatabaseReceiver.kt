@@ -16,14 +16,10 @@
 
 package com.github.nothing2512.anticorona.services
 
+import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import androidx.room.Room
-import com.github.nothing2512.anticorona.data.local.CoronaDatabase
-import com.github.nothing2512.anticorona.data.local.dao.CasesDao
-import com.github.nothing2512.anticorona.data.local.dao.FaqsDao
-import com.github.nothing2512.anticorona.data.local.dao.NewsDao
 
 /**
  * [DatabaseReceiver] class
@@ -46,6 +42,43 @@ class DatabaseReceiver : BroadcastReceiver() {
              */
             val service = DatabaseService()
             service.delete(ctx)
+        }
+    }
+
+    companion object {
+
+        /**
+         * get receiver pending intent instance
+         *
+         * @param context
+         * @return
+         */
+        @JvmStatic
+        fun getInstance(context: Context): PendingIntent {
+            val intent = Intent(context, DatabaseReceiver::class.java)
+            return PendingIntent.getBroadcast(
+                context,
+                2512,
+                intent,
+                0
+            )
+        }
+
+        /**
+         * Check pending intent is registered or not
+         *
+         * @param context
+         * @return
+         */
+        @JvmStatic
+        fun isActive(context: Context): Boolean {
+            val intent = Intent(context, DatabaseReceiver::class.java)
+            return (PendingIntent.getBroadcast(
+                context,
+                2512,
+                intent,
+                PendingIntent.FLAG_NO_CREATE
+            ) != null)
         }
     }
 

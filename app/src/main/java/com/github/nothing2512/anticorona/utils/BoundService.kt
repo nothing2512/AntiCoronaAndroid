@@ -17,7 +17,6 @@
 package com.github.nothing2512.anticorona.utils
 
 import androidx.annotation.MainThread
-import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import com.github.nothing2512.anticorona.data.remote.ApiEmptyResponse
@@ -61,7 +60,7 @@ abstract class BoundService<TYPE>
                 is ApiSuccessResponse -> {
                     appExecutors.diskIO.execute {
                         saveCallResult(response.body)
-                        val process = processResponse(response)
+                        val process = response.body
                         appExecutors.mainThread.execute { setValue(Resource.success(process)) }
                     }
 
@@ -114,14 +113,6 @@ abstract class BoundService<TYPE>
         }
         result
     }
-
-    /**
-     * getting body data from responses
-     * @param response
-     * @return
-     */
-    @WorkerThread
-    protected open fun processResponse(response: ApiSuccessResponse<TYPE>) = response.body
 
     /**
      * Creating call services to get response from remote repository

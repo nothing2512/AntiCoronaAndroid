@@ -25,9 +25,9 @@ import com.github.nothing2512.anticorona.parent.ParentLoading
  * @constructor [binding]
  * @see ParentLoading
  */
-class FaqsLoading (
+class FaqsLoading(
     private val binding: FragmentFaqsBinding
-): ParentLoading() {
+) : ParentLoading() {
 
     /**
      * start loading

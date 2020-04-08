@@ -37,9 +37,9 @@ import org.koin.android.ext.android.inject
 /**
  * [ParentDialog] class
  * @author Robet Atiq Maulana Rifqi
- * 
+ *
  * @constructor [layout]
- * 
+ *
  * @see BottomSheetDialogFragment
  */
 abstract class ParentDialog<VDB : ViewDataBinding>(private val layout: Int) :
@@ -53,7 +53,7 @@ abstract class ParentDialog<VDB : ViewDataBinding>(private val layout: Int) :
 
     /**
      * shared preference variable
-     * 
+     *
      * @see Preference
      * @see inject
      */
@@ -62,13 +62,13 @@ abstract class ParentDialog<VDB : ViewDataBinding>(private val layout: Int) :
     /**
      * function onCreateView
      * triggered function before view created
-     * 
+     *
      * @param inflater
      * @param container
      * @param savedInstanceState
-     * 
+     *
      * @see BottomSheetDialogFragment.onCreateView
-     * 
+     *
      * @return View
      */
     override fun onCreateView(
@@ -76,10 +76,10 @@ abstract class ParentDialog<VDB : ViewDataBinding>(private val layout: Int) :
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        
+
         /**
          * getting theme wrapper
-         * 
+         *
          * @see Theme
          * @see ContextThemeWrapper
          */
@@ -91,22 +91,22 @@ abstract class ParentDialog<VDB : ViewDataBinding>(private val layout: Int) :
 
         /**
          * Getting view data binding
-         * 
+         *
          * @see getBinding
          * @see LayoutInflater.cloneInContext
          */
         binding = getBinding(inflater.cloneInContext(wrapper), layout, container)
-        
+
         return binding.root
     }
 
     /**
      * function onViewCreated
      * triggered function after view is created
-     * 
+     *
      * @param view
      * @param savedInstanceState
-     * 
+     *
      * @see BottomSheetDialogFragment.onViewCreated
      */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -122,7 +122,7 @@ abstract class ParentDialog<VDB : ViewDataBinding>(private val layout: Int) :
              * subscribing UI on child dialog
              * @see subscribeUI
              */
-            subscribeUI() 
+            subscribeUI()
         }
     }
 
@@ -165,7 +165,7 @@ abstract class ParentDialog<VDB : ViewDataBinding>(private val layout: Int) :
     /**
      * function onDestroy
      * triggered function when dialog is destroyed
-     * 
+     *
      * @see BottomSheetDialogFragment.onDestroy
      */
     override fun onDestroy() {

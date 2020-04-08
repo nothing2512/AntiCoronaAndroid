@@ -25,7 +25,7 @@ import com.github.nothing2512.anticorona.parent.ParentLoading
  * @constructor [binding]
  * @see ParentLoading
  */
-class ProvinceLoading(private val binding: ActivityProvinceBinding): ParentLoading() {
+class ProvinceLoading(private val binding: ActivityProvinceBinding) : ParentLoading() {
 
     /**
      * start loading

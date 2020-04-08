@@ -79,35 +79,6 @@ fun ImageView.bindRoundSource(roundSource: Any) {
 }
 
 /**
- * binding image to rounded image view from any source
- * @param newsImage
- * @see BindingAdapter
- */
-@BindingAdapter("newsImage")
-fun ImageView.bindNewsImage(newsImage: String) {
-    /**
-     * binding source to image view
-     * @see bind
-     */
-    bind(newsImage) {
-
-        /**
-         * transform image to rounded
-         *
-         * @see LoadRequestBuilder.transformations
-         * @see RoundedCornersTransformation
-         */
-        transformations(RoundedCornersTransformation(100f, 100f, 0f, 0f))
-
-        /**
-         * adding placeholder to image view
-         * @see LoadRequestBuilder.placeholder
-         */
-        placeholder(R.drawable.covid)
-    }
-}
-
-/**
  * binding fragment into activity
  * @param activity
  * @param fragment

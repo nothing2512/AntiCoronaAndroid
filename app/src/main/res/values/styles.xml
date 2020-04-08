@@ -115,6 +115,13 @@
         <item name="fontPath">fonts/mitr_light.ttf</item>
     </style>
 
+    <!--  Secondary normal mini text  style-->
+    <style name="TextNormalSecondary.Mini">
+        <item name="android:textColor">@color/grey_secondary</item>
+        <item name="android:textSize">@dimen/mini_text</item>
+        <item name="fontPath">fonts/mitr_light.ttf</item>
+    </style>
+
     <!--  Recovered seekbar style  -->
     <style name="SeekbarRecovered">
         <item name="android:enabled">false</item>

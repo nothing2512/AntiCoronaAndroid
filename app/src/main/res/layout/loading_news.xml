@@ -15,16 +15,161 @@
   ~ limitations under the License.
   -->
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <include layout="@layout/loading_item_news" />
+    <View
+        android:id="@+id/LimageNews"
+        android:layout_width="@dimen/image_loading_size"
+        android:layout_height="@dimen/image_loading_size"
+        android:background="@color/loading2"
+        android:layout_margin="@dimen/spacing"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
-    <include layout="@layout/loading_item_news" />
+    <View
+        android:id="@+id/LnewsTitle"
+        android:layout_width="0dp"
+        android:layout_margin="@dimen/spacing"
+        android:background="@color/loading2"
+        style="@style/TextSubTitle.Loading"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/LimageNews"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <include layout="@layout/loading_item_news" />
+    <View
+        android:id="@+id/LnewsTitle1"
+        android:layout_width="0dp"
+        style="@style/TextNormal.Loading"
+        android:layout_marginTop="@dimen/double_spacing"
+        android:layout_marginStart="@dimen/spacing"
+        android:layout_marginEnd="@dimen/spacing"
+        app:layout_constraintTop_toBottomOf="@id/LnewsTitle"
+        app:layout_constraintStart_toEndOf="@id/LimageNews"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-</LinearLayout>
+    <View
+        android:id="@+id/LnewsTitle2"
+        android:layout_width="0dp"
+        style="@style/TextNormal.Loading"
+        android:layout_margin="@dimen/spacing"
+        app:layout_constraintTop_toBottomOf="@id/LnewsTitle1"
+        app:layout_constraintStart_toEndOf="@id/LimageNews"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <View
+        android:id="@+id/LnewsTitle3"
+        android:layout_width="0dp"
+        style="@style/TextNormal.Loading"
+        android:layout_margin="@dimen/spacing"
+        app:layout_constraintTop_toBottomOf="@id/LnewsTitle2"
+        app:layout_constraintStart_toEndOf="@id/LimageNews"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <View
+        android:id="@+id/LnewsTitle5"
+        android:layout_width="0dp"
+        style="@style/TextNormal.Loading"
+        android:layout_margin="@dimen/spacing"
+        app:layout_constraintTop_toBottomOf="@id/LnewsTitle3"
+        app:layout_constraintStart_toEndOf="@id/LimageNews"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/double_spacing"
+        android:paddingStart="@dimen/spacing"
+        android:paddingEnd="@dimen/spacing"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/LimageNews">
+
+        <View
+            android:layout_width="match_parent"
+            style="@style/TextNormal.Loading" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/spacing"
+            style="@style/TextNormal.Loading" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/spacing"
+            style="@style/TextNormal.Loading" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/spacing"
+            style="@style/TextNormal.Loading" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/spacing"
+            style="@style/TextNormal.Loading" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/spacing"
+            style="@style/TextNormal.Loading" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/spacing"
+            style="@style/TextNormal.Loading" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/spacing"
+            style="@style/TextNormal.Loading" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/spacing"
+            style="@style/TextNormal.Loading" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/spacing"
+            style="@style/TextNormal.Loading" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/spacing"
+            style="@style/TextNormal.Loading" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/spacing"
+            style="@style/TextNormal.Loading" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/spacing"
+            style="@style/TextNormal.Loading" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/spacing"
+            style="@style/TextNormal.Loading" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/spacing"
+            style="@style/TextNormal.Loading" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/spacing"
+            style="@style/TextNormal.Loading" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/spacing"
+            style="@style/TextNormal.Loading" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

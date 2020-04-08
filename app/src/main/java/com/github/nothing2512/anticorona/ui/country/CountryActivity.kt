@@ -83,6 +83,7 @@ class CountryActivity : ParentActivity<ActivityCountryBinding>(R.layout.activity
          * @see observe
          */
         countryViewModel.repoCases.observe {
+            binding.countrySwipe.isRefreshing = false
             when (it.status) {
                 Status.LOADING -> loading.start()
                 Status.ERROR -> {
@@ -125,12 +126,7 @@ class CountryActivity : ParentActivity<ActivityCountryBinding>(R.layout.activity
          * Setting [SwipeRefreshLayout] function
          * @see SwipeRefreshLayout.setOnRefreshListener
          */
-        binding.countrySwipe.apply {
-            setOnRefreshListener {
-                countryViewModel.getCases()
-                isRefreshing = false
-            }
-        }
+        binding.countrySwipe.setOnRefreshListener { countryViewModel.getCases() }
 
         /**
          * Set cases from intent data

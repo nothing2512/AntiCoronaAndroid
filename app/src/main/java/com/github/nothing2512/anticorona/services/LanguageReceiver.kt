@@ -33,7 +33,7 @@ class LanguageReceiver : BroadcastReceiver() {
      * @param intent
      */
     override fun onReceive(context: Context?, intent: Intent?) {
-        if(intent?.action == Intent.ACTION_LOCALE_CHANGED) {
+        if (intent?.action == Intent.ACTION_LOCALE_CHANGED) {
             context?.let { ctx ->
 
                 /**
@@ -41,7 +41,7 @@ class LanguageReceiver : BroadcastReceiver() {
                  * @see DatabaseService
                  */
                 val service = DatabaseService()
-                service.delete(ctx)
+                service.delete(ctx, true)
             }
         }
     }

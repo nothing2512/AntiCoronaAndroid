@@ -21,6 +21,9 @@ import com.github.nothing2512.anticorona.component.ConfiguratedWebView
 import com.github.nothing2512.anticorona.databinding.ActivityNewsBinding
 import com.github.nothing2512.anticorona.parent.ParentActivity
 import com.github.nothing2512.anticorona.utils.Constants
+import com.github.nothing2512.anticorona.utils.hide
+import com.github.nothing2512.anticorona.utils.start
+import com.github.nothing2512.anticorona.utils.stop
 
 /**
  * [NewsActivity] class
@@ -52,6 +55,35 @@ class NewsActivity : ParentActivity<ActivityNewsBinding>(R.layout.activity_news)
          * @see ConfiguratedWebView.load
          */
         val url = intent.getStringExtra(Constants.EXTRA_URL)
-        binding.wvNews.load(url, binding.imNewsLoading)
+        binding.sfWeb.start()
+        binding.wvNews.hide()
+        binding.wvNews.apply {
+            onError {
+                serverDown()
+                binding.sfWeb.stopShimmer()
+            }
+            load(url) { binding.sfWeb.stop() }
+        }
+
+        /**
+         * Set swipe refresh layout on refresh listener
+         */
+        binding.newsSwipe.setOnRefreshListener {
+            binding.sfWeb.start()
+            binding.wvNews.hide()
+            binding.newsSwipe.isRefreshing = false
+        }
+    }
+
+    /**
+     * Back to previous website if exists
+     */
+    override fun onBackPressed() {
+        if(binding.wvNews.canGoBack()) {
+            binding.sfWeb.start()
+            binding.wvNews.hide()
+            binding.wvNews.goBack()
+        }
+        else super.onBackPressed()
     }
 }

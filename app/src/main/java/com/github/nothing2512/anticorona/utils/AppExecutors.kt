@@ -18,6 +18,7 @@ package com.github.nothing2512.anticorona.utils
 
 import android.os.Handler
 import android.os.Looper
+import com.github.nothing2512.anticorona.utils.AppExecutors.MainThreadExecutor
 import java.util.concurrent.Executor
 import java.util.concurrent.Executors
 

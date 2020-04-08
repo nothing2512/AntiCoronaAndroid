@@ -27,7 +27,8 @@ import com.github.nothing2512.anticorona.parent.ParentDialog
  * @constructor [faqs]]
  * @see ParentDialog
  */
-class FaqsDialog(private val faqs: FaqsResponse): ParentDialog<DialogFaqsBinding>(R.layout.dialog_faqs) {
+class FaqsDialog(private val faqs: FaqsResponse) :
+    ParentDialog<DialogFaqsBinding>(R.layout.dialog_faqs) {
 
     /**
      * Subscribing ui

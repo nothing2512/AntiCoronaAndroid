@@ -33,7 +33,7 @@ class DatabaseService {
      * Deleting data in database
      * @param context
      */
-     fun delete(context: Context) {
+    fun delete(context: Context, all: Boolean = false) {
 
         /**
          * Providing Database
@@ -56,7 +56,7 @@ class DatabaseService {
         casesDao.deleteCountries()
 
         newsDao.delete()
-        faqsDao.delete()
+        if (all) faqsDao.delete()
     }
 
     /**

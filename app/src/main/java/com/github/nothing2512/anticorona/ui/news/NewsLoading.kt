@@ -25,9 +25,9 @@ import com.github.nothing2512.anticorona.parent.ParentLoading
  * @constructor [binding]
  * @see ParentLoading
  */
-class NewsLoading (
+class NewsLoading(
     private val binding: FragmentNewsBinding
-): ParentLoading() {
+) : ParentLoading() {
 
     /**
      * stop news loading

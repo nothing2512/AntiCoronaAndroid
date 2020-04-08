@@ -18,16 +18,12 @@
 
 package com.github.nothing2512.anticorona.component
 
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Bitmap
 import android.util.AttributeSet
 import android.view.View
-import android.webkit.WebView
-import android.webkit.WebViewClient
-import android.widget.ImageView
+import android.webkit.*
 import com.github.nothing2512.anticorona.utils.hide
 import com.github.nothing2512.anticorona.utils.show
 
@@ -37,6 +33,8 @@ import com.github.nothing2512.anticorona.utils.show
  * @see WebView
  */
 class ConfiguratedWebView : WebView {
+
+    private var onError: ((url: String) -> Unit)? = null
 
     /**
      * @constructor
@@ -72,9 +70,9 @@ class ConfiguratedWebView : WebView {
             loadsImagesAutomatically = true
             javaScriptEnabled = true
             domStorageEnabled = true
-            setSupportZoom(true)
             builtInZoomControls = true
             displayZoomControls = false
+            setSupportZoom(true)
         }
 
         /**
@@ -84,15 +82,23 @@ class ConfiguratedWebView : WebView {
     }
 
     /**
+     * Set on error listener
+     * @param block
+     */
+    fun onError(block: (url: String) -> Unit) {
+        onError = block
+    }
+
+    /**
      * load url function
      */
-    fun load(url: String, loadingIcon: ImageView) {
+    fun load(url: String, onFinish: () -> Unit) {
 
         /**
          * Set Web View Client
          * @see WebClient
          */
-        webViewClient = WebClient(loadingIcon)
+        webViewClient = WebClient(onFinish, onError)
 
         /**
          * Load Web Url
@@ -106,13 +112,9 @@ class ConfiguratedWebView : WebView {
      * @see WebViewClient
      */
     private class WebClient(
-        private val imageView: ImageView
+        private val onFinish: () -> Unit,
+        private val onError: ((url: String) -> Unit)?
     ) : WebViewClient() {
-
-        /**
-         * Declare boolean variable
-         */
-        private var isLoading = true
 
         /**
          * triggered function when starting load page
@@ -124,14 +126,25 @@ class ConfiguratedWebView : WebView {
         override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
 
             /**
-             * Start animating image
-             */
-            oneToZero()
-
-            /**
-             *
+             * Hiding View
+             * @see View.hide
              */
             view?.hide()
+        }
+
+        /**
+         * triggered function when failure to load url
+         *
+         * @param view
+         * @param request
+         * @param error
+         */
+        override fun onReceivedError(
+            view: WebView?,
+            request: WebResourceRequest?,
+            error: WebResourceError?
+        ) {
+            onError?.invoke(view?.url ?: "https://google.com")
         }
 
         /**
@@ -143,40 +156,11 @@ class ConfiguratedWebView : WebView {
         override fun onPageFinished(view: WebView?, url: String?) {
 
             /**
-             * Set isLoading to false
-             */
-            isLoading = false
-
-            /**
              * Showing web page
              */
             view?.show()
-            imageView.hide()
+            onFinish.invoke()
             super.onPageFinished(view, url)
-        }
-
-        private fun oneToZero() {
-            imageView.animate().apply {
-                alpha(0f)
-                duration = 1000L
-                setListener(object : AnimatorListenerAdapter() {
-                    override fun onAnimationEnd(animation: Animator?) {
-                        if (isLoading) zeroToOne()
-                    }
-                })
-            }.start()
-        }
-
-        private fun zeroToOne() {
-            imageView.animate().apply {
-                alpha(1f)
-                duration = 1000L
-                setListener(object : AnimatorListenerAdapter() {
-                    override fun onAnimationEnd(animation: Animator?) {
-                        if (isLoading) oneToZero()
-                    }
-                })
-            }.start()
         }
     }
 }

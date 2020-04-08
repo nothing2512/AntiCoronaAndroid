@@ -26,12 +26,13 @@
 
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/spacing">
+        android:layout_height="wrap_content">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing"
+            app:cardElevation="@dimen/elevation"
             app:cardCornerRadius="@dimen/main_radius">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -44,6 +45,8 @@
                     style="@style/TextNormalBold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
                     android:text='@{item.location ?? ""}'
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -64,7 +67,6 @@
                 <com.github.nothing2512.anticorona.component.AnimatedTextView
                     android:id="@+id/tvItemCountryCases"
                     style="@style/TextNormal"
-                    animateValue='@{Integer.toString(item.cases) ?? ""}'
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/total_cases"

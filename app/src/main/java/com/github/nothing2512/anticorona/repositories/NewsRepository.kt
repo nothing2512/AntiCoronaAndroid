@@ -120,10 +120,10 @@ class NewsRepository(
                 item.forEach { newsDao.insert(NewsEntity.parse(it)) }
             }
         }.asLiveData().observeForever {
-            if(it.status == Status.SUCCESS) {
-                if(_news.value == null ) _news.postValue(it)
-                if(_news.value != it) _news.postValue(it)
-            } else if(it.status == Status.ERROR && _news.value == null) _news.postValue(it)
+            if (it.status == Status.SUCCESS) {
+                if (_news.value == null) _news.postValue(it)
+                if (_news.value != it) _news.postValue(it)
+            } else if (it.status == Status.ERROR && _news.value == null) _news.postValue(it)
             else _news.postValue(it)
         }
     }

@@ -62,7 +62,7 @@ class FaqsFragment : ParentFragment<FragmentFaqsBinding>(R.layout.fragment_faqs)
          * @see FaqsViewModel.faqs
          */
         faqsViewModel.faqs.observe {
-            when(it.status) {
+            when (it.status) {
                 Status.ERROR -> {
                     serverDown()
                     binding.sfFaqs.stopShimmer()

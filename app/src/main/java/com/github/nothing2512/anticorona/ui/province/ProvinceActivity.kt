@@ -83,6 +83,7 @@ class ProvinceActivity : ParentActivity<ActivityProvinceBinding>(R.layout.activi
          * @see observe
          */
         provinceViewModel.repoCase.observe {
+            binding.provinceSwipe.isRefreshing = false
             when (it.status) {
                 Status.LOADING -> loading.start()
                 Status.ERROR -> {
@@ -121,12 +122,7 @@ class ProvinceActivity : ParentActivity<ActivityProvinceBinding>(R.layout.activi
          * Setting [SwipeRefreshLayout] function
          * @see SwipeRefreshLayout.setOnRefreshListener
          */
-        binding.provinceSwipe.apply {
-            setOnRefreshListener {
-                provinceViewModel.getCases()
-                isRefreshing = false
-            }
-        }
+        binding.provinceSwipe.setOnRefreshListener { provinceViewModel.getCases() }
 
         /**
          * Set cases from intent data

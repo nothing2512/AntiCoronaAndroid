@@ -15,13 +15,15 @@
  */
 
 object Versions {
-    const val activity = "1.0.0-rc01"
+
+    const val code = 2
+    const val name = "1.1.0"
+
     const val androidGradlePlugins = "3.6.2"
     const val appCompats = "1.1.0"
     const val archCore = "2.0.1"
     const val appId = "com.github.nothing2512.anticorona"
     const val buildTools = "29.0.2"
-    const val code = 1
     const val constraintLayouts = "1.1.3"
     const val coreKtxs = "1.1.0"
     const val coroutine = "1.3.2"
@@ -37,7 +39,6 @@ object Versions {
     const val minSdk = 21
     const val mockwebserver = "3.8.1"
     const val mockk = "1.9.3"
-    const val name = "1.0"
     const val retrofit = "2.3.0"
     const val room = "2.2.0"
     const val shimmers = "0.4.0"

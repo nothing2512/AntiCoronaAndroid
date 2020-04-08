@@ -30,62 +30,56 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/double_spacing">
 
-        <TextView
-            android:id="@+id/tvNewsAuthor"
-            style="@style/TextSubTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/spacing"
-            android:padding="@dimen/padding_author"
-            android:textAlignment="textStart"
-            android:text='@{item.author ?? "Nothing"}'
-            app:layout_constraintStart_toEndOf="@id/newsDot"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/newsDot"
-            android:layout_width="@dimen/loading_sub_title_height"
-            android:layout_height="@dimen/loading_sub_title_height"
-            android:layout_marginStart="@dimen/spacing"
-            android:src="@drawable/dot_author"
-            app:layout_constrainedWidth="true"
-            app:layout_constraintBottom_toBottomOf="@id/tvNewsAuthor"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tvNewsAuthor"
-            tools:ignore="ContentDescription" />
-
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/spacing"
-            android:layout_marginEnd="@dimen/spacing"
+            android:layout_margin="@dimen/spacing"
             app:cardCornerRadius="@dimen/main_radius"
+            app:cardElevation="@dimen/elevation"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvNewsAuthor">
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <TextView
+                    android:id="@+id/tvNewsAuthor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing"
+                    android:padding="@dimen/padding_author"
+                    android:textAlignment="textStart"
+                    style="@style/TextNormal"
+                    android:text='@{"Author: " + (item.author ?? "Nothing")}'
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
                 <ImageView
                     android:id="@+id/imNews"
-                    newsImage='@{item.image ?? ""}'
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/news_image_height"
+                    android:layout_width="@dimen/news_image_size"
+                    android:layout_height="@dimen/news_image_size"
                     android:scaleType="centerCrop"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_margin="@dimen/spacing"
+                    source='@{item.image ?? ""}'
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvNewsAuthor"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     tools:ignore="ContentDescription" />
 
                 <TextView
-                    style="@style/TextNormal"
-                    android:layout_width="match_parent"
+                    android:id="@+id/tvNewsText"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/spacing"
-                    android:text='@{item.title}'
-                    app:layout_constraintTop_toBottomOf="@id/imNews" />
+                    android:layout_marginStart="@dimen/double_spacing"
+                    android:textAlignment="textStart"
+                    style="@style/TextNormalSecondary.Mini"
+                    android:text='@{(item.title ?? "Nothing")}'
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/imNews"
+                    app:layout_constraintTop_toTopOf="@id/imNews"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

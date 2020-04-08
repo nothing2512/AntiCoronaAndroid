@@ -22,6 +22,7 @@ import com.github.nothing2512.anticorona.R
 import com.github.nothing2512.anticorona.data.remote.response.CaseResponse
 import com.github.nothing2512.anticorona.databinding.ItemProvinceBinding
 import com.github.nothing2512.anticorona.utils.animate
+import com.github.nothing2512.anticorona.utils.animateValue
 import com.github.nothing2512.anticorona.utils.getBinding
 
 /**
@@ -34,6 +35,8 @@ class ProvinceAdapter(
     private val data: List<CaseResponse>,
     private val openDialog: (CaseResponse) -> Unit
 ) : RecyclerView.Adapter<ProvinceAdapter.MainHolder>() {
+
+    private var reloadData = ArrayList<Boolean>()
 
     /**
      * set recycler view item has stable id
@@ -72,7 +75,12 @@ class ProvinceAdapter(
      * @see RecyclerView.Adapter.onBindViewHolder
      */
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
-        holder.bind(data[position])
+        try {
+            if (reloadData[position]) holder.reload(data[position])
+        } catch (e: Exception) {
+            holder.bind(data[position])
+            reloadData.add(position, true)
+        }
     }
 
     /**
@@ -89,13 +97,63 @@ class ProvinceAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
 
         /**
+         * Declare Variable
+         */
+        private var size = 0
+        private var value = 0
+
+        /**
          * Binding data to view
          * @param item
          */
         fun bind(item: CaseResponse) {
 
-            var value: Int
-            var size: Int
+            /**
+             * Get Seekbar value
+             * @see getSeekbarValue
+             */
+            getSeekbarValue(item)
+
+            binding.item = item
+            binding.itemProvinceCase.animateValue(item.cases.toString())
+            binding.itemProvinceSeekbar.apply {
+                max = size
+                isEnabled = false
+                animate(value)
+            }
+
+            binding.btProvinceDetail.setOnClickListener { openDialog(item) }
+        }
+
+        /**
+         * Binding data when reload view
+         * @param item
+         */
+        fun reload(item: CaseResponse) {
+
+            /**
+             * Get Seekbar value
+             * @see getSeekbarValue
+             */
+            getSeekbarValue(item)
+
+            binding.item = item
+            binding.itemProvinceCase.text = item.cases.toString()
+            binding.itemProvinceSeekbar.apply {
+                max = size
+                isEnabled = false
+                progress = value
+            }
+
+            binding.btProvinceDetail.setOnClickListener { openDialog(item) }
+        }
+
+        /**
+         * Get seekbar value
+         * @param item
+         * @return
+         */
+        private fun getSeekbarValue(item: CaseResponse) {
             try {
                 size = item.recovered + item.death
                 value = (item.recovered * size) / size
@@ -103,15 +161,6 @@ class ProvinceAdapter(
                 value = 0
                 size = 0
             }
-
-            binding.item = item
-            binding.itemProvinceSeekbar.apply {
-                max = size
-                isEnabled = false
-                animate(value)
-            }
-
-            binding.root.setOnClickListener { openDialog(item) }
         }
     }
 }

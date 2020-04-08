@@ -29,7 +29,10 @@ import com.github.nothing2512.anticorona.ui.country.CountryActivity
 import com.github.nothing2512.anticorona.ui.dialog.CountryDialog
 import com.github.nothing2512.anticorona.ui.dialog.ProvinceDialog
 import com.github.nothing2512.anticorona.ui.province.ProvinceActivity
-import com.github.nothing2512.anticorona.utils.*
+import com.github.nothing2512.anticorona.utils.Constants
+import com.github.nothing2512.anticorona.utils.animate
+import com.github.nothing2512.anticorona.utils.goto
+import com.github.nothing2512.anticorona.utils.toArrayList
 import com.github.nothing2512.anticorona.vo.Status
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 

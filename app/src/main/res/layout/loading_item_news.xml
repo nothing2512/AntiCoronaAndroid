@@ -21,34 +21,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/LtvNewsAuthor"
-        android:padding="@dimen/padding_author"
-        android:layout_marginTop="@dimen/double_spacing"
-        android:layout_marginStart="@dimen/spacing"
-        style="@style/TextSubTitle.Loading"
-        app:layout_constraintStart_toEndOf="@id/LnewsDot"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/LnewsDot"
-        android:layout_width="@dimen/loading_sub_title_height"
-        android:layout_height="@dimen/loading_sub_title_height"
-        android:layout_marginStart="@dimen/spacing"
-        app:layout_constrainedWidth="true"
-        android:src="@drawable/dot_author"
-        app:layout_constraintTop_toTopOf="@id/LtvNewsAuthor"
-        app:layout_constraintBottom_toBottomOf="@id/LtvNewsAuthor"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="ContentDescription" />
-
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/spacing"
         app:cardCornerRadius="@dimen/main_radius"
+        app:cardElevation="@dimen/elevation"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/LtvNewsAuthor"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -56,22 +36,54 @@
             android:layout_height="wrap_content">
 
             <View
-                android:id="@+id/LimNews"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/news_image_height"
-                android:background="@color/loading2"
-                android:scaleType="centerCrop"
+                android:id="@+id/LtvNewsAuthor"
+                android:layout_marginStart="@dimen/spacing"
+                android:padding="@dimen/padding_author"
+                style="@style/TextNormal.Loading"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/LimNews"
+                android:layout_width="@dimen/news_image_size"
+                android:layout_height="@dimen/news_image_size"
+                android:layout_margin="@dimen/spacing"
+                android:background="@color/grey"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/LtvNewsAuthor"
+                app:layout_constraintBottom_toBottomOf="parent"
                 tools:ignore="ContentDescription" />
 
             <View
-                android:layout_width="match_parent"
-                android:background="@color/loading1"
-                android:padding="@dimen/spacing"
-                style="@style/TextSubTitle.Loading"
-                app:layout_constraintTop_toBottomOf="@id/LimNews" />
+                android:id="@+id/LtvNewsText"
+                android:layout_width="0dp"
+                android:layout_marginStart="@dimen/double_spacing"
+                android:layout_marginEnd="@dimen/spacing"
+                style="@style/TextNormal.Loading"
+                app:layout_constraintStart_toEndOf="@id/LimNews"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/LimNews" />
+
+            <View
+                android:id="@+id/LtvNewsText2"
+                android:layout_width="0dp"
+                android:layout_marginTop="@dimen/spacing"
+                android:layout_marginStart="@dimen/double_spacing"
+                android:layout_marginEnd="@dimen/spacing"
+                style="@style/TextNormal.Loading"
+                app:layout_constraintStart_toEndOf="@id/LimNews"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/LtvNewsText"/>
+
+            <View
+                android:id="@+id/LtvNewsText3"
+                android:layout_marginTop="@dimen/spacing"
+                android:layout_marginStart="@dimen/double_spacing"
+                android:layout_marginEnd="@dimen/spacing"
+                style="@style/TextNormal.Loading"
+                app:layout_constraintStart_toEndOf="@id/LimNews"
+                app:layout_constraintTop_toBottomOf="@id/LtvNewsText2"/>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 

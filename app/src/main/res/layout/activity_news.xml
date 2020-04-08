@@ -22,21 +22,30 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent">
 
-        <com.github.nothing2512.anticorona.component.ConfiguratedWebView
-            android:id="@+id/wvNews"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/newsSwipe"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/imNewsLoading"
-            android:layout_width="250dp"
-            android:layout_height="250dp"
-            android:src="@drawable/covid"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:ignore="ContentDescription" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.github.nothing2512.anticorona.component.ConfiguratedWebView
+                    android:id="@+id/wvNews"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:id="@+id/sfWeb"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <include layout="@layout/loading_news" />
+                </com.facebook.shimmer.ShimmerFrameLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

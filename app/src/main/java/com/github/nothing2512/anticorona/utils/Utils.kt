@@ -293,6 +293,16 @@ fun EditText.required(field: String) {
 fun postDelay(r: () -> Unit) = Handler().postDelayed(r, Constants.SERVICE_LATENCY_IN_MILLIS)
 
 /**
+ * handling post Delayed
+ *
+ * @param delay
+ * @param r
+ *
+ * @see Handler.postDelayed
+ */
+fun postDelay(delay: Long, r: () -> Unit) = Handler().postDelayed(r, delay)
+
+/**
  * Animating value
  *
  * @param from

@@ -40,6 +40,6 @@
     <string name="answer">Jawaban</string>
     <string name="reg">{{REG}}</string>
     <string name="toolbar_countries">Kasus per negara</string>
-    <string name="toolbar_province">Kasus per provinsi</string>
     <string name="toolbar_web">Berita Web</string>
+    <string name="detail">Detail</string>
 </resources>

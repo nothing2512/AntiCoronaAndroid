@@ -63,6 +63,7 @@
                             android:id="@+id/sfHomeIndonesian"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:visibility="gone"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent">
@@ -261,6 +262,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/show_more"
+                        android:layout_marginTop="@dimen/spacing"
                         android:visibility="gone"
                         style="@style/TextHighlight"
                         app:layout_constraintStart_toStartOf="parent"
@@ -271,6 +273,7 @@
                         android:id="@+id/sfHomeProvince"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/imHomeProvinceDivider">
 
@@ -309,6 +312,7 @@
                                 android:id="@+id/sfHomeGlobal"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:visibility="gone"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent">
 
@@ -426,6 +430,7 @@
                             android:id="@+id/sfHomeCountry"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:visibility="gone"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/globalContainer">

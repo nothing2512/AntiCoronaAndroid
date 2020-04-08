@@ -32,7 +32,7 @@ import com.github.nothing2512.anticorona.utils.getBinding
 class FaqsAdapter(
     private val data: List<FaqsResponse>,
     private val openDialog: (FaqsResponse) -> Unit
-): RecyclerView.Adapter<FaqsAdapter.MainHolder>() {
+) : RecyclerView.Adapter<FaqsAdapter.MainHolder>() {
 
     /**
      * set recycler view item has stable id
@@ -85,7 +85,7 @@ class FaqsAdapter(
     class MainHolder(
         private val binding: ItemFaqsBinding,
         private val openDialog: (FaqsResponse) -> Unit
-    ): RecyclerView.ViewHolder(binding.root) {
+    ) : RecyclerView.ViewHolder(binding.root) {
 
         /**
          * Binding data to view
