@@ -23,7 +23,10 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.util.AttributeSet
 import android.view.View
-import android.webkit.*
+import android.webkit.WebResourceError
+import android.webkit.WebResourceRequest
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import com.github.nothing2512.anticorona.utils.hide
 import com.github.nothing2512.anticorona.utils.show
 

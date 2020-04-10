@@ -21,7 +21,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.nothing2512.anticorona.R
 import com.github.nothing2512.anticorona.data.remote.response.CaseResponse
 import com.github.nothing2512.anticorona.databinding.ItemProvinceBinding
-import com.github.nothing2512.anticorona.utils.animate
 import com.github.nothing2512.anticorona.utils.animateValue
 import com.github.nothing2512.anticorona.utils.getBinding
 
@@ -97,32 +96,13 @@ class ProvinceAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
 
         /**
-         * Declare Variable
-         */
-        private var size = 0
-        private var value = 0
-
-        /**
          * Binding data to view
          * @param item
          */
         fun bind(item: CaseResponse) {
-
-            /**
-             * Get Seekbar value
-             * @see getSeekbarValue
-             */
-            getSeekbarValue(item)
-
             binding.item = item
             binding.itemProvinceCase.animateValue(item.cases.toString())
-            binding.itemProvinceSeekbar.apply {
-                max = size
-                isEnabled = false
-                animate(value)
-            }
-
-            binding.btProvinceDetail.setOnClickListener { openDialog(item) }
+            binding.root.setOnClickListener { openDialog(item) }
         }
 
         /**
@@ -130,37 +110,9 @@ class ProvinceAdapter(
          * @param item
          */
         fun reload(item: CaseResponse) {
-
-            /**
-             * Get Seekbar value
-             * @see getSeekbarValue
-             */
-            getSeekbarValue(item)
-
             binding.item = item
             binding.itemProvinceCase.text = item.cases.toString()
-            binding.itemProvinceSeekbar.apply {
-                max = size
-                isEnabled = false
-                progress = value
-            }
-
-            binding.btProvinceDetail.setOnClickListener { openDialog(item) }
-        }
-
-        /**
-         * Get seekbar value
-         * @param item
-         * @return
-         */
-        private fun getSeekbarValue(item: CaseResponse) {
-            try {
-                size = item.recovered + item.death
-                value = (item.recovered * size) / size
-            } catch (_: Exception) {
-                value = 0
-                size = 0
-            }
+            binding.root.setOnClickListener { openDialog(item) }
         }
     }
 }

@@ -21,7 +21,9 @@ import android.widget.RadioButton
 import com.github.nothing2512.anticorona.R
 import com.github.nothing2512.anticorona.databinding.DialogThemeBinding
 import com.github.nothing2512.anticorona.parent.ParentDialog
+import com.github.nothing2512.anticorona.ui.home.HomeActivity
 import com.github.nothing2512.anticorona.utils.Preference
+import com.github.nothing2512.anticorona.utils.goto
 import com.github.nothing2512.anticorona.vo.Theme
 
 /**
@@ -64,7 +66,7 @@ class ThemeDialog(private val activity: Activity) :
             dismiss()
             activity.apply {
                 finish()
-                startActivity(intent)
+                goto(HomeActivity::class.java)
             }
         }
 
@@ -80,7 +82,7 @@ class ThemeDialog(private val activity: Activity) :
             dismiss()
             activity.apply {
                 finish()
-                startActivity(intent)
+                goto(HomeActivity::class.java)
             }
         }
     }

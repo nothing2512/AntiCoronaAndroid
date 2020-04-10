@@ -25,7 +25,7 @@
     <string name="theme_default">Default</string>
     <string name="theme_ocean">Ocean</string>
     <string name="indonesian_case">Indonesian Case</string>
-    <string name="cases">Case</string>
+    <string name="cases">Cases</string>
     <string name="recovered">Recovered</string>
     <string name="death">Death</string>
     <string name="global_case">Global Case</string>
@@ -33,7 +33,7 @@
     <string name="toolbar_cases">Corona Cases</string>
     <string name="toolbar_faq">FAQ</string>
     <string name="toolbar_news">Corona News</string>
-    <string name="province">Province Case</string>
+    <string name="toolbar_province">Province Case</string>
     <string name="show_more">Show More</string>
     <string name="server_down">Sorry, Server Is Unreachable</string>
     <string name="answer">Answer</string>
@@ -41,4 +41,14 @@
     <string name="toolbar_countries">Countries Case</string>
     <string name="toolbar_web">Web News</string>
     <string name="detail">Detail</string>
+    <string name="about">About</string>
+    <string name="contact">Contact</string>
+    <string name="latest_news">See the latest news now</string>
+    <string name="see_expanded">Expand to see more</string>
+    <string name="setting">Setting</string>
+    <string name="enable_notification">Enable Notification</string>
+    <string name="covid_center">COVID-19 Information Center</string>
+    <string name="anticorona_support">AntiCorona Support</string>
+    <string name="hotline">Hotline</string>
+    <string name="report_bug">Report Bug</string>
 </resources>

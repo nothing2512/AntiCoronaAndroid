@@ -17,11 +17,11 @@
 package com.github.nothing2512.anticorona.services
 
 import android.content.Context
-import androidx.room.Room
 import com.github.nothing2512.anticorona.data.local.CoronaDatabase
 import com.github.nothing2512.anticorona.data.local.dao.CasesDao
 import com.github.nothing2512.anticorona.data.local.dao.FaqsDao
 import com.github.nothing2512.anticorona.data.local.dao.NewsDao
+import com.github.nothing2512.anticorona.utils.provideDatabase
 
 /**
  * [DatabaseService] class
@@ -38,6 +38,7 @@ class DatabaseService {
         /**
          * Providing Database
          * @see CoronaDatabase
+         * @see provideDatabase
          */
         val db = provideDatabase(context.applicationContext)
         val casesDao = db.casesDao()
@@ -58,27 +59,4 @@ class DatabaseService {
         newsDao.delete()
         if (all) faqsDao.delete()
     }
-
-    /**
-     * function provideDatabase
-     * providing in app database
-     *
-     * @param context
-     *
-     * @see Context
-     * @see Room.databaseBuilder
-     *
-     * @see CoronaDatabase
-     *
-     * @return CoronaDatabase
-     */
-    private fun provideDatabase(context: Context) =
-        Room
-            .databaseBuilder(
-                context,
-                CoronaDatabase::class.java,
-                "AntiCorona.db"
-            )
-            .fallbackToDestructiveMigration()
-            .allowMainThreadQueries().build()
 }

@@ -136,38 +136,44 @@
             android:text="@string/reg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/spacing"
             style="@style/TextNormal"
             animateValue='@{Integer.toString(item.cases) ?? "0"}'
             app:layout_constraintEnd_toEndOf="@id/imDialogCountryCase"
             app:layout_constraintStart_toStartOf="@id/imDialogCountryCase"
-            app:layout_constraintTop_toBottomOf="@id/imDialogCountryCase"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/imDialogCountryCase"/>
 
         <com.github.nothing2512.anticorona.component.AnimatedTextView
             android:id="@+id/tvDialogCountryRecoveredValue"
             android:text="@string/reg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/spacing"
             style="@style/TextNormal"
             animateValue='@{Integer.toString(item.recovered) ?? "0"}'
             app:layout_constraintEnd_toEndOf="@id/imDialogCountryRecovered"
             app:layout_constraintStart_toStartOf="@id/imDialogCountryRecovered"
-            app:layout_constraintTop_toBottomOf="@id/imDialogCountryRecovered"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/imDialogCountryRecovered"/>
 
         <com.github.nothing2512.anticorona.component.AnimatedTextView
             android:id="@+id/tvDialogCountryDeathValue"
             android:text="@string/reg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/spacing"
             style="@style/TextNormal"
             animateValue='@{Integer.toString(item.death) ?? "0"}'
             app:layout_constraintEnd_toEndOf="@id/imDialogCountryDeath"
             app:layout_constraintStart_toStartOf="@id/imDialogCountryDeath"
-            app:layout_constraintTop_toBottomOf="@id/imDialogCountryDeath"
+            app:layout_constraintTop_toBottomOf="@id/imDialogCountryDeath"/>
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/countryChart"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/spacing"
+            android:layout_marginBottom="@dimen/spacing"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvDialogCountryDeathValue"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

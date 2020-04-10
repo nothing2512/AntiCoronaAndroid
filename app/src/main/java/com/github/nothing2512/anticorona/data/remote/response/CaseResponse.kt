@@ -16,7 +16,10 @@
 
 package com.github.nothing2512.anticorona.data.remote.response
 
+import android.content.Context
 import android.os.Parcelable
+import com.github.mikephil.charting.data.PieEntry
+import com.github.nothing2512.anticorona.R
 import kotlinx.android.parcel.Parcelize
 
 /**
@@ -35,4 +38,17 @@ data class CaseResponse(
     val recovered: Int,
     val death: Int,
     val flag: String?
-) : Parcelable
+) : Parcelable {
+
+    /**
+     * Get pie entry
+     * @param context
+     * @see PieEntry
+     * @return
+     */
+    fun toEntry(context: Context?) = listOf(
+        PieEntry(cases.toFloat(), context?.getString(R.string.cases)),
+        PieEntry(recovered.toFloat(), context?.getString(R.string.recovered)),
+        PieEntry(death.toFloat(), context?.getString(R.string.death))
+    )
+}

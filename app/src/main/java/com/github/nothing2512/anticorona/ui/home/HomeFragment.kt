@@ -18,7 +18,6 @@ package com.github.nothing2512.anticorona.ui.home
 
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.nothing2512.anticorona.R
 import com.github.nothing2512.anticorona.databinding.FragmentHomeBinding
@@ -29,10 +28,7 @@ import com.github.nothing2512.anticorona.ui.country.CountryActivity
 import com.github.nothing2512.anticorona.ui.dialog.CountryDialog
 import com.github.nothing2512.anticorona.ui.dialog.ProvinceDialog
 import com.github.nothing2512.anticorona.ui.province.ProvinceActivity
-import com.github.nothing2512.anticorona.utils.Constants
-import com.github.nothing2512.anticorona.utils.animate
-import com.github.nothing2512.anticorona.utils.goto
-import com.github.nothing2512.anticorona.utils.toArrayList
+import com.github.nothing2512.anticorona.utils.*
 import com.github.nothing2512.anticorona.vo.Status
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
@@ -52,6 +48,7 @@ class HomeFragment : ParentFragment<FragmentHomeBinding>(R.layout.fragment_home)
     private val homeViewModel: HomeViewModel by sharedViewModel()
     private lateinit var loading: HomeLoading
     private var isFinishFetch = false
+    private var isFirstLoad = true
 
     /**
      * subscribing ui
@@ -109,6 +106,20 @@ class HomeFragment : ParentFragment<FragmentHomeBinding>(R.layout.fragment_home)
                 Status.SUCCESS -> {
                     loading.indonesianStop()
                     binding.indonesian = it.data
+
+                    if (isFirstLoad) {
+                        binding.tvHomeICaseValue.animateValue(it.data?.cases.toString())
+                        binding.tvHomeIRecoveredValue.animateValue(it.data?.recovered.toString())
+                        binding.tvHomeIDeathValue.animateValue(it.data?.death.toString())
+                    } else binding.apply {
+                        tvHomeICaseValue.text = tvHomeICaseValue.text.toString()
+                            .replace(Constants.TV_REG, it.data?.cases.toString())
+                        tvHomeIRecoveredValue.text = tvHomeIRecoveredValue.text.toString()
+                            .replace(Constants.TV_REG, it.data?.recovered.toString())
+                        tvHomeIDeathValue.text = tvHomeIDeathValue.text.toString()
+                            .replace(Constants.TV_REG, it.data?.death.toString())
+                    }
+
                     homeViewModel.getProvinceCase()
                 }
             }
@@ -136,7 +147,7 @@ class HomeFragment : ParentFragment<FragmentHomeBinding>(R.layout.fragment_home)
                      * @see RecyclerView.setAdapter
                      * @see RecyclerView.setLayoutManager
                      * @see RecyclerView.RecycledViewPool
-                     * @see LinearLayoutManager
+                     * @see GridLayoutManager
                      * @see ProvinceAdapter
                      * @see ProvinceDialog
                      */
@@ -144,8 +155,8 @@ class HomeFragment : ParentFragment<FragmentHomeBinding>(R.layout.fragment_home)
                         setHasFixedSize(true)
                         setRecycledViewPool(RecyclerView.RecycledViewPool())
                         isNestedScrollingEnabled = true
-                        layoutManager = LinearLayoutManager(activity?.applicationContext)
-                        adapter = ProvinceAdapter(it.data?.slice(0..2) ?: listOf()) { item ->
+                        layoutManager = GridLayoutManager(activity?.applicationContext, 2)
+                        adapter = ProvinceAdapter(it.data?.slice(0..3) ?: listOf()) { item ->
                             activity?.supportFragmentManager?.let { fm ->
                                 ProvinceDialog.newInstance(item)
                                     .show(fm, ProvinceDialog.TAG)
@@ -194,10 +205,18 @@ class HomeFragment : ParentFragment<FragmentHomeBinding>(R.layout.fragment_home)
                     /**
                      * setting and animating global data
                      * @see animate
+                     * @see animateValue
                      */
-                    binding.global = it.data
-                    binding.sbHomeRecovered.animate(recovered ?: 0)
-                    binding.sbHomeDeath.animate(death ?: 0)
+                    if (isFirstLoad) {
+                        binding.tvHomeGCase.animateValue(it.data?.cases.toString())
+                        binding.sbHomeRecovered.animate(recovered ?: 0)
+                        binding.sbHomeDeath.animate(death ?: 0)
+                    } else binding.apply {
+                        tvHomeGCase.text = tvHomeGCase.text.toString()
+                            .replace(Constants.TV_REG, it.data?.cases.toString())
+                        sbHomeRecovered.progress = recovered ?: 0
+                        sbHomeDeath.progress = death ?: 0
+                    }
 
                     loading.globalStop()
                     homeViewModel.getCountryCase()
@@ -258,6 +277,7 @@ class HomeFragment : ParentFragment<FragmentHomeBinding>(R.layout.fragment_home)
                     }
 
                     loading.countryStop()
+                    isFirstLoad = false
                 }
             }
         }

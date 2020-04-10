@@ -20,6 +20,7 @@
     <!--  Spacing  -->
     <dimen name="spacing">11dp</dimen>
     <dimen name="double_spacing">22dp</dimen>
+    <dimen name="secondary_spacing">16dp</dimen>
     <dimen name="main_radius">6dp</dimen>
     <dimen name="padding_author">5dp</dimen>
 
@@ -56,4 +57,5 @@
     <!--  Other  -->
     <dimen name="news_image_size">100dp</dimen>
     <dimen name="image_loading_size">200dp</dimen>
+    <dimen name="notif_icon_size">50dp</dimen>
 </resources>

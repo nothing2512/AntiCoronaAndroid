@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2020 Nothing
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_dialog">
+
+        <TextView
+            android:id="@+id/tvDialogContactTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:text="@string/contact"
+            android:layout_marginTop="@dimen/spacing"
+            style="@style/TextSubTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imDialogContactDivider"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/divider_height"
+            android:layout_marginTop="@dimen/spacing"
+            android:layout_marginStart="@dimen/spacing"
+            android:layout_marginEnd="@dimen/spacing"
+            android:background="@drawable/divider"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvDialogContactTitle"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tvCovidWA"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/covid_center"
+            android:paddingTop="@dimen/double_spacing"
+            android:paddingBottom="@dimen/double_spacing"
+            android:gravity="center_vertical"
+            android:layout_marginTop="@dimen/double_spacing"
+            style="@style/TextNormal.Left"
+            app:layout_constraintStart_toEndOf="@id/imCovidWA"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imDialogContactDivider" />
+
+        <ImageView
+            android:id="@+id/imCovidWA"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="@dimen/secondary_spacing"
+            android:src="@drawable/whatsapp"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvCovidWA"
+            app:layout_constraintBottom_toBottomOf="@id/tvCovidWA"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tvAntiCoronaWA"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/anticorona_support"
+            android:paddingTop="@dimen/double_spacing"
+            android:paddingBottom="@dimen/double_spacing"
+            android:gravity="center_vertical"
+            android:layout_marginTop="@dimen/double_spacing"
+            style="@style/TextNormal.Left"
+            app:layout_constraintStart_toEndOf="@id/imAntiCoronaWA"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvCovidWA" />
+
+        <ImageView
+            android:id="@+id/imAntiCoronaWA"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="@dimen/secondary_spacing"
+            android:src="@drawable/whatsapp"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvAntiCoronaWA"
+            app:layout_constraintBottom_toBottomOf="@id/tvAntiCoronaWA"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tvHotline"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/hotline"
+            android:paddingTop="@dimen/double_spacing"
+            android:paddingBottom="@dimen/double_spacing"
+            android:gravity="center_vertical"
+            android:layout_marginTop="@dimen/double_spacing"
+            style="@style/TextNormal.Left"
+            app:layout_constraintStart_toEndOf="@id/imHotline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvAntiCoronaWA" />
+
+        <ImageView
+            android:id="@+id/imHotline"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="@dimen/secondary_spacing"
+            android:src="@drawable/hotline"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvHotline"
+            app:layout_constraintBottom_toBottomOf="@id/tvHotline"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tvReport"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/report_bug"
+            android:paddingTop="@dimen/double_spacing"
+            android:paddingBottom="@dimen/double_spacing"
+            android:gravity="center_vertical"
+            android:layout_marginTop="@dimen/double_spacing"
+            style="@style/TextNormal.Left"
+            app:layout_constraintStart_toEndOf="@id/imReport"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvHotline" />
+
+        <ImageView
+            android:id="@+id/imReport"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="@dimen/secondary_spacing"
+            android:src="@drawable/ic_bug"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvReport"
+            app:layout_constraintBottom_toBottomOf="@id/tvReport"
+            tools:ignore="ContentDescription" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

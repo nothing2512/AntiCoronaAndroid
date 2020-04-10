@@ -17,7 +17,7 @@
 package com.github.nothing2512.anticorona.ui.province
 
 import android.content.Intent
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.github.nothing2512.anticorona.R
@@ -75,7 +75,7 @@ class ProvinceActivity : ParentActivity<ActivityProvinceBinding>(R.layout.activi
          * Set Toolbar Title
          * @see setToolbarTitle
          */
-        setToolbarTitle(R.string.toolbar_countries)
+        setToolbarTitle(R.string.toolbar_province)
 
         /**
          * Observing remote repository cases
@@ -102,7 +102,7 @@ class ProvinceActivity : ParentActivity<ActivityProvinceBinding>(R.layout.activi
          * @see ProvinceViewModel.cases
          * @see observe
          * @see RecyclerView.RecycledViewPool
-         * @see LinearLayoutManager
+         * @see GridLayoutManager
          * @see ProvinceAdapter
          * @see ProvinceDialog
          */
@@ -110,7 +110,7 @@ class ProvinceActivity : ParentActivity<ActivityProvinceBinding>(R.layout.activi
             binding.rvProvince.apply {
                 setHasFixedSize(true)
                 setRecycledViewPool(RecyclerView.RecycledViewPool())
-                layoutManager = LinearLayoutManager(this@ProvinceActivity)
+                layoutManager = GridLayoutManager(this@ProvinceActivity, 2)
                 adapter = ProvinceAdapter(it) { item ->
                     ProvinceDialog.newInstance(item)
                         .show(supportFragmentManager, ProvinceDialog.TAG)
@@ -122,7 +122,10 @@ class ProvinceActivity : ParentActivity<ActivityProvinceBinding>(R.layout.activi
          * Setting [SwipeRefreshLayout] function
          * @see SwipeRefreshLayout.setOnRefreshListener
          */
-        binding.provinceSwipe.setOnRefreshListener { provinceViewModel.getCases() }
+        binding.provinceSwipe.setOnRefreshListener {
+            binding.provinceSwipe.isRefreshing = false
+            provinceViewModel.getCases()
+        }
 
         /**
          * Set cases from intent data

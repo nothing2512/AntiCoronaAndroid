@@ -1,4 +1,5 @@
 import org.gradle.api.artifacts.dsl.RepositoryHandler
+import java.net.URI
 
 /*
  * Copyright 2020 Nothing
@@ -33,11 +34,13 @@ object Deps {
     const val coil = "io.coil-kt:coil:${Versions.coils}"
     const val font = "uk.co.chrisjenx:calligraphy:${Versions.fonts}"
     const val archCoreTesting = "androidx.arch.core:core-testing:${Versions.archCore}"
+    const val chart = "com.github.PhilJay:MPAndroidChart:${Versions.chart}"
 
     val repositories: RepositoryHandler.() -> Unit = {
         google()
         jcenter()
         mavenCentral()
+        maven { url = URI("https://jitpack.io") }
     }
 
     object Coroutine {

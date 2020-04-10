@@ -71,11 +71,7 @@ object Constants {
     const val EXTRA_PROVINCE = "ExtraProvince"
     const val EXTRA_COUNTRY = "ExtraCountry"
     const val EXTRA_URL = "ExtraUrl"
-
-    /**
-     * Broadcast Latency
-     */
-    const val BROADCAST_LATENCY = 32400000L
+    const val EXTRA_STATUS = "ExtraStatus"
 
     /**
      * TextView REG
@@ -86,4 +82,21 @@ object Constants {
      * ID Lang code
      */
     const val LANG_ID = "ID"
+
+    /**
+     * Contact data
+     */
+    const val EXTRA_NUMBER = "jid"
+    const val CS_WA = "6288234030448"
+    const val CS_EMAIL = "blank345red@gmail.com"
+    const val COVID_WA = "6281133399000"
+    const val COVID_HOTLINE = "119"
+
+    /**
+     * Notification Data
+     */
+    const val NOTIF_NAME = "AnticoronaNotif"
+    const val NOTIF_CHANNEL_ID = "AntiCoronaNotifID"
+    const val NOTIF_ID = 2512
+    const val NOTIF_REQ_CODE = 1206
 }

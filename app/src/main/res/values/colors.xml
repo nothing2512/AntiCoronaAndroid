@@ -23,8 +23,8 @@
     <color name="colorAccent">#03DAC5</color>
 
     <!--  Secondary Color  -->
-    <color name="colorPrimaryOcean">#277FC6</color>
-    <color name="colorPrimaryOceanDark">#216BA6</color>
+    <color name="colorPrimaryOcean">#00A7BE</color>
+    <color name="colorPrimaryOceanDark">#0087BE</color>
 
     <!--  Background Color  -->
     <color name="background">#DBDBDB</color>
@@ -38,10 +38,11 @@
     <color name="grey_secondary">#737373</color>
     <color name="divider">#9F9F9F</color>
 
-    <!--  Seekbar Color  -->
+    <!--  Cases Color  -->
+    <color name="cases">#FFA500</color>
     <color name="recovered">#00FF00</color>
     <color name="death">#FF0000</color>
 
     <!--  Text Color  -->
-    <color name="highlight">#2196F3</color>
+    <color name="highlight">#05477C</color>
 </resources>

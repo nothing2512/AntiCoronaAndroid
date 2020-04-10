@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright 2020 Nothing
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,29 +15,57 @@
   -->
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/loading2"
-    android:padding="@dimen/spacing"
-    android:layout_marginTop="@dimen/spacing"
-    android:layout_marginBottom="@dimen/spacing">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
-    <View
-        android:id="@+id/LitemProvinceName"
-        style="@style/TextNormal.Loading"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing"
+        app:cardBackgroundColor="@color/loading2"
+        app:cardCornerRadius="@dimen/main_radius"
+        app:cardElevation="@dimen/elevation"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <View
-        style="@style/TextNormal.Loading"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <View
-        style="@style/SeekbarLoading"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/LitemProvinceName" />
+            <View
+                android:id="@+id/itemProvinceName"
+                style="@style/TextSubTitle.Loading"
+                android:layout_marginStart="@dimen/spacing"
+                android:layout_marginTop="@dimen/spacing"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/itemProvinceCase"
+                style="@style/TextNormal.Loading"
+                android:layout_marginTop="@dimen/spacing"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/itemProvinceName" />
+
+            <View
+                android:id="@+id/itemProvinceCaseText"
+                style="@style/TextNormal.Loading"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/itemProvinceCase" />
+
+            <View
+                android:id="@+id/btProvinceDetail"
+                style="@style/TextNormal.Loading"
+                android:layout_margin="@dimen/spacing"
+                android:layout_marginTop="@dimen/spacing"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/itemProvinceCaseText" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,6 +20,7 @@ import com.github.nothing2512.anticorona.R
 import com.github.nothing2512.anticorona.data.remote.response.CaseResponse
 import com.github.nothing2512.anticorona.databinding.DialogProvinceBinding
 import com.github.nothing2512.anticorona.parent.ParentDialog
+import com.github.nothing2512.anticorona.utils.setup
 
 /**
  * [ProvinceDialog] class
@@ -36,6 +37,7 @@ class ProvinceDialog(private val item: CaseResponse) :
      */
     override fun subscribeUI() {
         binding.item = item
+        binding.provinceChart.setup(item.toEntry(context?.applicationContext))
     }
 
     companion object {

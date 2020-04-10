@@ -69,10 +69,10 @@ class MainApplication : Application() {
          */
         if (!DatabaseReceiver.isActive(applicationContext)) {
             val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-            alarmManager.setRepeating(
+            alarmManager.setInexactRepeating(
                 AlarmManager.RTC_WAKEUP,
                 System.currentTimeMillis(),
-                Constants.BROADCAST_LATENCY,
+                AlarmManager.INTERVAL_HOUR * 6,
                 DatabaseReceiver.getInstance(applicationContext)
             )
         }

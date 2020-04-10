@@ -17,10 +17,8 @@
 package com.github.nothing2512.anticorona.parent
 
 import android.content.Context
-import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.provider.Settings
 import android.util.DisplayMetrics
 import android.view.Menu
 import android.view.MenuItem
@@ -31,11 +29,8 @@ import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import com.github.nothing2512.anticorona.R
-import com.github.nothing2512.anticorona.ui.dialog.ThemeDialog
-import com.github.nothing2512.anticorona.utils.Preference
-import com.github.nothing2512.anticorona.utils.getBinding
-import com.github.nothing2512.anticorona.utils.launchMain
-import com.github.nothing2512.anticorona.utils.toast
+import com.github.nothing2512.anticorona.ui.setting.SettingActivity
+import com.github.nothing2512.anticorona.utils.*
 import com.github.nothing2512.anticorona.vo.Theme
 import kotlinx.android.synthetic.*
 import org.koin.android.ext.android.inject
@@ -226,23 +221,10 @@ abstract class ParentActivity<VDB : ViewDataBinding>(
         when (item?.itemId) {
 
             /**
-             * Changing language
-             * open language setting
-             *
-             * @see Intent
-             * @see Settings.ACTION_LOCALE_SETTINGS
-             * @see AppCompatActivity.startActivity
+             * goto setting activity
+             * @see goto
              */
-            R.id.btChangeLanguage -> startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))
-
-            /**
-             * Changing Theme
-             * open dialog to pick selected theme
-             *
-             * @see ThemeDialog
-             */
-            R.id.btChangeTheme ->
-                ThemeDialog.newInstance(this).show(supportFragmentManager, ThemeDialog.TAG)
+            R.id.btSetting -> if (this !is SettingActivity) goto(SettingActivity::class.java)
 
             /**
              * Triggering when home button clicked

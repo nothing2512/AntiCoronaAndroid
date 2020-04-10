@@ -32,6 +32,8 @@
             android:layout_margin="@dimen/spacing"
             app:cardElevation="@dimen/elevation"
             app:cardCornerRadius="@dimen/main_radius"
+            app:cardBackgroundColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -43,12 +45,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/spacing"
-                    android:layout_marginStart="@dimen/spacing"
                     android:ellipsize="end"
                     android:maxLines="1"
                     android:text='@{item.location ?? ""}'
-                    style="@style/TextNormal"
+                    style="@style/TextSubTitle"
                     app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"/>
 
                 <com.github.nothing2512.anticorona.component.AnimatedTextView
@@ -56,20 +58,25 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/spacing"
-                    android:layout_marginEnd="@dimen/spacing"
-                    android:text="@string/total_cases"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@string/reg"
                     style="@style/TextNormal"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
-
-                <SeekBar
-                    android:id="@+id/itemProvinceSeekbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/SeekbarComparison"
+                    app:layout_constraintTop_toBottomOf="@id/itemProvinceName"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/itemProvinceName" />
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                    android:id="@+id/itemProvinceCaseText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@string/cases"
+                    style="@style/TextNormal"
+                    app:layout_constraintTop_toBottomOf="@id/itemProvinceCase"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
 
                 <TextView
                     android:id="@+id/btProvinceDetail"
@@ -78,7 +85,7 @@
                     android:layout_margin="@dimen/spacing"
                     android:text="@string/detail"
                     style="@style/TextHighlight"
-                    app:layout_constraintTop_toBottomOf="@id/itemProvinceSeekbar"
+                    app:layout_constraintTop_toBottomOf="@id/itemProvinceCaseText"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />

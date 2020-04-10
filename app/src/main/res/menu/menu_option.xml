@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright 2020 Nothing
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,12 +16,10 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <item
-        android:id="@+id/btChangeLanguage"
-        android:title="@string/change_language"
-        app:showAsAction="never"/>
-    <item
-        android:id="@+id/btChangeTheme"
-        android:title="@string/change_theme"
-        app:showAsAction="never"/>
+        android:id="@+id/btSetting"
+        android:icon="@drawable/ic_setting"
+        android:title="@string/setting"
+        app:showAsAction="ifRoom" />
 </menu>

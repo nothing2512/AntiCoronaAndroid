@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright 2020 Nothing
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,10 +22,6 @@
 
         <variable
             name="indonesian"
-            type="com.github.nothing2512.anticorona.data.remote.response.CaseResponse" />
-
-        <variable
-            name="global"
             type="com.github.nothing2512.anticorona.data.remote.response.CaseResponse" />
     </data>
 
@@ -75,11 +70,11 @@
                         <TextView
                             android:id="@+id/tvHomeIndonesianCase"
                             style="@style/TextSubTitle"
-                            android:visibility="gone"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/indonesian_case"
                             android:layout_margin="@dimen/spacing"
+                            android:text="@string/indonesian_case"
+                            android:visibility="gone"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -89,9 +84,9 @@
                             android:layout_width="@dimen/big_flag_size"
                             android:layout_height="@dimen/big_flag_size"
                             android:layout_marginTop="@dimen/spacing"
+                            android:background="@drawable/bg_outline"
                             android:scaleType="centerCrop"
                             android:src="@drawable/flag"
-                            android:background="@drawable/bg_outline"
                             android:visibility="gone"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -172,45 +167,42 @@
 
                         <com.github.nothing2512.anticorona.component.AnimatedTextView
                             android:id="@+id/tvHomeICaseValue"
+                            style="@style/TextNormal"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="@dimen/spacing"
                             android:text="@string/reg"
                             android:visibility="gone"
-                            style="@style/TextNormal"
-                            animateValue='@{Integer.toString(indonesian.cases) ?? "0"}'
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="@id/imHomeICase"
                             app:layout_constraintStart_toStartOf="@id/imHomeICase"
-                            app:layout_constraintTop_toBottomOf="@id/imHomeICase"
-                            app:layout_constraintBottom_toBottomOf="parent"/>
+                            app:layout_constraintTop_toBottomOf="@id/imHomeICase" />
 
                         <com.github.nothing2512.anticorona.component.AnimatedTextView
                             android:id="@+id/tvHomeIRecoveredValue"
+                            style="@style/TextNormal"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="@dimen/spacing"
                             android:text="@string/reg"
                             android:visibility="gone"
-                            style="@style/TextNormal"
-                            animateValue='@{Integer.toString(indonesian.recovered) ?? "0"}'
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="@id/imHomeIRecovered"
                             app:layout_constraintStart_toStartOf="@id/imHomeIRecovered"
-                            app:layout_constraintTop_toBottomOf="@id/imHomeIRecovered"
-                            app:layout_constraintBottom_toBottomOf="parent"/>
+                            app:layout_constraintTop_toBottomOf="@id/imHomeIRecovered" />
 
                         <com.github.nothing2512.anticorona.component.AnimatedTextView
                             android:id="@+id/tvHomeIDeathValue"
+                            style="@style/TextNormal"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="@dimen/spacing"
                             android:text="@string/reg"
                             android:visibility="gone"
-                            style="@style/TextNormal"
-                            animateValue='@{Integer.toString(indonesian.death) ?? "0"}'
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="@id/imHomeIDeath"
                             app:layout_constraintStart_toStartOf="@id/imHomeIDeath"
-                            app:layout_constraintTop_toBottomOf="@id/imHomeIDeath"
-                            app:layout_constraintBottom_toBottomOf="parent"/>
+                            app:layout_constraintTop_toBottomOf="@id/imHomeIDeath" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -220,28 +212,28 @@
                     android:id="@+id/homeProvinceContainer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/homeCardIndonesian">
 
                     <TextView
                         android:id="@+id/tvHomeProvinceTitle"
+                        style="@style/TextSubTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/province"
                         android:layout_marginTop="@dimen/double_spacing"
+                        android:text="@string/toolbar_province"
                         android:visibility="gone"
-                        style="@style/TextSubTitle"
-                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"/>
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
                         android:id="@+id/imHomeProvinceDivider"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/divider_height"
-                        android:src="@drawable/divider"
                         android:layout_margin="@dimen/spacing"
+                        android:src="@drawable/divider"
                         android:visibility="gone"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tvHomeProvinceTitle"
@@ -252,21 +244,21 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:visibility="gone"
-                        tools:itemCount="3"
-                        tools:listitem="@layout/item_province"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/imHomeProvinceDivider"
-                        app:layout_constraintStart_toStartOf="parent" />
+                        tools:itemCount="3"
+                        tools:listitem="@layout/item_province" />
 
                     <TextView
                         android:id="@+id/tvHomeProvinceHighlight"
+                        style="@style/TextHighlight"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/show_more"
                         android:layout_marginTop="@dimen/spacing"
+                        android:text="@string/show_more"
                         android:visibility="gone"
-                        style="@style/TextHighlight"
-                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/rvHomeProvince" />
 
                     <com.facebook.shimmer.ShimmerFrameLayout
@@ -287,8 +279,8 @@
                     android:id="@+id/homeCardGlobal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/double_spacing"
                     android:layout_marginStart="@dimen/spacing"
+                    android:layout_marginTop="@dimen/double_spacing"
                     android:layout_marginEnd="@dimen/spacing"
                     android:elevation="@dimen/elevation"
                     app:cardCornerRadius="@dimen/main_radius"
@@ -346,14 +338,13 @@
 
                             <com.github.nothing2512.anticorona.component.AnimatedTextView
                                 android:id="@+id/tvHomeGCase"
+                                style="@style/TextNormal"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="@dimen/spacing"
                                 android:layout_marginTop="@dimen/spacing"
                                 android:text="@string/total_cases"
                                 android:visibility="gone"
-                                style="@style/TextNormal"
-                                animateValue='@{Integer.toString(global.cases) ?? ""}'
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@id/imHomeGlobal" />
@@ -384,9 +375,9 @@
                             <SeekBar
                                 android:id="@+id/sbHomeRecovered"
                                 style="@style/SeekbarRecovered"
-                                android:visibility="gone"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:visibility="gone"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toEndOf="@id/imHomeGRecovered"
                                 app:layout_constraintTop_toBottomOf="@id/tvHomeGRecovered" />
@@ -417,9 +408,9 @@
                             <SeekBar
                                 android:id="@+id/sbHomeDeath"
                                 style="@style/SeekbarDeath"
-                                android:visibility="gone"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:visibility="gone"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toEndOf="@id/imHomeGDeath"
                                 app:layout_constraintTop_toBottomOf="@id/tvHomeGDeath" />
@@ -431,8 +422,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:visibility="gone"
-                            app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/globalContainer">
 
                             <include layout="@layout/loading_home_country" />
@@ -445,21 +436,21 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/spacing"
                             android:visibility="gone"
-                            tools:itemCount="2"
-                            tools:listitem="@layout/item_country"
-                            app:layout_constraintTop_toBottomOf="@id/globalContainer"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"/>
+                            app:layout_constraintTop_toBottomOf="@id/globalContainer"
+                            tools:itemCount="2"
+                            tools:listitem="@layout/item_country" />
 
                         <TextView
                             android:id="@+id/tvHomeGlobalHighlight"
+                            style="@style/TextHighlight"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/show_more"
                             android:visibility="gone"
-                            style="@style/TextHighlight"
-                            app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/rvHomeGlobal" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>

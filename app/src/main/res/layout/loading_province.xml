@@ -21,22 +21,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/loading_item_province" />
+    <include layout="@layout/loading_home_province" />
 
-    <include layout="@layout/loading_item_province" />
+    <include layout="@layout/loading_home_province" />
 
-    <include layout="@layout/loading_item_province" />
-
-    <include layout="@layout/loading_item_province" />
-
-    <include layout="@layout/loading_item_province" />
-
-    <include layout="@layout/loading_item_province" />
-
-    <include layout="@layout/loading_item_province" />
-
-    <include layout="@layout/loading_item_province" />
-
-    <include layout="@layout/loading_item_province" />
+    <include layout="@layout/loading_home_province" />
 
 </LinearLayout>

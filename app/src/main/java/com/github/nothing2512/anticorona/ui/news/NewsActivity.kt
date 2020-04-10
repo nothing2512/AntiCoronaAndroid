@@ -16,14 +16,13 @@
 
 package com.github.nothing2512.anticorona.ui.news
 
+import android.content.Intent
 import com.github.nothing2512.anticorona.R
 import com.github.nothing2512.anticorona.component.ConfiguratedWebView
 import com.github.nothing2512.anticorona.databinding.ActivityNewsBinding
 import com.github.nothing2512.anticorona.parent.ParentActivity
-import com.github.nothing2512.anticorona.utils.Constants
-import com.github.nothing2512.anticorona.utils.hide
-import com.github.nothing2512.anticorona.utils.start
-import com.github.nothing2512.anticorona.utils.stop
+import com.github.nothing2512.anticorona.ui.home.HomeActivity
+import com.github.nothing2512.anticorona.utils.*
 
 /**
  * [NewsActivity] class
@@ -79,11 +78,16 @@ class NewsActivity : ParentActivity<ActivityNewsBinding>(R.layout.activity_news)
      * Back to previous website if exists
      */
     override fun onBackPressed() {
-        if(binding.wvNews.canGoBack()) {
+        binding.wvNews.stopLoading()
+        if (binding.wvNews.canGoBack()) {
             binding.sfWeb.start()
             binding.wvNews.hide()
             binding.wvNews.goBack()
-        }
-        else super.onBackPressed()
+        } else if (intent.getBooleanExtra(Constants.EXTRA_STATUS, false)) {
+            goto(HomeActivity::class.java) {
+                flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            }
+            finish()
+        } else super.onBackPressed()
     }
 }

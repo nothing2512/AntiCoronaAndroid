@@ -16,14 +16,15 @@
 
 object Versions {
 
-    const val code = 2
-    const val name = "1.1.0"
+    const val code = 3
+    const val name = "1.1.1"
 
     const val androidGradlePlugins = "3.6.2"
     const val appCompats = "1.1.0"
     const val archCore = "2.0.1"
     const val appId = "com.github.nothing2512.anticorona"
     const val buildTools = "29.0.2"
+    const val chart = "v3.1.0"
     const val constraintLayouts = "1.1.3"
     const val coreKtxs = "1.1.0"
     const val coroutine = "1.3.2"

@@ -34,7 +34,7 @@
     <string name="toolbar_cases">Kasus Corona</string>
     <string name="toolbar_faq">FAQ</string>
     <string name="toolbar_news">Berita Corona</string>
-    <string name="province">Kasus Per Provinsi</string>
+    <string name="toolbar_province">Kasus Per Provinsi</string>
     <string name="show_more">Tampilkan Semua</string>
     <string name="server_down">Maaf, Server Tidak Dapat Di Jangkau</string>
     <string name="answer">Jawaban</string>
@@ -42,4 +42,14 @@
     <string name="toolbar_countries">Kasus per negara</string>
     <string name="toolbar_web">Berita Web</string>
     <string name="detail">Detail</string>
+    <string name="about">Tentang</string>
+    <string name="contact">Kontak</string>
+    <string name="latest_news">Lihat berita terbaru sekarang</string>
+    <string name="see_expanded">Buka untuk melihat lebih lanjut</string>
+    <string name="setting">Pengaturan</string>
+    <string name="enable_notification">Aktifan notifikasi</string>
+    <string name="covid_center">Pusat Informasi COVID-19</string>
+    <string name="anticorona_support">AntiCorona Support</string>
+    <string name="hotline">Hotline</string>
+    <string name="report_bug">Laporkan Bug</string>
 </resources>

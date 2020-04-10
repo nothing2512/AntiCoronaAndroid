@@ -40,6 +40,9 @@
         <activity android:name=".ui.news.NewsActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
+        <activity android:name=".ui.setting.SettingActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
         <activity android:name=".ui.home.HomeActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity">
@@ -50,6 +53,7 @@
             </intent-filter>
         </activity>
 
+        <receiver android:name=".services.NotificationReceiver" />
         <receiver android:name=".services.DatabaseReceiver" />
         <receiver android:name=".services.LanguageReceiver">
             <intent-filter>

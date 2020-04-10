@@ -36,11 +36,11 @@ android {
         getByName("release") {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-            buildConfigField("String", "BASE_URL", "\"https://nothing-ar.000webhostapp.com/anticorona/v1/\"")
+            buildConfigField("String", "BASE_URL", "\"https://nothing.mwebs.id/v1/\"")
         }
         getByName("debug") {
             isDebuggable = true
-            buildConfigField("String", "BASE_URL", "\"https://nothing-ar.000webhostapp.com/anticorona/v1/\"")
+            buildConfigField("String", "BASE_URL", "\"https://nothing.mwebs.id/v1/\"")
 
         }
     }
@@ -94,6 +94,7 @@ dependencies  {
     implementation(Deps.shimmer)
     implementation(Deps.coil)
     implementation(Deps.font)
+    implementation(Deps.chart)
 
     implementation(Deps.Room.runtime)
 
