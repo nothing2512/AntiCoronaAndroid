@@ -71,11 +71,11 @@ class ConfiguratedWebView : WebView {
          */
         settings.apply {
             loadsImagesAutomatically = true
-            javaScriptEnabled = true
+            javaScriptEnabled = false
             domStorageEnabled = true
             builtInZoomControls = true
             displayZoomControls = false
-            setSupportZoom(true)
+            setSupportZoom(false)
         }
 
         /**

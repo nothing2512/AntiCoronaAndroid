@@ -104,8 +104,8 @@ dependencies  {
     implementation(Deps.Koin.scope)
     implementation(Deps.Koin.androidx)
 
-     add ("kapt", Deps.Room.compiler)
-     add ("kapt", Deps.Lifecycle.compiler)
+     kapt(Deps.Room.compiler)
+     kapt(Deps.Lifecycle.compiler)
 
     testImplementation(Deps.Coroutine.test)
     testImplementation(Deps.junit)
@@ -115,21 +115,21 @@ dependencies  {
     testImplementation(Deps.Test.hamcrest)
     testImplementation(Deps.Koin.test)
 
-    add("androidTestImplementation", Deps.junit)
+    androidTestImplementation(Deps.junit)
 
-    add("androidTestImplementation", Deps.Support.appCompat)
-    add("androidTestImplementation", Deps.Support.recyclerview)
-    add("androidTestImplementation", Deps.Support.cardview)
-    add("androidTestImplementation", Deps.Support.design)
+    androidTestImplementation(Deps.Support.appCompat)
+    androidTestImplementation(Deps.Support.recyclerview)
+    androidTestImplementation(Deps.Support.cardview)
+    androidTestImplementation(Deps.Support.design)
 
-    add("androidTestImplementation", Deps.Espresso.core)
-    add("androidTestImplementation", Deps.Espresso.contrib)
-    add("androidTestImplementation", Deps.Espresso.intents)
+    androidTestImplementation(Deps.Espresso.core)
+    androidTestImplementation(Deps.Espresso.contrib)
+    androidTestImplementation(Deps.Espresso.intents)
 
-    add("androidTestImplementation", Deps.archCoreTesting)
-    add("androidTestImplementation", Deps.Mockk.instrumented)
+    androidTestImplementation(Deps.archCoreTesting)
+    androidTestImplementation(Deps.Mockk.instrumented)
 
-    add("androidTestImplementation", Deps.Test.junits)
-    add("androidTestImplementation", Deps.Test.core)
-    add("androidTestImplementation", Deps.Test.rules)
+    androidTestImplementation(Deps.Test.junits)
+    androidTestImplementation(Deps.Test.core)
+    androidTestImplementation(Deps.Test.rules)
 }

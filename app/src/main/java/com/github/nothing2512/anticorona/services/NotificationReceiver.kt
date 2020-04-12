@@ -27,6 +27,7 @@ import com.github.nothing2512.anticorona.utils.AppExecutors
 import com.github.nothing2512.anticorona.utils.Constants
 import com.github.nothing2512.anticorona.utils.NotificationSender
 import com.github.nothing2512.anticorona.utils.provideServices
+import timber.log.Timber
 import java.util.*
 
 /**
@@ -43,7 +44,7 @@ class NotificationReceiver : BroadcastReceiver() {
      */
     override fun onReceive(context: Context?, intent: Intent?) {
         context?.let { ctx ->
-
+            Timber.d("Robet: onReceiveContext")
             /**
              * providing services and executors
              * @see provideServices
@@ -108,14 +109,16 @@ class NotificationReceiver : BroadcastReceiver() {
         fun start(context: Context) {
             val instance = getInstance(context)
             val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-            val calendar = Calendar.getInstance().apply {
-                set(Calendar.HOUR, 8)
+            val calendar = Calendar.getInstance()
+
+            calendar.apply {
+                set(Calendar.HOUR_OF_DAY, 8)
                 set(Calendar.MINUTE, 0)
                 set(Calendar.SECOND, 0)
                 set(Calendar.MILLISECOND, 0)
             }
 
-            alarmManager.setInexactRepeating(
+            alarmManager.setRepeating(
                 AlarmManager.RTC_WAKEUP,
                 calendar.timeInMillis,
                 AlarmManager.INTERVAL_DAY,
