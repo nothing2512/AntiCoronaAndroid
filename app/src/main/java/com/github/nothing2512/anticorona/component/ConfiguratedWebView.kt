@@ -37,7 +37,7 @@ import com.github.nothing2512.anticorona.utils.show
  */
 class ConfiguratedWebView : WebView {
 
-    private var onError: ((url: String) -> Unit)? = null
+    private var onError: (() -> Unit)? = null
 
     /**
      * @constructor
@@ -88,7 +88,7 @@ class ConfiguratedWebView : WebView {
      * Set on error listener
      * @param block
      */
-    fun onError(block: (url: String) -> Unit) {
+    fun onError(block: () -> Unit) {
         onError = block
     }
 
@@ -116,7 +116,7 @@ class ConfiguratedWebView : WebView {
      */
     private class WebClient(
         private val onFinish: () -> Unit,
-        private val onError: ((url: String) -> Unit)?
+        private val onError: (() -> Unit)?
     ) : WebViewClient() {
 
         /**
@@ -147,7 +147,7 @@ class ConfiguratedWebView : WebView {
             request: WebResourceRequest?,
             error: WebResourceError?
         ) {
-            onError?.invoke(view?.url ?: "https://google.com")
+            onError?.invoke()
         }
 
         /**

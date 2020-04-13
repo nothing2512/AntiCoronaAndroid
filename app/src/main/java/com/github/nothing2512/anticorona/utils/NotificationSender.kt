@@ -21,9 +21,11 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.AsyncTask
 import android.widget.RemoteViews
 import androidx.core.app.NotificationCompat
+import com.github.nothing2512.anticorona.BuildConfig
 import com.github.nothing2512.anticorona.R
 import com.github.nothing2512.anticorona.data.remote.response.NewsResponse
 import com.github.nothing2512.anticorona.ui.news.NewsActivity
@@ -90,9 +92,12 @@ class NotificationSender(private val context: Context) {
          * Set intent to news activity
          * @see Intent
          */
-        val intent = Intent(context, NewsActivity::class.java).apply {
+        @Suppress("ConstantConditionIf")
+        val intent = if (BuildConfig.IS_BETA) Intent(context, NewsActivity::class.java).apply {
             putExtra(Constants.EXTRA_URL, item?.url)
             putExtra(Constants.EXTRA_STATUS, true)
+        } else Intent(Intent.ACTION_VIEW).apply {
+            data = Uri.parse(item?.url)
         }
 
         /**

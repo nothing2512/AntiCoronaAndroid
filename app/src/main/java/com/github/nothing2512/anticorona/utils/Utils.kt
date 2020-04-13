@@ -217,7 +217,23 @@ fun openDial(context: Context?, number: String) {
 }
 
 /**
- * Trsuting all ca client
+ * open url via browser
+ *
+ * @param context
+ * @param url
+ *
+ * @see Intent
+ * @see Uri
+ */
+fun openBrowser(context: Context?, url: String) {
+    Intent(Intent.ACTION_VIEW).apply{
+        data = Uri.parse(url)
+        context?.startActivity(this)
+    }
+}
+
+/**
+ * Trusting all ca client
  * @see X509TrustManager
  * @see X509Certificate
  * @see SSLContext

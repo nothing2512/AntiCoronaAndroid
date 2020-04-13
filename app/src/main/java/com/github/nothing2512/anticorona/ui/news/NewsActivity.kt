@@ -78,6 +78,7 @@ class NewsActivity : ParentActivity<ActivityNewsBinding>(R.layout.activity_news)
      * Back to previous website if exists
      */
     override fun onBackPressed() {
+        super.onBackPressed()
         binding.wvNews.stopLoading()
         if (binding.wvNews.canGoBack()) {
             binding.sfWeb.start()

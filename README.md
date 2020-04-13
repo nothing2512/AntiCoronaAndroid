@@ -8,9 +8,21 @@ AntiCorona is android app to monitoring COVID-19 data in the world especially in
 * Change Theme (Default and Ocean)
 * Change Language (Indonesian and English)
 * Covid-19 FAQ
+* Daily Notification
 
-## Download
-Download AntiCorona Android Apps [![](images/download.png)](https://drive.google.com/file/d/1l2J1xz2Wd4fOOx0xxQ0PJpMYYP1zCDOS/view)
+## Download Apps
+This App has 2 versions developed, Stable version and Beta version, different between two is below:
+
+Stable Version (Some device not supported in-app WebView)
+* Open news via browser
+* When notification clicked, open browser
+
+Beta Version (Supported all device with Android 5.0 or above)
+* Open news via in-app WebView
+* When notification clicked, open in-app WebView
+
+Download stable version [![](images/download.png)](https://drive.google.com/file/d/1Zy5EIN-n-ymIj49e5Oge7g4peJUN6YZO/view)<br>
+Download Beta version [![](images/download.png)](https://drive.google.com/file/d/1l2J1xz2Wd4fOOx0xxQ0PJpMYYP1zCDOS/view)
 
 ## Screenshot
 <img src="images/1.jpg" width="250px"/> <img src="images/2.jpg" width="250px"/> <img src="images/3.jpg" width="250px"/> <img src="images/4.jpg" width="250px"/> <img src="images/5.jpg" width="250px"/> <img src="images/6.jpg" width="250px"/> <img src="images/7.jpg" width="250px"/> <img src="images/8.jpg" width="250px"/> <img src="images/9.jpg" width="250px"/> <img src="images/10.jpg" width="250px"/> <img src="images/11.jpg" width="250px"/>

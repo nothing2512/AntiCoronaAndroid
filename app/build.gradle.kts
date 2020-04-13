@@ -37,11 +37,12 @@ android {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             buildConfigField("String", "BASE_URL", "\"https://nothing.mwebs.id/v1/\"")
+            buildConfigField("boolean", "IS_BETA", "false")
         }
         getByName("debug") {
             isDebuggable = true
             buildConfigField("String", "BASE_URL", "\"https://nothing.mwebs.id/v1/\"")
-
+            buildConfigField("boolean", "IS_BETA", "false")
         }
     }
     dataBinding {

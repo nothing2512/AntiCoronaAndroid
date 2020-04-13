@@ -18,6 +18,7 @@ package com.github.nothing2512.anticorona.ui.adapter
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.github.nothing2512.anticorona.BuildConfig
 import com.github.nothing2512.anticorona.R
 import com.github.nothing2512.anticorona.data.remote.response.NewsResponse
 import com.github.nothing2512.anticorona.databinding.ItemNewsBinding
@@ -25,6 +26,7 @@ import com.github.nothing2512.anticorona.ui.news.NewsActivity
 import com.github.nothing2512.anticorona.utils.Constants
 import com.github.nothing2512.anticorona.utils.getBinding
 import com.github.nothing2512.anticorona.utils.goto
+import com.github.nothing2512.anticorona.utils.openBrowser
 
 /**
  * [NewsAdapter] class
@@ -92,8 +94,11 @@ class NewsAdapter(private val data: List<NewsResponse>) :
         fun bind(item: NewsResponse) {
             binding.item = item
             binding.root.setOnClickListener {
-                goto(binding.root.context.applicationContext, NewsActivity::class.java) {
-                    putExtra(Constants.EXTRA_URL, item.url)
+                binding.root.context.applicationContext.apply {
+                    @Suppress("ConstantConditionIf")
+                    if (BuildConfig.IS_BETA) goto(this, NewsActivity::class.java) {
+                        putExtra(Constants.EXTRA_URL, item.url)
+                    } else openBrowser(this, item.url)
                 }
             }
         }
