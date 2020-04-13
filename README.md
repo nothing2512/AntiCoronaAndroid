@@ -10,22 +10,22 @@ AntiCorona is android app to monitoring COVID-19 data in the world especially in
 * Covid-19 FAQ
 
 ## Download
-Download AntiCorona [![](images/download.png)](https://drive.google.com/file/d/1l2J1xz2Wd4fOOx0xxQ0PJpMYYP1zCDOS/view)
+Download AntiCorona Android Apps [![](images/download.png)](https://drive.google.com/file/d/1l2J1xz2Wd4fOOx0xxQ0PJpMYYP1zCDOS/view){:target="_blank"}
 
 ## Screenshot
 <img src="images/1.jpg" width="250px"/> <img src="images/2.jpg" width="250px"/> <img src="images/3.jpg" width="250px"/> <img src="images/4.jpg" width="250px"/> <img src="images/5.jpg" width="250px"/> <img src="images/6.jpg" width="250px"/> <img src="images/7.jpg" width="250px"/> <img src="images/8.jpg" width="250px"/> <img src="images/9.jpg" width="250px"/> <img src="images/10.jpg" width="250px"/> <img src="images/11.jpg" width="250px"/>
 
 ## Demo Application
-[![](https://img.youtube.com/vi/LA7u5Zhux2A/0.jpg)](https://www.youtube.com/watch?v=LA7u5Zhux2A)
+[![](images/youtube.png)](https://youtu.be/LA7u5Zhux2A){:target="_blank"}
 
 ## Assets and data sources
-* [flaticon](https://flaticon.com)
-* [svg2vector](https://svg2vector.com)
-* [inloop](https://inloop.github.io)
-* [cleanpng](https://cleanpng.com)
-* [Google Fonts](https://fonts.google.com)
-* [hub png](https://hubpng.com)
-* [AntiCorona API](https://github.com/nothing2512/AntiCoronaAPI)
+* [flaticon](https://flaticon.com){:target="_blank"}
+* [svg2vector](https://svg2vector.com){:target="_blank"}
+* [inloop](https://inloop.github.io){:target="_blank"}
+* [cleanpng](https://cleanpng.com){:target="_blank"}
+* [Google Fonts](https://fonts.google.com){:target="_blank"}
+* [hub png](https://hubpng.com){:target="_blank"}
+* [AntiCorona API](https://github.com/nothing2512/AntiCoronaAPI){:target="_blank"}
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
