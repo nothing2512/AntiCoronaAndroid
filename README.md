@@ -10,22 +10,22 @@ AntiCorona is android app to monitoring COVID-19 data in the world especially in
 * Covid-19 FAQ
 
 ## Download
-Download AntiCorona Android Apps <a href="https://drive.google.com/file/d/1l2J1xz2Wd4fOOx0xxQ0PJpMYYP1zCDOS/view" target="_blank"><img src="images/download.png"/></a>
+Download AntiCorona Android Apps [![](images/download.png)](https://drive.google.com/file/d/1l2J1xz2Wd4fOOx0xxQ0PJpMYYP1zCDOS/view)
 
 ## Screenshot
 <img src="images/1.jpg" width="250px"/> <img src="images/2.jpg" width="250px"/> <img src="images/3.jpg" width="250px"/> <img src="images/4.jpg" width="250px"/> <img src="images/5.jpg" width="250px"/> <img src="images/6.jpg" width="250px"/> <img src="images/7.jpg" width="250px"/> <img src="images/8.jpg" width="250px"/> <img src="images/9.jpg" width="250px"/> <img src="images/10.jpg" width="250px"/> <img src="images/11.jpg" width="250px"/>
 
 ## Demo Application
-<a href="https://youtu.be/LA7u5Zhux2A" target="_blank"><img src="images.youtube.png"/></a>
+[![](images/youtube.png)](https://youtu.be/LA7u5Zhux2A)
 
 ## Assets and data sources
-* <a href="https://flaticon.com" target="_blank">Flaticon</a>
-* <a href="https://svg2vector.com" target="_blank">svg2vector</a>
-* <a href="https://inloop.github.io" target="_blank">inloop</a>
-* <a href="https://cleanpng.com" target="_blank">cleanpng</a>
-* <a href="https://fonts.google.com" target="_blank">Google Fonts</a>
-* <a href="https://hubpng.com" target="_blank">hubpng</a>
-* <a href="https://github.com/nothing2512/AntiCoronaAPI" target="_blank">Anti Corona API</a>
+* [flaticon](https://flaticon.com)
+* [svg2vector](https://svg2vector.com)
+* [inloop](https://inloop.github.io)
+* [cleanpng](https://cleanpng.com)
+* [Google Fonts](https://fonts.google.com)
+* [hub png](https://hubpng.com)
+* [AntiCorona API](https://github.com/nothing2512/AntiCoronaAPI)
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
