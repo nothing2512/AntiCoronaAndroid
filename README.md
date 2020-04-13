@@ -10,10 +10,10 @@ AntiCorona is android app to monitoring COVID-19 data in the world especially in
 * Covid-19 FAQ
 
 ## Download
-Download AntiCorona.apk [Here](https://drive.google.com/open?id=1u9tOqr_8Q7Icc9warv586HwLYyQGq5XK)
+Download AntiCorona [![](images/download.png)](https://drive.google.com/file/d/1l2J1xz2Wd4fOOx0xxQ0PJpMYYP1zCDOS/view)
 
 ## Screenshot
-<img src="screenshot/1.jpg" width="250px"/><img src="screenshot/2.jpg" width="250px"/><img src="screenshot/3.jpg" width="250px"/><img src="screenshot/4.jpg" width="250px"/><img src="screenshot/5.jpg" width="250px"/><img src="screenshot/6.jpg" width="250px"/><img src="screenshot/7.jpg" width="250px"/><img src="screenshot/8.jpg" width="250px"/><img src="screenshot/9.jpg" width="250px"/><img src="screenshot/10.jpg" width="250px"/><img src="screenshot/11.jpg" width="250px"/>
+<img src="images/1.jpg" width="250px"/> <img src="images/2.jpg" width="250px"/> <img src="images/3.jpg" width="250px"/> <img src="images/4.jpg" width="250px"/> <img src="images/5.jpg" width="250px"/> <img src="images/6.jpg" width="250px"/> <img src="images/7.jpg" width="250px"/> <img src="images/8.jpg" width="250px"/> <img src="images/9.jpg" width="250px"/> <img src="images/10.jpg" width="250px"/> <img src="images/11.jpg" width="250px"/>
 
 ## Demo Application
 [![](https://img.youtube.com/vi/LA7u5Zhux2A/0.jpg)](https://www.youtube.com/watch?v=LA7u5Zhux2A)
